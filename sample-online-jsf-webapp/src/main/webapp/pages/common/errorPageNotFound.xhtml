@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="/resources/template/errorTemplate.xhtml">
+  <ui:param name="bb" value="#{errorPageBean}" />
+
+  <f:metadata>
+    <f:viewAction action="#{errorPageBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="/pages/common/header.xhtml">
+      <ui:param name="bb" value="#{errorPageBean}" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="navigation" />
+
+  <ui:define name="content">
+    <div id="contentArea" class="font-sans text-sm rounded w-full max-w-2xl mx-auto my-8 px-8 pt-6 pb-8">
+      <div id="errorArea" class="errorarea">
+        <div class="errormessage">
+          <h1>Oops!</h1>
+          <h2>404 - The Page can't be found.</h2>
+        </div>
+        <button jsf:id="goToTopPage" class="bg-black hover:bg-black text-white py-2 px-4" jsf:action="#{bb.pushGoToTopPage}">Go To Top page</button>
+      </div>
+    </div>
+  </ui:define>
+</ui:composition>
+</html>

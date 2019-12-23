@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="/resources/template/template.xhtml">
+  <ui:param name="bb" value="#{loginBean}" />
+  <ui:param name="dto" value="#{loginDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{loginBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="/pages/common/header.xhtml">
+      <ui:param name="bb" value="#{loginBean}" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="navigation" />
+
+  <ui:define name="content">
+    <div id="contentArea" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="username" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.username}" placeholder="Username">
+          <f:ajax event="change" execute="@this" render="@this" />
+        </input>
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="username"> Username </label>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="password" type="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.password}" placeholder="Password" />
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password"> Password </label>
+      </div>
+      <div class="flex items-center justify-between">
+        <button jsf:id="signIn" class="bg-black hover:bg-black text-white py-2 px-4" jsf:action="#{bb.pushSignIn}">Sign In</button>
+        <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="#"> Forgot Password? </a>
+      </div>
+    </div>
+  </ui:define>
+</ui:composition>
+</html>
