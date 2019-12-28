@@ -1,4 +1,4 @@
-package jp.co.sample.pres.code;
+package jp.co.sample.jsf.pres.code;
 
 import jp.co.sample.common.code.CodeVo;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum ScreenViewNameVo implements CodeVo {
+public enum ViewNameVo implements CodeVo {
 
   /** topPage.xhtml. */
   TOP_PAGE("login", "topPage.xhtml"),

@@ -1,4 +1,4 @@
-package jp.co.sample.pres.simple.dto;
+package jp.co.sample.jsf.pres.login.dto;
 
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
@@ -8,12 +8,12 @@ import lombok.Data;
 @ViewScoped
 @Named
 @Data
-public class SimpleDto implements Serializable {
+public class LoginDto implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private String text = "default value";
+  private String username;
 
-  private String textarea;
+  private String password;
 
 }

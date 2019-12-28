@@ -1,8 +1,8 @@
-package jp.co.sample.pres.login;
+package jp.co.sample.jsf.pres.login;
 
-import jp.co.sample.pres.BaseBackingBean;
-import jp.co.sample.pres.code.ScreenViewNameVo;
-import jp.co.sample.pres.login.dto.LoginDto;
+import jp.co.sample.jsf.pres.BackingBeanBase;
+import jp.co.sample.jsf.pres.code.ViewNameVo;
+import jp.co.sample.jsf.pres.login.dto.LoginDto;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -10,7 +10,7 @@ import javax.inject.Named;
 
 @ViewScoped
 @Named
-public class LoginBean extends BaseBackingBean implements Serializable {
+public class LoginBean extends BackingBeanBase implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class LoginBean extends BaseBackingBean implements Serializable {
 
   public String pushSignIn() {
     System.out.println(dto);
-    return redirect(ScreenViewNameVo.SIMPLE);
+    return redirect(ViewNameVo.SIMPLE);
   }
 
 }
