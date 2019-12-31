@@ -12,7 +12,7 @@ public class TopPageBean extends BackingBeanBase implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public void init() {
-    // empty.
+    // do nothing.
   }
 
 }

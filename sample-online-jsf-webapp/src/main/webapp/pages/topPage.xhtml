@@ -1,13 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:composition template="/resources/template/template.xhtml">
+  <ui:param name="pageTitle" value="JSF 2.2 Sample" />
   <ui:param name="bb" value="#{topPageBean}" />
 
+  <f:metadata>
+    <f:viewAction action="#{topPageBean.init}" />
+  </f:metadata>
+
   <ui:define name="top">
-    <ui:include src="/pages/common/header.xhtml">
+    <ui:include src="./parts/header.xhtml">
       <ui:param name="bb" value="#{topPageBean}" />
     </ui:include>
   </ui:define>
@@ -15,14 +20,19 @@
   <ui:define name="navigation" />
 
   <ui:define name="content">
-    <section class="font-sans h-screen w-full bg-cover text-center flex flex-col items-center justify-center"
-      style="background:url(https://source.unsplash.com/random/1920x1080) no-repeat center;">
-    <div class="bg-white text-black rounded-full h-16 w-16 flex items-center justify-center mb-8">
-      <i class="fas fa-play ml-1"></i>
+    <div class="h-screen w-full bg-cover text-center flex flex-col items-center justify-center"
+        style="background:url(https://source.unsplash.com/random/1920x1080) no-repeat center;">
+      <div class="bg-white text-black rounded-full h-16 w-16 flex items-center justify-center mb-8">
+        <i class="fas fa-play ml-1"></i>
+      </div>
+      <label for="" class="uppercase tracking-extrawide text-white text-xs font-hairline mt-8">Watch Video</label>
+      <h3 class="text-white mx-auto max-w-sm mt-4 font-normal text-2xl leading-normal">In the middle of difficulty lies opportunity.</h3>
     </div>
-    <label for="" class="uppercase tracking-extrawide text-white text-xs font-hairline mt-8">Watch Video</label>
-    <h3 class="text-white mx-auto max-w-sm mt-4 font-normal text-2xl leading-normal">Promote work style reforms</h3>
-    </section>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="true" />
+    </ui:include>
   </ui:define>
 </ui:composition>
-</html>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="User info entry" />
+  <ui:param name="bb" value="#{userInfoEntryBean}" />
+  <ui:param name="dto" value="#{userInfoEntryDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{userInfoEntryBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml">
+      <ui:param name="bb" value="#{userInfoEntryBean}" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="navigation">
+    <ui:include src="./parts/navigation.xhtml">
+      <ui:param name="step" value="1" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="content">
+    <div id="contentArea" class="text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+      <h3 class="mb-4">Create your account</h3>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="username" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.username}" jsf:label="Username" placeholder="Username" maxlength="40">
+          <f:ajax event="change" execute="@this" render="@this" />
+        </input>
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="username">Username</label>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="password" type="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.password}" jsf:label="Password" placeholder="Password" maxlength="15" />
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">Password</label>
+      </div>
+      <div class="flex items-center justify-start">
+        <button jsf:id="next" jsf:action="#{bb.pushNext}" class="bg-black hover:bg-black text-white py-2 px-4">Next</button>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+</ui:composition>

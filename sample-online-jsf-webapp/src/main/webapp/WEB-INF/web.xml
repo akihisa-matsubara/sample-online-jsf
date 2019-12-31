@@ -54,10 +54,10 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/pages/common/errorPageNotFound.xhtml</location>
+        <location>/pages/error/pageNotFound.xhtml</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/pages/common/errorHttpError.xhtml</location>
+        <location>/pages/error/httpError.xhtml</location>
     </error-page>
 </web-app>

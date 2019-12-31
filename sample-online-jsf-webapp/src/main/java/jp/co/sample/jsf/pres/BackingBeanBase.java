@@ -1,6 +1,6 @@
 package jp.co.sample.jsf.pres;
 
-import jp.co.sample.jsf.pres.code.ViewNameVo;
+import jp.co.sample.jsf.code.ViewNameVo;
 
 public abstract class BackingBeanBase {
 
@@ -12,8 +12,12 @@ public abstract class BackingBeanBase {
     return redirect(ViewNameVo.TOP_PAGE);
   }
 
-  public String pushLoginPage() {
-    return redirect(ViewNameVo.LOGIN);
+  public String pushSignUp() {
+    return redirect(ViewNameVo.USER_INFO_ENTRY);
+  }
+
+  public String pushLogIn() {
+    return redirect(ViewNameVo.LOG_IN);
   }
 
 }

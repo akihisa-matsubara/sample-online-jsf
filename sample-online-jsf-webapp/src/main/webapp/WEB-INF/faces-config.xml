@@ -6,7 +6,16 @@
     version="2.2">
 
 	<lifecycle>
-		<phase-listener>jp.co.sample.framework.listener.LoggingPhaseListener</phase-listener>
+		<phase-listener>jp.co.sample.framework.jsf.listener.LoggingPhaseListener</phase-listener>
 	</lifecycle>
 
+    <protected-views>
+        <url-pattern>/pages/userInfoEntry.xhtml</url-pattern>
+        <url-pattern>/pages/userDetailEntry.xhtml</url-pattern>
+        <url-pattern>/pages/simple.xhtml</url-pattern>
+    </protected-views>
+
+    <factory>
+        <exception-handler-factory>jp.co.sample.framework.jsf.handler.ExceptionHandlerFactoryImpl</exception-handler-factory>
+    </factory>
 </faces-config>

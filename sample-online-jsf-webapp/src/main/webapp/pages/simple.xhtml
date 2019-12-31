@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:composition template="/resources/template/template.xhtml">
+  <ui:param name="pageTitle" value="Pure Jsf Simple Page" />
   <ui:param name="bb" value="#{simpleBean}" />
   <ui:param name="dto" value="#{simpleDto}" />
 
@@ -12,57 +13,23 @@
   </f:metadata>
 
   <ui:define name="top">
-    <ui:include src="/pages/common/header.xhtml">
+    <ui:include src="./parts/header.xhtml">
       <ui:param name="bb" value="#{simpleBean}" />
     </ui:include>
   </ui:define>
 
   <ui:define name="navigation">
-    <section class="font-sans flex justify-between mt-6 mx-auto max-w-xl">
-      <a href="#" class="w-1/4 flex flex-col items-center text-center text-xs text-black no-underline">
-        <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-          <i class="fas fa-check"></i>
-        </div>
-        <label class="font-bold uppercase tracking-wide">Step 1</label>
-      </a>
-      <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-        <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="absolute h-1 mt-4 bg-black inset-x-0 -translate-50-50"></div>
-        <label class="font-bold uppercase tracking-wide">Step 2</label>
-      </a>
-      <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-        <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="absolute h-1 mt-4 bg-black inset-x-0 -translate-50-50"></div>
-        <label class="font-bold uppercase tracking-wide">Step 3</label>
-      </a>
-      <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-        <div class="bg-gray-700 text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="absolute h-1 mt-4 bg-gray-700 inset-x-0 -translate-50-50"></div>
-        <label class="font-bold uppercase tracking-wide text-gray-700">Step 4</label>
-      </a>
-    </section>
+    <ui:include src="./parts/navigation.xhtml" />
   </ui:define>
 
   <ui:define name="content">
-    <div id="contentArea" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
-      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="username" type="text" placeholder="Username" />
-        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="username"> Username </label>
-      </div>
-      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password" type="password" placeholder="Password" />
-        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password"> Password </label>
-      </div>
-      <div class="flex items-center justify-between">
-        <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">次へ</button>
-      </div>
+    <div id="contentArea" class="text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
     </div>
   </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
 </ui:composition>
-</html>

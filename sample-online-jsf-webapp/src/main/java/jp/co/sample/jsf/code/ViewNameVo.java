@@ -1,4 +1,4 @@
-package jp.co.sample.jsf.pres.code;
+package jp.co.sample.jsf.code;
 
 import jp.co.sample.common.code.CodeVo;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,13 @@ import lombok.Getter;
 public enum ViewNameVo implements CodeVo {
 
   /** topPage.xhtml. */
-  TOP_PAGE("login", "topPage.xhtml"),
-  /** login.xhtml. */
-  LOGIN("login", "login.xhtml"),
+  TOP_PAGE("topPage", "topPage.xhtml"),
+  /** userInfoEntry.xhtml. */
+  USER_INFO_ENTRY("userInfoEntry", "userInfoEntry.xhtml"),
+  /** userDetailEntry.xhtml. */
+  USER_DETAIL_ENTRY("userDetailEntry", "userDetailEntry.xhtml"),
+  /** logIn.xhtml. */
+  LOG_IN("logIn", "logIn.xhtml"),
   /** simple.xhtml. */
   SIMPLE("simple", "simple.xhtml"),
   ;

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="User detail entry" />
+  <ui:param name="bb" value="#{userDetailEntryBean}" />
+  <ui:param name="dto" value="#{userDetailEntryDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{userDetailEntryBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml">
+      <ui:param name="bb" value="#{userDetailEntryBean}" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="navigation">
+    <ui:include src="./parts/navigation.xhtml">
+      <ui:param name="step" value="2" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="content">
+    <div id="contentArea" class="text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+      <h3 class="mb-4">Create your account</h3>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="nameKanji" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.nameKanji}" jsf:label="名前（漢字）" placeholder="名前（漢字）" maxlength="20" />
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="nameKanji">名前（漢字）</label>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="nameKana" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.nameKana}" jsf:label="名前（カナ）" placeholder="名前（カナ）" maxlength="20"/>
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="nameKana">名前（カナ）</label>
+      </div>
+      <div class="text-gray-700 mb-4">
+        <h:selectOneRadio id="gender" value="#{dto.gender}" label="性別">
+            <f:selectItems value="#{dto.genderItems}" />
+        </h:selectOneRadio>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="birthday" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.birthday}" jsf:label="生年月日" placeholder="生年月日" maxlength="8" />
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="birthday">生年月日</label>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input jsf:id="addressZip" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.addressZip}" jsf:label="郵便番号" placeholder="郵便番号" maxlength="7" />
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="addressZip">郵便番号</label>
+      </div>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <textarea jsf:id="address" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" rows="4" jsf:value="#{dto.address}" jsf:label="住所" placeholder="住所" />
+        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="address">住所</label>
+      </div>
+      <div class="flex items-center justify-start">
+        <button jsf:id="back" jsf:action="#{bb.pushBack}" class="bg-black hover:bg-black text-white py-2 px-4" jsf:immediate="true">Back</button>
+        <button jsf:id="next" jsf:action="#{bb.pushNext}" class="bg-black hover:bg-black text-white py-2 px-4 ml-4">Next</button>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+</ui:composition>
