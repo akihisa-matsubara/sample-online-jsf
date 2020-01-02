@@ -2,41 +2,47 @@
 <ui:composition
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-  <div class="flex justify-between mt-6 mx-auto max-w-xl">
-    <a href="#" class="w-1/4 flex flex-col items-center text-center text-xs text-black no-underline">
-      <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-        <ui:fragment rendered="#{1 le step}">
-          <i class="fas fa-check" />
-        </ui:fragment>
+  <div class="container indicator">
+    <div class="row">
+      <div class="col s12 m10 l9">
+        <div class="row">
+          <div class="col s3 valign-wrapper step">
+            <div class="valign-wrapper circle">
+              <ui:fragment rendered="#{1 le step}">
+                <a href="#"><i class="fas fa-check" /></a>
+              </ui:fragment>
+            </div>
+            <label class="font-bold tracking-wide">STEP 1</label>
+          </div>
+          <div class="col s3 valign-wrapper step">
+            <div class="valign-wrapper circle">
+              <ui:fragment rendered="#{2 le step}">
+                <a href="#"><i class="fas fa-check" /></a>
+              </ui:fragment>
+            </div>
+            <div class="line" />
+            <label class="font-bold tracking-wide">STEP 2</label>
+          </div>
+          <div class="col s3 valign-wrapper step">
+            <div class="valign-wrapper circle">
+              <ui:fragment rendered="#{3 le step}">
+                <a href="#"><i class="fas fa-check" /></a>
+              </ui:fragment>
+            </div>
+            <div class="line" />
+            <label class="font-bold tracking-wide">STEP 3</label>
+          </div>
+          <div class="col s3 valign-wrapper step">
+            <div class="valign-wrapper circle">
+              <ui:fragment rendered="#{4 le step}">
+                <a href="#"><i class="fas fa-check" /></a>
+              </ui:fragment>
+            </div>
+            <div class="line" />
+            <label class="font-bold tracking-wide">STEP 4</label>
+          </div>
+        </div>
       </div>
-      <label class="font-bold uppercase tracking-wide">Step 1</label>
-    </a>
-    <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-      <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-        <ui:fragment rendered="#{2 le step}">
-          <i class="fas fa-check" />
-        </ui:fragment>
-      </div>
-      <div class="absolute h-1 mt-4 bg-black inset-x-0 -translate-50-50" />
-      <label class="font-bold uppercase tracking-wide">Step 2</label>
-    </a>
-    <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-      <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-        <ui:fragment rendered="#{3 le step}">
-          <i class="fas fa-check" />
-        </ui:fragment>
-      </div>
-      <div class="absolute h-1 mt-4 bg-black inset-x-0 -translate-50-50" />
-      <label class="font-bold uppercase tracking-wide">Step 3</label>
-    </a>
-    <a href="#" class="w-1/4 relative flex flex-col items-center text-center text-xs text-black no-underline">
-      <div class="bg-black text-white rounded-full h-8 w-8 flex items-center justify-center mb-2 z-10">
-        <ui:fragment rendered="#{4 le step}">
-          <i class="fas fa-check" />
-        </ui:fragment>
-      </div>
-      <div class="absolute h-1 mt-4 bg-black inset-x-0 -translate-50-50" />
-      <label class="font-bold uppercase tracking-wide">Step 4</label>
-    </a>
+    </div>
   </div>
 </ui:composition>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:composite="http://java.sun.com/jsf/composite"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <composite:interface>
+    <composite:attribute name="id" required="true" />
+    <composite:attribute name="headerMessage" />
+    <composite:attribute name="message" />
+    <composite:attribute name="buttonType" />
+    <composite:attribute name="okCallback" />
+    <composite:attribute name="cancelCallback" />
+  </composite:interface>
+
+  <composite:implementation>
+    <div id="#{cc.attrs.id}" class="modal">
+      <div class="modal-content">
+        <ui:fragment rendered="#{! empty cc.attrs.headerMessage}">
+          <h4>#{cc.attrs.headerMessage}</h4>
+        </ui:fragment>
+        <h:outputText value="#{cc.attrs.message}" escape="false" />
+      </div>
+      <div class="modal-footer container">
+        <div class="row">
+          <div class="col s12 center">
+            <a href="#!" class="modal-close btn waves-effect waves-light" onclick="#{cc.attrs.okCallback}"><i class="material-icons left">done</i>OK</a>
+            <ui:fragment rendered="#{cc.attrs.buttonType == 2}">
+              <a href="#!" class="modal-close btn btn-func waves-effect waves-light" onclick="#{cc.attrs.cancelCallback}"><i class="material-icons left">close</i>CANCEL</a>
+            </ui:fragment>
+          </div>
+        </div>
+      </div>
+    </div>
+  </composite:implementation>
+</html>

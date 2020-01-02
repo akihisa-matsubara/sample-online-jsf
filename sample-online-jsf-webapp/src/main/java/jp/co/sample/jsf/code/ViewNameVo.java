@@ -19,8 +19,6 @@ public enum ViewNameVo implements CodeVo {
   USER_DETAIL_ENTRY("userDetailEntry", "userDetailEntry.xhtml"),
   /** logIn.xhtml. */
   LOG_IN("logIn", "logIn.xhtml"),
-  /** simple.xhtml. */
-  SIMPLE("simple", "simple.xhtml"),
   ;
 
   /** コード. */

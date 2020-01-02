@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
   <ui:include src="./includeHeader.xhtml">
     <ui:param name="pageTitle" value="#{pageTitle}" />
@@ -11,13 +13,27 @@
   <div id="screenArea">
     <h:form id="mainForm" prependId="false">
       <ui:insert name="top" />
-
       <ui:insert name="navigation" />
-
       <ui:insert name="content" />
-
       <ui:insert name="bottom" />
     </h:form>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large green"><i class="large material-icons">add</i></a>
+      <ul>
+        <li><a id="scrollTop" class="btn-floating yellow darken-1" onclick="sampleRoot.scroll.top()"><i class="material-icons">vertical_align_top</i></a></li>
+        <li><a id="scrollBottom" class="btn-floating red" onclick="sampleRoot.scroll.bottom()"><i class="material-icons">vertical_align_bottom</i></a></li>
+        <li><a id="backAction" class="btn-floating blue"><i class="material-icons">arrow_back</i></a></li>
+      </ul>
+    </div>
+    <ui:insert name="dialogs" />
+    <h:outputScript library="js" name="materialize.min.js" />
+    <h:outputScript library="js" name="component.js" />
+    <h:outputScript>
+      sampleRoot.env = {
+        projectStage : "#{initParam['javax.faces.PROJECT_STAGE']}"
+      }
+    </h:outputScript>
+    <ui:insert name="importScript" />
   </div>
 </h:body>
 

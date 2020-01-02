@@ -16,6 +16,10 @@ public class UserInfoEntryBean extends BackingBeanBase implements Serializable {
     // do nothing.
   }
 
+  public String pushBack() {
+    return redirect(ViewNameVo.TOP_PAGE);
+  }
+
   public String pushNext() {
     return redirect(ViewNameVo.USER_DETAIL_ENTRY);
   }

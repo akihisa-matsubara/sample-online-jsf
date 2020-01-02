@@ -1,24 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
   <ui:include src="./includeHeader.xhtml">
     <ui:param name="pageTitle" value="#{pageTitle}" />
   </ui:include>
-  <h:outputStylesheet library="css" name="errorPage.css" />
 </h:head>
 
 <h:body>
   <div id="screenArea">
     <h:form id="mainForm" prependId="false">
       <ui:insert name="top" />
-
       <ui:insert name="navigation" />
-
       <ui:insert name="content" />
-
       <ui:insert name="bottom" />
     </h:form>
+    <ui:insert name="dialogs" />
+    <h:outputScript library="js" name="materialize.min.js" />
+    <h:outputScript library="js" name="component.js" />
+    <h:outputScript>
+      sampleRoot.env = {
+        projectStage : "#{initParam['javax.faces.PROJECT_STAGE']}"
+      }
+    </h:outputScript>
+    <ui:insert name="importScript" />
   </div>
 </h:body>
 

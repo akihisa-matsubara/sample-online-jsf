@@ -3,6 +3,8 @@
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ss="http://java.sun.com/jsf/composite/composite"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <ui:param name="pageTitle" value="Log In" />
@@ -15,32 +17,63 @@
 
   <ui:define name="top">
     <ui:include src="./parts/header.xhtml">
-      <ui:param name="bb" value="#{logInBean}" />
+      <ui:param name="bb" value="#{bb}" />
     </ui:include>
   </ui:define>
 
   <ui:define name="navigation" />
 
   <ui:define name="content">
-    <div id="contentArea" class="text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
-      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-        <input jsf:id="username" type="text" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.username}" jsf:label="Username" placeholder="Username" maxlength="40" />
-        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="username">Username</label>
-      </div>
-      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-        <input jsf:id="password" type="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" jsf:value="#{dto.password}" jsf:label="Password" placeholder="Password" maxlength="15" />
-        <label class="absolute block text-gray-500 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">Password</label>
-      </div>
-      <div class="flex items-center justify-between">
-        <button jsf:id="signIn" class="bg-black hover:bg-black text-white py-2 px-4" jsf:action="#{bb.pushSignIn}">Sign In</button>
-        <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="#"> Forgot Password? </a>
+    <div id="contentArea" class="container">
+      <div class="row mt-8">
+        <div class="col s12 m8 xl6 offset-m2 offset-xl3">
+          <div class="card-panel">
+            <h5>Sign in to ...</h5>
+            <div class="row mt-8">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input jsf:id="username" type="text" jsf:value="#{dto.username}" jsf:label="Username" data-length="40" maxlength="40">
+                  <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                </input>
+                <label for="username">Username</label>
+                <span id="usernameHelperText" class="helper-text" />
+                <h:message id="usernameErrMsg" styleClass="hidden" for="username" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <input jsf:id="password" type="password" jsf:value="#{dto.password}" jsf:label="Password" data-length="15" maxlength="15">
+                  <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                </input>
+                <label for="password">Password</label>
+                <span id="passwordHelperText" class="helper-text" />
+                <h:message id="passwordErrMsg" styleClass="hidden" for="password" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <a class="modal-trigger" href="#noticeModal"> Forgot Password? </a>
+              </div>
+              <div class="col s6">
+                <button jsf:id="signIn" class="btn right waves-effect waves-light" jsf:action="#{bb.pushSignIn}">Sign In</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </ui:define>
 
   <ui:define name="bottom">
     <ui:include src="./parts/footer.xhtml">
+      <ui:param name="bb" value="#{bb}" />
       <ui:param name="footerMenu" value="true" />
     </ui:include>
   </ui:define>
+
+  <ui:define name="dialogs">
+    <ss:modal id="noticeModal" headerMessage="本人確認が必要です" message="登録済みのメールアドレスにセキュリティ コードを送信します。&lt;br /&gt;所定の手順に従ってログインしてください。" buttonType="2" okCallback="M.toast({html: 'セキュリティ コードを送信しました'})" />
+  </ui:define>
+  <ui:define name="importScript" />
 </ui:composition>

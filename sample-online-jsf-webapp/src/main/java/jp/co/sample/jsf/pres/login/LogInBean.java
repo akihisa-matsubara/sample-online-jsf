@@ -17,7 +17,7 @@ public class LogInBean extends BackingBeanBase implements Serializable {
   }
 
   public String pushSignIn() {
-    return redirect(ViewNameVo.SIMPLE);
+    return redirect(ViewNameVo.TOP_PAGE);
   }
 
 }

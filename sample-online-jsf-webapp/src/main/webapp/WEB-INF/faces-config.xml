@@ -10,9 +10,7 @@
 	</lifecycle>
 
     <protected-views>
-        <url-pattern>/pages/userInfoEntry.xhtml</url-pattern>
         <url-pattern>/pages/userDetailEntry.xhtml</url-pattern>
-        <url-pattern>/pages/simple.xhtml</url-pattern>
     </protected-views>
 
     <factory>

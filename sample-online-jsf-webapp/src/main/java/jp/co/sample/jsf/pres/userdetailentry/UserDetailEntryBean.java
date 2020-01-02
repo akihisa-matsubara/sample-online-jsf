@@ -21,7 +21,7 @@ public class UserDetailEntryBean extends BackingBeanBase implements Serializable
   }
 
   public String pushNext() {
-    return redirect(ViewNameVo.USER_DETAIL_ENTRY);
+    return redirect(ViewNameVo.TOP_PAGE);
   }
 
 }

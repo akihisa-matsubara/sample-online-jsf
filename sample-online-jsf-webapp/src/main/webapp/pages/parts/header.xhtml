@@ -5,15 +5,25 @@
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <header>
-    <nav class="bg-white text-center flex justify-between my-4 mx-auto container overflow-hidden">
-      <a jsf:id="logo" jsf:action="#{bb.goToTopPage}" class="block text-left"><h:graphicImage library="images" name="logo.png" class="h-10 sm:h-10" alt="logo" /></a>
-      <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
-        <li><a href="#" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Products</a></li>
-        <li><a href="#" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Pricing</a></li>
-        <li class="pr-2"><a href="#" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">FAQs</a></li>
-        <li class="pl-2 border-l"><a jsf:id="logIn" jsf:action="#{bb.pushLogIn}" class="inline-block py-2 px-3 text-gray-900 hover:text-gray-700 no-underline">Log In</a></li>
-        <button jsf:id="signUp" jsf:action="#{bb.pushSignUp}" class="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">Sign Up</button>
-      </ul>
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a jsf:id="headerLogo" class="brand-logo" jsf:value="#{request.contextPath}"><h:graphicImage library="images" name="logo.png" alt="logo" /></a>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a jsf:id="logIn" jsf:value="#{request.contextPath}/pages/logIn.xhtml">Log In</a></li>
+          <li><a jsf:id="signUp" class="btn btn-menu waves-effect waves-light" jsf:value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</a></li>
+        </ul>
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a jsf:id="logInSideNav" jsf:value="#{request.contextPath}/pages/logIn.xhtml">Log In</a></li>
+          <li><a jsf:id="signUpSideNav" jsf:value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 </ui:composition>
