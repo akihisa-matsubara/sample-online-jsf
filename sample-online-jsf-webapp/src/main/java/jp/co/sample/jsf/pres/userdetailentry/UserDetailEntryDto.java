@@ -2,12 +2,9 @@ package jp.co.sample.jsf.pres.userdetailentry;
 
 import jp.co.sample.common.code.GenderVo;
 import jp.co.sample.common.util.CodeUtils;
-import jp.co.sample.framework.jsf.util.ComponentUtils;
 import jp.co.sample.jsf.constant.ValidationMessageId;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
-import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
@@ -26,7 +23,7 @@ public class UserDetailEntryDto implements Serializable {
   @Size(max = 20, message = ValidationMessageId.V0001E)
   private String nameKana;
 
-  private GenderVo gender = GenderVo.MALE;
+  private GenderVo gender;
 
   private LocalDate birthday;
 
@@ -44,8 +41,8 @@ public class UserDetailEntryDto implements Serializable {
     this.gender = CodeUtils.decode(genderCode, GenderVo.class);
   }
 
-  public List<SelectItem> getGenderItems() {
-    return ComponentUtils.items(GenderVo.class);
+  public GenderVo[] getGenderItems() {
+    return GenderVo.values();
   }
 
 }

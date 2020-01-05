@@ -1,14 +1,30 @@
+@import './color'
+
+$pc: 1024px
+$tablet: 767px
+$smartphone: 480px
+
+@mixin pc
+  @media (max-width: ($pc))
+    @content
+@mixin tablet
+  @media (max-width: ($tablet))
+    @content
+@mixin smartphone
+  @media (max-width: ($smartphone))
+    @content
+
 /* header */
 nav
   ul
     a
-      color: #444
+      color: $grey-darken-3
   .brand-logo
     img
       height: 2.5rem
       vertical-align: middle
   .sidenav-trigger
-    color: #26a69a
+    color: $teal-lighten-1
 
 /* navigation */
 .indicator
@@ -18,16 +34,16 @@ nav
     position: relative
     .circle
       justify-content: center
-      background-color: #000000 !important
+      background-color: $black !important
       border-radius: 9999px
       height: 2rem
       width: 2rem
       margin-bottom: 0.5rem
       z-index: 10
       .fas
-        color: #FFFFFF !important
+        color: $white !important
     .line
-      background-color: #000000 !important
+      background-color: $black !important
       position: absolute
       height: 0.25rem
       margin-top: 1rem
@@ -35,39 +51,38 @@ nav
       left: 0
       transform: translate(-50%, -50%)
     label
-      color: #000000 !important
+      color: $black !important
       font-weight: 700
 
 /* footer */
 footer 
   &.page-footer 
     margin: 0
-    background-color: #000000
+    background-color: $black
   .brand-logo
     img
       height: 2.5rem
       vertical-align: middle
   ul
     li
-      color: #fafafa
+      color: $grey-lighten-5
       font-weight: 500
       padding-top: 0.5rem
       padding-bottom: 0.5rem
     a
-      color: #bdbdbd
+      color: $grey-lighten-1
       font-weight: 200
     a:hover
-      color: #fafafa
+      color: $grey-lighten-5
       font-weight: 200
     i
-      color: #fafafa
+      color: $grey-lighten-5
     i:hover
-      color: #bdbdbd
+      color: $grey-lighten-1
 
 /* contents */
 .parallax-container
   min-height: 700px
-  line-height: 0
   height: auto
   color: rgba(255,255,255,.9)
   .section
@@ -78,14 +93,16 @@ footer
   width: 100%
   line-height: 1.4
   text-align: center
-
   .errormessage
     position: relative
     height: 200px
     margin: 0px auto 20px
     z-index: -1
-
     h1
+      @include tablet
+        font-size: 148px
+      @include smartphone
+        font-size: 86px
       font-size: 236px
       font-weight: 200
       margin: 0px
@@ -95,12 +112,14 @@ footer
       top: 50%
       -webkit-transform: translate(-50%, -50%)
       transform: translate(-50%, -50%)
-
     h2
+      @include smartphone
+        font-size: 16px
       font-size: 28px
       font-weight: 400
+      max-width: max-content
       text-transform: uppercase
-      background: #fff
+      background: $white
       padding: 10px 5px
       margin: auto
       display: inline-block
@@ -139,53 +158,61 @@ footer
 
 /* button */
 .btn-menu
-  background-color: #000000 !important
+  background-color: $black !important
   &:hover
-    background-color: #424242 !important
+    background-color: $grey-darken-3 !important
   &:focus
-    background-color: #424242 !important
+    background-color: $grey-darken-3 !important
 .btn-func
-  background-color: #616161 !important
+  background-color: $grey-darken-2 !important
   &:hover
-    background-color: #9e9e9e !important
+    background-color: $grey !important
   &:focus
-    background-color: #424242 !important
+    background-color: $grey-darken-3 !important
 
 /* other */
 @for $i from 0 through 15
-  .mt-#{$i} 
-    margin-top: #{$i * 0.25}rem;
-  
-  .mr-#{$i} 
-    margin-right: #{$i * 0.25}rem;
-  
-  .mb-#{$i} 
-    margin-bottom: #{$i * 0.25}rem;
-  
-  .ml-#{$i} 
-    margin-left: #{$i * 0.25}rem;
-
-  .pt-#{$i} 
-    padding-top: #{$i * 0.25}rem;
-  
-  .pr-#{$i} 
-    padding-right: #{$i * 0.25}rem;
-  
-  .pb-#{$i} 
-    padding-bottom: #{$i * 0.25}rem;
-  
-  .pl-#{$i} 
-    padding-left: #{$i * 0.25}rem;
+  .mx-#{$i}
+    margin-left: #{$i * 0.25}rem
+    margin-right: #{$i * 0.25}rem
+  .my-#{$i}
+    margin-top: #{$i * 0.25}rem
+    margin-bottom: #{$i * 0.25}rem
+  .mt-#{$i}
+    margin-top: #{$i * 0.25}rem
+  .mr-#{$i}
+    margin-right: #{$i * 0.25}rem
+  .mb-#{$i}
+    margin-bottom: #{$i * 0.25}rem
+  .ml-#{$i}
+    margin-left: #{$i * 0.25}rem
+  .px-#{$i}
+    padding-left: #{$i * 0.25}rem
+    padding-right: #{$i * 0.25}rem
+  .py-#{$i}
+    padding-top: #{$i * 0.25}rem
+    padding-bottom: #{$i * 0.25}rem
+  .pt-#{$i}
+    padding-top: #{$i * 0.25}rem
+  .pr-#{$i}
+    padding-right: #{$i * 0.25}rem
+  .pb-#{$i}
+    padding-bottom: #{$i * 0.25}rem
+  .pl-#{$i}
+    padding-left: #{$i * 0.25}rem
    
+.my-auto
+  margin-top: auto
+  margin-bottom: auto
+.mx-auto
+  margin-left: auto
+  margin-right: auto
 .mt-auto 
   margin-top: auto
-
 .mr-auto 
   margin-right: auto
-
 .mb-auto 
   margin-bottom: auto
-
 .ml-auto 
   margin-left: auto
 

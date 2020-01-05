@@ -3,6 +3,16 @@
 sampleRoot.ajax = sampleRoot.ajax || {};
 
 /**
+ * 初期処理
+ */
+$(function() {
+  // Materialize初期化
+  sampleRoot.materialize.init();
+
+  sampleRoot.radio.init();
+});
+
+/**
  * Ajaxメッセージ制御
  */
 sampleRoot.ajax.messageControl = function() {
@@ -78,49 +88,88 @@ sampleRoot.scroll = function() {
 }();
 
 /**
- * 初期処理
+ * ラジオボタン制御
  */
-$(function() {
-  let footerOffset, tocHeight, bottomOffset, elems;
+sampleRoot.radio = function() {
+  let init;
 
-  // initialize all of the Materialize Components
-  M.AutoInit();
-
-  // 文字カウンターはAutoInitの対象外なので個別に初期化
-  $('input[data-length], textarea[data-length]').characterCounter();
-
-  // 目次(table-of-contents)初期化
-  footerOffset = $('form > footer').first().length ? $('form > footer').first().offset().top : 0;
-  tocHeight = $('.sideArea .table-of-contents').length ? $('.sideArea .table-of-contents').height() : 0;
-  bottomOffset = footerOffset - tocHeight;
-
-  if ($('nav').length) {
-    console.log('Nav pushpin', $('nav').height());
-    $('.sideArea').pushpin({
-      top : $('.sideArea').offset().top,
-      bottom : bottomOffset
+  /**
+   * 初期化
+   */
+  init = function() {
+    $('input[type="radio"][id$="radio"]').each(function(index, elem) {
+      let target, value, selectedValue;
+      target = $(elem).prop('name') + 'InitialValue';
+      value = $(elem).val();
+      selectedValue = $('#' + target).text();
+      if (value === selectedValue) {
+        $(elem).prop('checked', true);
+      }
     });
-  } else {
-    $('.sideArea').pushpin({
-      top : 0,
-      bottom : bottomOffset
-    });
-  }
+  };
 
-  // ModalのOverlayクリック時にModalを閉じないように設定
-  elems = document.querySelectorAll('.modal');
-  elems.forEach(function(elem) {
-    M.Modal.init(elem, {
-      'dismissible' : false
-    });
-  });
+  return {
+    init : init
+  };
+}();
 
-  // Pickers 設定変更
-  elems = document.querySelectorAll('.datepicker');
-  elems.forEach(function(elem) {
-    M.Datepicker.init(elem, {
-      'autoClose' : true,
-      'format' : 'yyyy-mm-dd'
+/**
+ * Materialize制御
+ */
+sampleRoot.materialize = function() {
+  let init;
+
+  /**
+   * 初期化
+   */
+  init = function() {
+    let footerOffset, tocHeight, bottomOffset, elems;
+
+    // initialize all of the Materialize Components
+    M.AutoInit();
+
+    // 文字カウンターはAutoInitの対象外なので個別に初期化
+    $('input[data-length], textarea[data-length]').characterCounter();
+
+    // 目次(table-of-contents)初期化
+    if ($('.sideArea').length) {
+      footerOffset = $('form > footer').first().length ? $('form > footer').first().offset().top : 0;
+      tocHeight = $('.sideArea .table-of-contents').length ? $('.sideArea .table-of-contents').height() : 0;
+      bottomOffset = footerOffset - tocHeight;
+
+      if ($('nav').length) {
+        console.log('Nav pushpin', $('nav').height());
+        $('.sideArea').pushpin({
+          top : $('.sideArea').offset().top,
+          bottom : bottomOffset
+        });
+      } else {
+        $('.sideArea').pushpin({
+          top : 0,
+          bottom : bottomOffset
+        });
+      }
+    }
+
+    // ModalのOverlayクリック時にModalを閉じないように設定
+    elems = document.querySelectorAll('.modal');
+    elems.forEach(function(elem) {
+      M.Modal.init(elem, {
+        'dismissible' : false
+      });
     });
-  });
-});
+
+    // Pickers 設定変更
+    elems = document.querySelectorAll('.datepicker');
+    elems.forEach(function(elem) {
+      M.Datepicker.init(elem, {
+        'autoClose' : true,
+        'format' : 'yyyy-mm-dd'
+      });
+    });
+  };
+
+  return {
+    init : init
+  };
+}();

@@ -3,6 +3,7 @@
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <ui:param name="pageTitle" value="User info entry" />
@@ -14,9 +15,7 @@
   </f:metadata>
 
   <ui:define name="top">
-    <ui:include src="./parts/header.xhtml">
-      <ui:param name="bb" value="#{bb}" />
-    </ui:include>
+    <ui:include src="./parts/header.xhtml" />
   </ui:define>
 
   <ui:define name="navigation">
@@ -34,9 +33,9 @@
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
-                <input jsf:id="username" type="text" jsf:value="#{dto.username}" jsf:label="Username" data-length="40" maxlength="40">
+                <h:inputText id="username" value="#{dto.username}" label="Username" pt:data-length="40" maxlength="40">
                   <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
-                </input>
+                </h:inputText>
                 <label for="username">Username</label>
                 <span id="usernameHelperText" class="helper-text" />
                 <h:message id="usernameErrMsg" styleClass="hidden" for="username" />
@@ -45,9 +44,9 @@
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">vpn_key</i>
-                <input jsf:id="password" type="password" jsf:value="#{dto.password}" jsf:label="Password" data-length="15" maxlength="15">
+                <h:inputSecret id="password" value="#{dto.password}" label="Password" pt:data-length="15" maxlength="15">
                   <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
-                </input>
+                </h:inputSecret>
                 <label for="password">Password</label>
                 <span id="passwordHelperText" class="helper-text" />
                 <h:message id="passwordErrMsg" styleClass="hidden" for="password" />

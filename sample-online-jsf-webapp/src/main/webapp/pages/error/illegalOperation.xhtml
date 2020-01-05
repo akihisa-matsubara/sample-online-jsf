@@ -12,21 +12,19 @@
   </f:metadata>
 
   <ui:define name="top">
-    <ui:include src="../parts/header.xhtml">
-      <ui:param name="bb" value="#{errorPageBean}" />
-    </ui:include>
+    <ui:include src="../parts/header.xhtml" />
   </ui:define>
 
   <ui:define name="navigation" />
 
   <ui:define name="content">
-    <div id="contentArea" class="text-sm rounded w-full max-w-2xl mx-auto my-8 px-8 pt-6 pb-8">
+    <div id="contentArea" class="container my-8 px-8 pt-6 pb-8">
       <div id="errorArea" class="errorarea">
         <div class="errormessage">
           <h1>Oops!</h1>
           <h2>Illegal Operation.</h2>
         </div>
-        <button jsf:id="goToTopPage" class="bg-black hover:bg-black text-white py-2 px-4" jsf:action="#{bb.pushGoToTopPage}">Go To Top page</button>
+        <button jsf:id="goToTopPage" class="btn waves-effect waves-light" jsf:action="#{bb.pushGoToTopPage}">Go To Top page</button>
       </div>
     </div>
   </ui:define>

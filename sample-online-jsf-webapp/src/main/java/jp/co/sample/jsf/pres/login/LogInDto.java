@@ -9,17 +9,23 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
+/**
+ * ログインページ画面DTO.
+ */
 @ViewScoped
 @Named
 @Data
 public class LogInDto implements Serializable {
 
+  /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** ユーザー名. */
   @Size(max = 40, message = ValidationMessageId.V0001E)
   @Pattern(regexp = Regexp.NUM_ALPHA, message = ValidationMessageId.V0002E)
   private String username;
 
+  /** パスワード. */
   @Size(max = 15, message = ValidationMessageId.V0001E)
   @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0003E)
   private String password;

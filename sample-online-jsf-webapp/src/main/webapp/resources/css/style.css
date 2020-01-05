@@ -1,6 +1,6 @@
 /* header */
 nav ul a {
-  color: #444;
+  color: #424242;
 }
 
 nav .brand-logo img {
@@ -96,7 +96,6 @@ footer ul i:hover {
 /* contents */
 .parallax-container {
   min-height: 700px;
-  line-height: 0;
   height: auto;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -131,11 +130,26 @@ footer ul i:hover {
   transform: translate(-50%, -50%);
 }
 
+@media (max-width: 767px) {
+  .errorarea .errormessage h1 {
+    font-size: 148px;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorarea .errormessage h1 {
+    font-size: 86px;
+  }
+}
+
 .errorarea .errormessage h2 {
   font-size: 28px;
   font-weight: 400;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
   text-transform: uppercase;
-  background: #fff;
+  background: #FFFFFF;
   padding: 10px 5px;
   margin: auto;
   display: inline-block;
@@ -143,6 +157,12 @@ footer ul i:hover {
   bottom: 0px;
   left: 0;
   right: 0;
+}
+
+@media (max-width: 480px) {
+  .errorarea .errormessage h2 {
+    font-size: 16px;
+  }
 }
 
 /* text */
@@ -208,6 +228,16 @@ footer ul i:hover {
 }
 
 /* other */
+.mx-0 {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.my-0 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
 .mt-0 {
   margin-top: 0rem;
 }
@@ -222,6 +252,16 @@ footer ul i:hover {
 
 .ml-0 {
   margin-left: 0rem;
+}
+
+.px-0 {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.py-0 {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .pt-0 {
@@ -240,6 +280,16 @@ footer ul i:hover {
   padding-left: 0rem;
 }
 
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -254,6 +304,16 @@ footer ul i:hover {
 
 .ml-1 {
   margin-left: 0.25rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .pt-1 {
@@ -272,6 +332,16 @@ footer ul i:hover {
   padding-left: 0.25rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -286,6 +356,16 @@ footer ul i:hover {
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pt-2 {
@@ -304,6 +384,16 @@ footer ul i:hover {
   padding-left: 0.5rem;
 }
 
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -318,6 +408,16 @@ footer ul i:hover {
 
 .ml-3 {
   margin-left: 0.75rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pt-3 {
@@ -336,6 +436,16 @@ footer ul i:hover {
   padding-left: 0.75rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -350,6 +460,16 @@ footer ul i:hover {
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pt-4 {
@@ -368,6 +488,16 @@ footer ul i:hover {
   padding-left: 1rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -382,6 +512,16 @@ footer ul i:hover {
 
 .ml-5 {
   margin-left: 1.25rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pt-5 {
@@ -400,6 +540,16 @@ footer ul i:hover {
   padding-left: 1.25rem;
 }
 
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -414,6 +564,16 @@ footer ul i:hover {
 
 .ml-6 {
   margin-left: 1.5rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .pt-6 {
@@ -432,6 +592,16 @@ footer ul i:hover {
   padding-left: 1.5rem;
 }
 
+.mx-7 {
+  margin-left: 1.75rem;
+  margin-right: 1.75rem;
+}
+
+.my-7 {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
 .mt-7 {
   margin-top: 1.75rem;
 }
@@ -446,6 +616,16 @@ footer ul i:hover {
 
 .ml-7 {
   margin-left: 1.75rem;
+}
+
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 
 .pt-7 {
@@ -464,6 +644,16 @@ footer ul i:hover {
   padding-left: 1.75rem;
 }
 
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
@@ -478,6 +668,16 @@ footer ul i:hover {
 
 .ml-8 {
   margin-left: 2rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pt-8 {
@@ -496,6 +696,16 @@ footer ul i:hover {
   padding-left: 2rem;
 }
 
+.mx-9 {
+  margin-left: 2.25rem;
+  margin-right: 2.25rem;
+}
+
+.my-9 {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+
 .mt-9 {
   margin-top: 2.25rem;
 }
@@ -510,6 +720,16 @@ footer ul i:hover {
 
 .ml-9 {
   margin-left: 2.25rem;
+}
+
+.px-9 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
+
+.py-9 {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 
 .pt-9 {
@@ -528,6 +748,16 @@ footer ul i:hover {
   padding-left: 2.25rem;
 }
 
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -542,6 +772,16 @@ footer ul i:hover {
 
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .pt-10 {
@@ -560,6 +800,16 @@ footer ul i:hover {
   padding-left: 2.5rem;
 }
 
+.mx-11 {
+  margin-left: 2.75rem;
+  margin-right: 2.75rem;
+}
+
+.my-11 {
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
 .mt-11 {
   margin-top: 2.75rem;
 }
@@ -574,6 +824,16 @@ footer ul i:hover {
 
 .ml-11 {
   margin-left: 2.75rem;
+}
+
+.px-11 {
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
+}
+
+.py-11 {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 
 .pt-11 {
@@ -592,6 +852,16 @@ footer ul i:hover {
   padding-left: 2.75rem;
 }
 
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .mt-12 {
   margin-top: 3rem;
 }
@@ -606,6 +876,16 @@ footer ul i:hover {
 
 .ml-12 {
   margin-left: 3rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .pt-12 {
@@ -624,6 +904,16 @@ footer ul i:hover {
   padding-left: 3rem;
 }
 
+.mx-13 {
+  margin-left: 3.25rem;
+  margin-right: 3.25rem;
+}
+
+.my-13 {
+  margin-top: 3.25rem;
+  margin-bottom: 3.25rem;
+}
+
 .mt-13 {
   margin-top: 3.25rem;
 }
@@ -638,6 +928,16 @@ footer ul i:hover {
 
 .ml-13 {
   margin-left: 3.25rem;
+}
+
+.px-13 {
+  padding-left: 3.25rem;
+  padding-right: 3.25rem;
+}
+
+.py-13 {
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
 }
 
 .pt-13 {
@@ -656,6 +956,16 @@ footer ul i:hover {
   padding-left: 3.25rem;
 }
 
+.mx-14 {
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
+}
+
+.my-14 {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
 .mt-14 {
   margin-top: 3.5rem;
 }
@@ -670,6 +980,16 @@ footer ul i:hover {
 
 .ml-14 {
   margin-left: 3.5rem;
+}
+
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 .pt-14 {
@@ -688,6 +1008,16 @@ footer ul i:hover {
   padding-left: 3.5rem;
 }
 
+.mx-15 {
+  margin-left: 3.75rem;
+  margin-right: 3.75rem;
+}
+
+.my-15 {
+  margin-top: 3.75rem;
+  margin-bottom: 3.75rem;
+}
+
 .mt-15 {
   margin-top: 3.75rem;
 }
@@ -704,6 +1034,16 @@ footer ul i:hover {
   margin-left: 3.75rem;
 }
 
+.px-15 {
+  padding-left: 3.75rem;
+  padding-right: 3.75rem;
+}
+
+.py-15 {
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
+
 .pt-15 {
   padding-top: 3.75rem;
 }
@@ -718,6 +1058,16 @@ footer ul i:hover {
 
 .pl-15 {
   padding-left: 3.75rem;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mt-auto {

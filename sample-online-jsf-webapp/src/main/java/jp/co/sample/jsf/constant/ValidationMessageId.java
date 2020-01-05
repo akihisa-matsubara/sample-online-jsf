@@ -16,6 +16,6 @@ public final class ValidationMessageId {
    * デフォルトコンストラクター.
    */
   private ValidationMessageId() {
-    // do nothing
+    // do nothing.
   }
 }

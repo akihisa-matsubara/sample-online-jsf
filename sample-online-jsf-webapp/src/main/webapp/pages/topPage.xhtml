@@ -13,9 +13,7 @@
   </f:metadata>
 
   <ui:define name="top">
-    <ui:include src="./parts/header.xhtml">
-      <ui:param name="bb" value="#{bb}" />
-    </ui:include>
+    <ui:include src="./parts/header.xhtml" />
   </ui:define>
 
   <ui:define name="navigation" />
@@ -41,7 +39,6 @@
 
   <ui:define name="bottom">
     <ui:include src="./parts/footer.xhtml">
-      <ui:param name="bb" value="#{bb}" />
       <ui:param name="footerMenu" value="true" />
     </ui:include>
   </ui:define>

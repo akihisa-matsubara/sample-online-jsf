@@ -21,6 +21,15 @@ public enum ViewNameVo implements CodeVo {
   LOG_IN("logIn", "logIn.xhtml"),
   ;
 
+  /** topPage.xhtml. */
+  public static final String TOP_PAGE_VIEW = "topPage.xhtml";
+  /** userInfoEntry.xhtml. */
+  public static final String USER_INFO_ENTRY_VIEW = "userInfoEntry.xhtml";
+  /** userDetailEntry.xhtml. */
+  public static final String USER_DETAIL_VIEW = "userDetailEntry.xhtml";
+  /** logIn.xhtml. */
+  public static final String LOG_IN_VIEW = "logIn.xhtml";
+
   /** コード. */
   private String code;
 
