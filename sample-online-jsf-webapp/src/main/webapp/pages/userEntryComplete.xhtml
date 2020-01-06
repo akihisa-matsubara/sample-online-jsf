@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="User entry complete" />
+  <ui:param name="bb" value="#{userEntryCompleteBean}" />
+  <ui:param name="dto" value="#{userEntryCompleteDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{userEntryCompleteBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml" />
+  </ui:define>
+
+  <ui:define name="navigation">
+    <ui:include src="./parts/navigation.xhtml">
+      <ui:param name="step" value="4" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="content">
+    <div id="contentArea" class="container my-8 px-8 pt-6 pb-8">
+      <div class="row">
+        <div class="col s12 center">
+          <h5 class="mb-8">Created your account!!</h5>
+          <button jsf:id="goToTopPage" class="btn waves-effect waves-light" jsf:action="#{bb.pushGoToTopPage}">Go To Top page</button>
+        </div>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="dialogs" />
+  <ui:define name="importScript" />
+</ui:composition>

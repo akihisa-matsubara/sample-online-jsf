@@ -4,7 +4,7 @@
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-  xmlns:ss="http://java.sun.com/jsf/composite/composite"
+  xmlns:cc="http://java.sun.com/jsf/composite/composite"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <ui:param name="pageTitle" value="Log In" />
@@ -31,7 +31,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
                 <h:inputText id="username" value="#{dto.username}" label="Username" pt:data-length="40" maxlength="40">
-                  <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="username">Username</label>
                 <span id="usernameHelperText" class="helper-text" />
@@ -42,7 +42,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">vpn_key</i>
                 <h:inputSecret id="password" value="#{dto.password}" label="Password" pt:data-length="15" maxlength="15">
-                  <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputSecret>
                 <label for="password">Password</label>
                 <span id="passwordHelperText" class="helper-text" />
@@ -70,7 +70,7 @@
   </ui:define>
 
   <ui:define name="dialogs">
-    <ss:modal id="noticeModal" headerMessage="本人確認が必要です" message="登録済みのメールアドレスにセキュリティ コードを送信します。&lt;br /&gt;所定の手順に従ってログインしてください。" buttonType="2" okCallback="M.toast({html: 'セキュリティ コードを送信しました'})" />
+    <cc:modal id="noticeModal" headerMessage="本人確認が必要です" message="登録済みのメールアドレスにセキュリティ コードを送信します。&lt;br /&gt;所定の手順に従ってログインしてください。" buttonType="2" okCallback="M.toast({html: 'セキュリティ コードを送信しました'})" />
   </ui:define>
   <ui:define name="importScript" />
 </ui:composition>

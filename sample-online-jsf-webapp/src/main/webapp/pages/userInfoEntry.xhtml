@@ -34,7 +34,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
                 <h:inputText id="username" value="#{dto.username}" label="Username" pt:data-length="40" maxlength="40">
-                  <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="usernameErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="username">Username</label>
                 <span id="usernameHelperText" class="helper-text" />
@@ -45,7 +45,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">vpn_key</i>
                 <h:inputSecret id="password" value="#{dto.password}" label="Password" pt:data-length="15" maxlength="15">
-                  <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="passwordErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputSecret>
                 <label for="password">Password</label>
                 <span id="passwordHelperText" class="helper-text" />

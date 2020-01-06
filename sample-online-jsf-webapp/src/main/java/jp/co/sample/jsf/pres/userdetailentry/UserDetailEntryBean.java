@@ -2,15 +2,16 @@ package jp.co.sample.jsf.pres.userdetailentry;
 
 import jp.co.sample.framework.core.interceptor.DebugLog;
 import jp.co.sample.framework.core.interceptor.OutputTiming;
-import jp.co.sample.jsf.code.ViewNameVo;
-import jp.co.sample.jsf.constant.ProcessName;
+import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * ユーザー情報詳細登録ページBackingBean.
+ * ユーザー詳細情報登録 BackingBean.
  */
 @ViewScoped
 @Named
@@ -19,11 +20,15 @@ public class UserDetailEntryBean extends BackingBeanBase implements Serializable
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
+  /** ユーザー詳細情報登録 編集. */
+  @Inject
+  private UserDetailEntryEdit edit;
+
   /**
    * 初期化.
    */
   public void init() {
-    // do nothing.
+    edit.read();
   }
 
   /**
@@ -38,15 +43,15 @@ public class UserDetailEntryBean extends BackingBeanBase implements Serializable
 
   /**
    * NEXTボタンのアクションメソッド.
-   * ●●ページへ遷移します.
+   * ユーザー入力情報確認ページへ遷移します.
    *
-   * @return ●●ページのURL
+   * @return ユーザー入力情報確認ページのURL
    */
-  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewNameVo.USER_DETAIL_VIEW,
+  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewNameVo.USER_DETAIL_ENTRY_VIEW,
       dtoClass = UserDetailEntryDto.class)
   public String pushNext() {
-    // TODO 一旦トップページへ
-    return redirect(ViewNameVo.TOP_PAGE);
+    edit.write();
+    return redirect(ViewNameVo.USER_ENTRY_INFO_CONFIRM);
   }
 
 }

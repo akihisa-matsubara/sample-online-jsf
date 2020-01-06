@@ -10,7 +10,10 @@
 	</lifecycle>
 
     <protected-views>
+        <!-- SignUp -->
         <url-pattern>/pages/userDetailEntry.xhtml</url-pattern>
+        <url-pattern>/pages/userEntryInfoConfirm.xhtml</url-pattern>
+        <url-pattern>/pages/userEntryComplete.xhtml</url-pattern>
     </protected-views>
 
     <factory>

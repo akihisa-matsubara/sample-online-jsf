@@ -208,11 +208,23 @@ footer ul i:hover {
 }
 
 .btn-menu:hover {
-  background-color: #424242 !important;
+  background-color: #616161 !important;
 }
 
 .btn-menu:focus {
   background-color: #424242 !important;
+}
+
+.btn-sub {
+  background-color: #ef6c00 !important;
+}
+
+.btn-sub:hover {
+  background-color: #fb8c00 !important;
+}
+
+.btn-sub:focus {
+  background-color: #e65100 !important;
 }
 
 .btn-func {

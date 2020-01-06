@@ -1,4 +1,4 @@
-package jp.co.sample.jsf.constant;
+package jp.co.sample.jsf.common.constant;
 
 /**
  * バリデーション・メッセージID.

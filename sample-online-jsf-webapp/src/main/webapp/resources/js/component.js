@@ -9,15 +9,14 @@ $(function() {
   // Materialize初期化
   sampleRoot.materialize.init();
 
+  sampleRoot.message.initErrMsg();
   sampleRoot.radio.init();
 });
 
 /**
- * Ajaxメッセージ制御
+ * Ajax制御
  */
-sampleRoot.ajax.messageControl = function() {
-  const VALID = 'valid', INVALID = 'invalid', JSF_ERR_MSG_ID_SUFFIX = 'ErrMsg', HELPER_TEXT_ID_SUFFIX = 'HelperText', ATT_DATA_ERR = 'data-error';
-
+sampleRoot.ajax = function() {
   /**
    * Validation FWの結果メッセージを画面に表示する
    *
@@ -25,26 +24,59 @@ sampleRoot.ajax.messageControl = function() {
    */
   let showErrMsg = function(e) {
     if (e.status === 'success') {
-      let clientId = e.source.id;
-      let msg = $('#' + clientId + JSF_ERR_MSG_ID_SUFFIX).text();
-      if (msg) {
-        // jsf error message is not empty -> invalid
-        $('#' + clientId).removeClass(VALID).addClass(INVALID);
-        $('#' + clientId + HELPER_TEXT_ID_SUFFIX).attr(ATT_DATA_ERR, msg);
-
-      } else if ($(e.source).val()) {
-        // value is not empty -> valid
-        $(e.source).removeClass(INVALID).addClass(VALID);
-
-      } else {
-        // value is empty -> validation status reset
-        $(e.source).removeClass(INVALID + ' ' + VALID);
-
-      }
+      sampleRoot.message.showErrMsg(e.source.id);
     }
   };
 
   return {
+    showErrMsg : showErrMsg
+  };
+}();
+
+/**
+ * メッセージ制御
+ */
+sampleRoot.message = function() {
+  const VALID = 'valid', INVALID = 'invalid', JSF_ERR_MSG_ID_SUFFIX = 'ErrMsg', HELPER_TEXT_ID_SUFFIX = 'HelperText', ATT_DATA_ERR = 'data-error';
+  let initErrMsg, showErrMsg;
+
+  /**
+   * Validation FWの結果メッセージを画面に一括表示する
+   */
+  initErrMsg = function() {
+    $('span[id$=' + JSF_ERR_MSG_ID_SUFFIX + ']').each(function(index, elem) {
+      showErrMsg(elem.id.replace(JSF_ERR_MSG_ID_SUFFIX, ''));
+    });
+  };
+
+  /**
+   * Validation FWの結果メッセージを画面に表示する
+   *
+   * @param {String} targetId id
+   */
+  showErrMsg = function(targetId) {
+    let msg, $target;
+    msg = $('#' + targetId + JSF_ERR_MSG_ID_SUFFIX).text();
+    $target = $('#' + targetId);
+
+    if (msg) {
+      // jsf error message is not empty -> invalid
+      $target.removeClass(VALID).addClass(INVALID);
+      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).attr(ATT_DATA_ERR, msg);
+
+    } else if ($target.val()) {
+      // value is not empty -> valid
+      $target.removeClass(INVALID).addClass(VALID);
+
+    } else {
+      // value is empty -> validation status reset
+      $target.removeClass(INVALID + ' ' + VALID);
+
+    }
+  };
+
+  return {
+    initErrMsg : initErrMsg,
     showErrMsg : showErrMsg
   };
 }();

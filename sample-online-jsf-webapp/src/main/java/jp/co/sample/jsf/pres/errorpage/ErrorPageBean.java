@@ -6,7 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
- * エラーページBackingBean.
+ * エラーページ BackingBean.
  */
 @ViewScoped
 @Named

@@ -12,7 +12,7 @@
 
   <f:metadata>
     <f:viewAction action="#{userDetailEntryBean.init}" />
-    <f:viewParam name="gender" value="#{userDetailEntryDto.gender}"/>
+    <f:viewParam name="gender" value="#{userDetailEntryDto.genderCode}"/>
   </f:metadata>
 
   <ui:define name="top">
@@ -33,9 +33,9 @@
             <h5>Create your account</h5>
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
+                <i class="material-icons prefix">face</i>
                 <h:inputText id="nameKanji" value="#{dto.nameKanji}" label="名前（漢字）" pt:data-length="20" maxlength="20">
-                  <f:ajax execute="@this" render="nameKanjiErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="nameKanjiErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="nameKanji">名前（漢字）</label>
                 <span id="nameKanjiHelperText" class="helper-text" />
@@ -45,7 +45,7 @@
             <div class="row pl-12">
               <div class="input-field col s12">
                 <h:inputText id="nameKana" value="#{dto.nameKana}" label="名前（カナ）" pt:data-length="20" maxlength="20">
-                  <f:ajax execute="@this" render="nameKanaErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="nameKanaErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="nameKana">名前（カナ）</label>
                 <span id="nameKanaHelperText" class="helper-text" />
@@ -54,6 +54,7 @@
             </div>
             <div class="row pl-12">
               <div class="col s12">
+                <label for="gender">性別</label>
                 <p>
                   <ui:repeat id="gender" value="#{dto.genderItems}" var="item">
                     <label>
@@ -61,7 +62,7 @@
                       <span class="mr-5">#{item.decode}</span>
                     </label>
                   </ui:repeat>
-                  <h:outputText id="genderInitialValue" class="hide" value="#{dto.gender}" />
+                  <h:outputText id="genderInitialValue" class="hide" value="#{dto.genderCode}" />
                 </p>
               </div>
             </div>
@@ -69,7 +70,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
                 <h:inputText id="birthday" class="datepicker" value="#{dto.birthday}" label="生年月日">
-                  <f:ajax execute="@this" render="birthdayErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="birthdayErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="birthday">生年月日</label>
                 <h:message id="birthdayErrMsg" styleClass="hidden" for="birthday" />
@@ -79,7 +80,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">home</i>
                 <h:inputText id="addressZip" value="#{dto.addressZip}" label="郵便番号" pt:data-length="7" maxlength="7">
-                  <f:ajax execute="@this" render="addressZipErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="addressZipErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputText>
                 <label for="addressZip">郵便番号</label>
                 <span id="addressZipHelperText" class="helper-text" />
@@ -89,7 +90,7 @@
             <div class="row pl-12">
               <div class="input-field col s12">
                 <h:inputTextarea id="address" rows="4" class="materialize-textarea" value="#{dto.address}" label="住所" pt:data-length="60">
-                  <f:ajax execute="@this" render="addressErrMsg" onevent="sampleRoot.ajax.messageControl.showErrMsg" />
+                  <f:ajax execute="@this" render="addressErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
                 </h:inputTextarea>
                 <label for="address">住所</label>
                 <span id="addressHelperText" class="helper-text" />

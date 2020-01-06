@@ -1,7 +1,7 @@
 package jp.co.sample.jsf.pres.login;
 
 import jp.co.sample.framework.core.constant.Regexp;
-import jp.co.sample.jsf.constant.ValidationMessageId;
+import jp.co.sample.jsf.common.constant.ValidationMessageId;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * ログインページ画面DTO.
+ * ログイン 画面DTO.
  */
 @ViewScoped
 @Named
@@ -20,12 +20,12 @@ public class LogInDto implements Serializable {
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
-  /** ユーザー名. */
+  /** Username. */
   @Size(max = 40, message = ValidationMessageId.V0001E)
   @Pattern(regexp = Regexp.NUM_ALPHA, message = ValidationMessageId.V0002E)
   private String username;
 
-  /** パスワード. */
+  /** Password. */
   @Size(max = 15, message = ValidationMessageId.V0001E)
   @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0003E)
   private String password;

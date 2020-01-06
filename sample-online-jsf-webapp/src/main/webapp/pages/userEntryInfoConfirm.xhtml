@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="User entry info confirm" />
+  <ui:param name="bb" value="#{userEntryInfoConfirmBean}" />
+  <ui:param name="dto" value="#{userEntryInfoConfirmDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{userEntryInfoConfirmBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml" />
+  </ui:define>
+
+  <ui:define name="navigation">
+    <ui:include src="./parts/navigation.xhtml">
+      <ui:param name="step" value="3" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="content">
+    <div id="contentArea" class="container">
+      <div class="row">
+        <div class="col s12 m10 l9">
+          <h5>登録内容を確認してください</h5>
+          <div id="userInfo" class="scrollspy section">
+            <h5>User Info</h5>
+            <div class="row">
+              <div class="col s12">
+                <button jsf:id="editUserInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userInfoEntry')}">EDIT</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <h:inputText id="username" readonly="true" value="#{dto.username}" label="Username" />
+                <label for="username">Username</label>
+              </div>
+            </div>
+          </div>
+          <div id="detailInfo" class="scrollspy section">
+            <h5>Detail Info</h5>
+            <div class="row">
+              <div class="col s12">
+                <button jsf:id="editDetailInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userDetailEntry')}">EDIT</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">face</i>
+                <h:inputText id="nameKanji" readonly="true" value="#{dto.nameKanji}" label="名前（漢字）" />
+                <label for="nameKanji">名前（漢字）</label>
+                <span id="nameKanjiHelperText" class="helper-text" />
+              </div>
+            </div>
+            <div class="row pl-12">
+              <div class="input-field col s12">
+                <h:inputText id="nameKana" readonly="true" value="#{dto.nameKana}" label="名前（カナ）" />
+                <label for="nameKana">名前（カナ）</label>
+              </div>
+            </div>
+            <div class="row pl-12">
+              <div class="col s12">
+                <label for="gender">性別</label>
+                <p>#{dto.gender.decode}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">date_range</i>
+                <h:inputText id="birthday" readonly="true" value="#{dto.birthday}" label="生年月日" />
+                <label for="birthday">生年月日</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">home</i>
+                <h:inputText id="addressZip" readonly="true" value="#{dto.addressZip}" label="郵便番号" />
+                <label for="addressZip">郵便番号</label>
+              </div>
+            </div>
+            <div class="row pl-12">
+              <div class="input-field col s12">
+                <h:inputTextarea id="address" rows="4" class="materialize-textarea" readonly="true" value="#{dto.address}" label="住所" />
+                <label for="address">住所</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <button jsf:id="back" class="btn btn-func waves-effect waves-light mr-2" jsf:action="#{bb.pushBack}" jsf:immediate="true">BACK</button>
+                <button jsf:id="confirmed" class="btn right waves-effect waves-light" jsf:action="#{bb.pushConfirmed}">CONFIRMED</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col hide-on-small-only m2 l2 offset-l1">
+          <div class="sideArea">
+            <ul class="section table-of-contents">
+              <li><a href="#userInfo">User Info</a></li>
+              <li><a href="#detailInfo">Detail Info</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="dialogs" />
+  <ui:define name="importScript" />
+</ui:composition>

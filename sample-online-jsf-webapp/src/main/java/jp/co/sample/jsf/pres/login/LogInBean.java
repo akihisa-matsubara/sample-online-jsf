@@ -1,16 +1,18 @@
 package jp.co.sample.jsf.pres.login;
 
 import jp.co.sample.framework.core.interceptor.DebugLog;
+import jp.co.sample.framework.core.interceptor.InvokeConversation;
+import jp.co.sample.framework.core.interceptor.InvokeConversation.Type;
 import jp.co.sample.framework.core.interceptor.OutputTiming;
-import jp.co.sample.jsf.code.ViewNameVo;
-import jp.co.sample.jsf.constant.ProcessName;
+import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
- * ログインページBackingBean.
+ * ログイン BackingBean.
  */
 @ViewScoped
 @Named
@@ -22,6 +24,7 @@ public class LogInBean extends BackingBeanBase implements Serializable {
   /**
    * 初期化.
    */
+  @InvokeConversation(type = Type.START)
   public void init() {
     // do nothing.
   }
