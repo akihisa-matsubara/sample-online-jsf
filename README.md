@@ -15,6 +15,7 @@ JavaEE7 JSFを利用したサンプルWebアプリケーションです。
 | logback | 1.2.3 |
 | jQuery | 3.4.1 |
 | Materialize | 1.0.0 |
+| Selenide | 5.6.0 |
 
 ## 画面サンプル
 ※画面は開発中のものです  
