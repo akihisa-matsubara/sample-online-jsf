@@ -1,19 +1,20 @@
 package jp.co.sample.jsf.message;
 
-import jp.co.sample.framework.core.message.MessageIdIf;
+import jp.co.sample.framework.core.message.MessageId;
 
 /**
  * メッセージID.
  */
-public enum AplMessageId implements MessageIdIf {
+public enum AplMessageId implements MessageId {
 
-  /** 未定義. */
-  UNDEFINED,
-  // F～ FRAMEWORK
-  // C～ COMMON
   // B～ BUSINESS LOGIC
   // P～ PRESENTATION
-  // U～ 利用統計ログ
+  /** 本人確認が必要です. */
+  P0001I,
+  /** 登録済みのメールアドレスにセキュリティ コードを送信します。&lt;br /&gt;所定の手順に従ってログインしてください。. */
+  P0002I,
+  /** セキュリティ コードを送信しました. */
+  P0003I,
   ;
 
 }

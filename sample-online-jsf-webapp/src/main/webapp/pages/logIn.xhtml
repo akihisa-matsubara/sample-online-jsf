@@ -69,8 +69,9 @@
     </ui:include>
   </ui:define>
 
+  <ui:define name="hiddenValues" />
   <ui:define name="dialogs">
-    <cc:modal id="noticeModal" headerMessage="本人確認が必要です" message="登録済みのメールアドレスにセキュリティ コードを送信します。&lt;br /&gt;所定の手順に従ってログインしてください。" buttonType="2" okCallback="M.toast({html: 'セキュリティ コードを送信しました'})" />
+    <cc:modal id="noticeModal" headerMessage="#{bb.dialogs[0].headerMessage}" message="#{bb.dialogs[0].message}" buttonType="#{bb.dialogs[0].buttonType}" okCallback="#{bb.dialogs[0].okCallback}" />
   </ui:define>
   <ui:define name="importScript" />
 </ui:composition>

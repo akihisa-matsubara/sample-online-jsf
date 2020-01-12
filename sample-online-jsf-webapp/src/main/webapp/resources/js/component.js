@@ -2,6 +2,8 @@
 'use strict';
 sampleRoot.ajax = sampleRoot.ajax || {};
 
+// Note: selector is not escqpe.
+
 /**
  * 初期処理
  */

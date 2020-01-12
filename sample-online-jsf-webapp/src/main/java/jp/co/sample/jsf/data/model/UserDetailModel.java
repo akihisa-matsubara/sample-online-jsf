@@ -1,4 +1,4 @@
-package jp.co.sample.jsf.data.entity;
+package jp.co.sample.jsf.data.model;
 
 import jp.co.sample.common.code.GenderVo;
 import java.io.Serializable;
@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import lombok.Data;
 
 /**
- * ユーザー詳細情報Entity.
+ * ユーザー詳細情報Model.
  */
 @Data
-public class UserDetailEntity implements Serializable {
+public class UserDetailModel implements Serializable {
 
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;

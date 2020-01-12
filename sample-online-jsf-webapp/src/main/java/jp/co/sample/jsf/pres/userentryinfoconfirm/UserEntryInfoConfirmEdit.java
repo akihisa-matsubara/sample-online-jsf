@@ -2,8 +2,8 @@ package jp.co.sample.jsf.pres.userentryinfoconfirm;
 
 import jp.co.sample.framework.core.conversation.ConversationSharedDto;
 import jp.co.sample.jsf.common.util.SampleBeanUtils;
-import jp.co.sample.jsf.data.entity.UserDetailEntity;
-import jp.co.sample.jsf.data.entity.UserInfoEntity;
+import jp.co.sample.jsf.data.model.UserDetailModel;
+import jp.co.sample.jsf.data.model.UserInfoModel;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -32,10 +32,10 @@ public class UserEntryInfoConfirmEdit implements Serializable {
    * 画面間共有データから画面DTOへ設定します.
    */
   public void read() {
-    UserInfoEntity userInfo = sharedDto.get(UserInfoEntity.class);
+    UserInfoModel userInfo = sharedDto.get(UserInfoModel.class);
     SampleBeanUtils.copyProperties(dto, userInfo);
 
-    UserDetailEntity userDetail = sharedDto.get(UserDetailEntity.class);
+    UserDetailModel userDetail = sharedDto.get(UserDetailModel.class);
     SampleBeanUtils.copyProperties(dto, userDetail);
   }
 

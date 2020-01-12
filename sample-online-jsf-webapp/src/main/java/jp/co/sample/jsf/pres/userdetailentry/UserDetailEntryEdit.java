@@ -2,7 +2,7 @@ package jp.co.sample.jsf.pres.userdetailentry;
 
 import jp.co.sample.framework.core.conversation.ConversationSharedDto;
 import jp.co.sample.jsf.common.util.SampleBeanUtils;
-import jp.co.sample.jsf.data.entity.UserDetailEntity;
+import jp.co.sample.jsf.data.model.UserDetailModel;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -31,7 +31,7 @@ public class UserDetailEntryEdit implements Serializable {
    * 画面間共有データから画面DTOへ設定します.
    */
   public void read() {
-    UserDetailEntity userDetail = sharedDto.get(UserDetailEntity.class);
+    UserDetailModel userDetail = sharedDto.get(UserDetailModel.class);
     if (userDetail != null) {
       SampleBeanUtils.copyProperties(dto, userDetail);
     }
@@ -42,9 +42,9 @@ public class UserDetailEntryEdit implements Serializable {
    * 画面DTOから画面間共有データへ設定します.
    */
   public void write() {
-    UserDetailEntity userDetail = sharedDto.get(UserDetailEntity.class);
+    UserDetailModel userDetail = sharedDto.get(UserDetailModel.class);
     if (userDetail == null) {
-      userDetail = new UserDetailEntity();
+      userDetail = new UserDetailModel();
     }
     SampleBeanUtils.copyProperties(userDetail, dto);
     sharedDto.put(userDetail);

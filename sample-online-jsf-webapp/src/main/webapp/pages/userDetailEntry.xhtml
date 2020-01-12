@@ -12,7 +12,7 @@
 
   <f:metadata>
     <f:viewAction action="#{userDetailEntryBean.init}" />
-    <f:viewParam name="gender" value="#{userDetailEntryDto.genderCode}"/>
+    <f:viewParam name="gender" value="#{userDetailEntryDto.genderCode}" />
   </f:metadata>
 
   <ui:define name="top">
@@ -62,7 +62,6 @@
                       <span class="mr-5">#{item.decode}</span>
                     </label>
                   </ui:repeat>
-                  <h:outputText id="genderInitialValue" class="hide" value="#{dto.genderCode}" />
                 </p>
               </div>
             </div>
@@ -120,6 +119,10 @@
     <ui:include src="./parts/footer.xhtml">
       <ui:param name="footerMenu" value="false" />
     </ui:include>
+  </ui:define>
+
+  <ui:define name="hiddenValues">
+    <h:outputText id="genderInitialValue" class="hide" value="#{dto.genderCode}" />
   </ui:define>
 
   <ui:define name="dialogs" />
