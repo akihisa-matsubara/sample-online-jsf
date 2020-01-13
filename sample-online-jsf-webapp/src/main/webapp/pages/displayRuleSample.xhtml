@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Display rule sample" />
+  <ui:param name="bb" value="#{displayRuleSampleBean}" />
+  <ui:param name="dto" value="#{displayRuleSampleDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{displayRuleSampleBean.init}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml" />
+  </ui:define>
+
+  <ui:define name="navigation" />
+
+  <ui:define name="content">
+    <div id="contentArea" class="container">
+      <div class="row">
+        <div class="col s12">
+          <h5>Display rule sample</h5>
+          <ui:fragment rendered="#{displayController.isRendered('item1')}">
+            <div class="row">
+              <div class="input-field col s12">
+                <h:inputText id="item1" value="#{dto.item1}" label="項目1" disabled="#{displayController.isDisabled('item1')}" pt:data-length="10" maxlength="10">
+                  <f:ajax execute="@this" render="item1ErrMsg" />
+                </h:inputText>
+                <label for="item1">項目1</label>
+                <span id="item1HelperText" class="helper-text" />
+                <h:message id="item1ErrMsg" styleClass="hidden" for="item1" />
+              </div>
+            </div>
+          </ui:fragment>
+          <ui:fragment rendered="#{displayController.isRendered('item2')}">
+            <div class="row">
+              <div class="input-field col s12">
+                <h:inputText id="item2" value="#{dto.item2}" label="項目2" disabled="#{displayController.isDisabled('item2')}" pt:data-length="10" maxlength="10">
+                  <f:ajax execute="@this" render="item2ErrMsg" />
+                </h:inputText>
+                <label for="item2">項目2</label>
+                <span id="item2HelperText" class="helper-text" />
+                <h:message id="item2ErrMsg" styleClass="hidden" for="item2" />
+              </div>
+            </div>
+          </ui:fragment>
+          <ui:fragment rendered="#{displayController.isRendered('item3')}">
+            <div class="row">
+              <div class="input-field col s12">
+                <h:inputText id="item3" value="#{dto.item3}" label="項目3" disabled="#{displayController.isDisabled('item3')}" pt:data-length="10" maxlength="10">
+                  <f:ajax execute="@this" render="item3ErrMsg" />
+                </h:inputText>
+                <label for="item3">項目3</label>
+                <span id="item3HelperText" class="helper-text" />
+                <h:message id="item3ErrMsg" styleClass="hidden" for="item3" />
+              </div>
+            </div>
+          </ui:fragment>
+          <ui:fragment rendered="#{displayController.isRendered('item4')}">
+            <div class="row">
+              <div class="input-field col s12">
+                <h:inputText id="item4" value="#{dto.item4}" label="項目4" disabled="#{displayController.isDisabled('item4')}" pt:data-length="10" maxlength="10">
+                  <f:ajax execute="@this" render="item4ErrMsg" />
+                </h:inputText>
+                <label for="item4">項目4</label>
+                <span id="item4HelperText" class="helper-text" />
+                <h:message id="item4ErrMsg" styleClass="hidden" for="item4" />
+              </div>
+            </div>
+          </ui:fragment>
+          <div class="row">
+            <div class="input-field col s12">
+              <h:inputText id="item5" value="#{dto.item5}" label="項目5" pt:data-length="10" maxlength="10">
+                <f:ajax execute="@this" render="item5ErrMsg" />
+              </h:inputText>
+              <label for="item5">項目5</label>
+              <span id="item5HelperText" class="helper-text" />
+              <h:message id="item5ErrMsg" styleClass="hidden" for="item5" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button jsf:id="back" class="btn btn-func waves-effect waves-light mr-2" jsf:action="#{bb.pushBack}" jsf:immediate="true">BACK</button>
+              <button jsf:id="next" class="btn right waves-effect waves-light" jsf:action="#{bb.pushNext}">NEXT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="hiddenValues" />
+  <ui:define name="dialogs" />
+  <ui:define name="importScript" />
+</ui:composition>

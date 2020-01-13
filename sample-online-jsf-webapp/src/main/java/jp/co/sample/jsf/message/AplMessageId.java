@@ -15,6 +15,10 @@ public enum AplMessageId implements MessageId {
   P0002I,
   /** セキュリティ コードを送信しました. */
   P0003I,
+  /** ネットワークエラーが発生しました. */
+  P0004I,
+  /** サーバーサイドでエラーが発生しました. */
+  P0005I,
   ;
 
 }

@@ -1,6 +1,5 @@
 ;
 'use strict';
-sampleRoot.ajax = sampleRoot.ajax || {};
 
 // Note: selector is not escqpe.
 
@@ -13,27 +12,8 @@ $(function() {
 
   sampleRoot.message.initErrMsg();
   sampleRoot.radio.init();
+//  sampleRoot.select.init();
 });
-
-/**
- * Ajax制御
- */
-sampleRoot.ajax = function() {
-  /**
-   * Validation FWの結果メッセージを画面に表示する
-   *
-   * @param {Object} e AjaxEvent
-   */
-  let showErrMsg = function(e) {
-    if (e.status === 'success') {
-      sampleRoot.message.showErrMsg(e.source.id);
-    }
-  };
-
-  return {
-    showErrMsg : showErrMsg
-  };
-}();
 
 /**
  * メッセージ制御
@@ -58,6 +38,11 @@ sampleRoot.message = function() {
    */
   showErrMsg = function(targetId) {
     let msg, $target;
+
+    if (!targetId || !$('#' + targetId)[0] || !$('#' + targetId + JSF_ERR_MSG_ID_SUFFIX)[0]) {
+      return;
+    }
+
     msg = $('#' + targetId + JSF_ERR_MSG_ID_SUFFIX).text();
     $target = $('#' + targetId);
 
@@ -146,6 +131,30 @@ sampleRoot.radio = function() {
     init : init
   };
 }();
+
+// TODO 削除
+///**
+// * プルダウン制御
+// */
+//sampleRoot.select = function() {
+//  let init;
+//
+//  /**
+//   * 初期化
+//   */
+//  init = function() {
+//    $('select').each(function(index, elem) {
+//      let target, selectedValue;
+//      target = $(elem).id + 'InitialValue';
+//      selectedValue = $('#' + target).text();
+//      $(elem).val(selectedValue);
+//    });
+//  };
+//
+//  return {
+//    init : init
+//  };
+//}();
 
 /**
  * Materialize制御

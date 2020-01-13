@@ -23,6 +23,10 @@ public enum ViewNameVo implements CodeVo {
   USER_ENTRY_COMPLETE("userEntryComplete", "userEntryComplete.xhtml"),
   /** logIn.xhtml. */
   LOG_IN("logIn", "logIn.xhtml"),
+  /** sample.xhtml. */
+  SAMPLE("sample", "sample.xhtml"),
+  /** displayRuleSample.xhtml. */
+  DISPLAY_RULE_SAMPLE("displayRuleSample", "displayRuleSample.xhtml"),
   ;
 
   /** -- annotation利用のため定数としても同一内容を定義 --. */

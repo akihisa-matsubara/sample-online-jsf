@@ -35,7 +35,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">face</i>
                 <h:inputText id="nameKanji" value="#{dto.nameKanji}" label="名前（漢字）" pt:data-length="20" maxlength="20">
-                  <f:ajax execute="@this" render="nameKanjiErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
+                  <f:ajax execute="@this" render="nameKanjiErrMsg" />
                 </h:inputText>
                 <label for="nameKanji">名前（漢字）</label>
                 <span id="nameKanjiHelperText" class="helper-text" />
@@ -45,7 +45,7 @@
             <div class="row pl-12">
               <div class="input-field col s12">
                 <h:inputText id="nameKana" value="#{dto.nameKana}" label="名前（カナ）" pt:data-length="20" maxlength="20">
-                  <f:ajax execute="@this" render="nameKanaErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
+                  <f:ajax execute="@this" render="nameKanaErrMsg" />
                 </h:inputText>
                 <label for="nameKana">名前（カナ）</label>
                 <span id="nameKanaHelperText" class="helper-text" />
@@ -69,7 +69,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
                 <h:inputText id="birthday" class="datepicker" value="#{dto.birthday}" label="生年月日">
-                  <f:ajax execute="@this" render="birthdayErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
+                  <f:ajax execute="@this" render="birthdayErrMsg" />
                 </h:inputText>
                 <label for="birthday">生年月日</label>
                 <h:message id="birthdayErrMsg" styleClass="hidden" for="birthday" />
@@ -79,7 +79,7 @@
               <div class="input-field col s12">
                 <i class="material-icons prefix">home</i>
                 <h:inputText id="addressZip" value="#{dto.addressZip}" label="郵便番号" pt:data-length="7" maxlength="7">
-                  <f:ajax execute="@this" render="addressZipErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
+                  <f:ajax execute="@this" render="addressZipErrMsg" />
                 </h:inputText>
                 <label for="addressZip">郵便番号</label>
                 <span id="addressZipHelperText" class="helper-text" />
@@ -89,7 +89,7 @@
             <div class="row pl-12">
               <div class="input-field col s12">
                 <h:inputTextarea id="address" rows="4" class="materialize-textarea" value="#{dto.address}" label="住所" pt:data-length="60">
-                  <f:ajax execute="@this" render="addressErrMsg" onevent="sampleRoot.ajax.showErrMsg" />
+                  <f:ajax execute="@this" render="addressErrMsg" />
                 </h:inputTextarea>
                 <label for="address">住所</label>
                 <span id="addressHelperText" class="helper-text" />

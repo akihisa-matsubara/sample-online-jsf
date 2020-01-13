@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:cc="http://java.sun.com/jsf/composite/composite"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
@@ -27,6 +28,8 @@
       </ul>
     </div>
     <ui:insert name="dialogs" />
+    <cc:modal id="networkErrorModal" message="#{uiCommonBean.dialogs[0].message}" buttonType="#{uiCommonBean.dialogs[0].buttonType}" />
+    <cc:modal id="serverErrorModal" message="#{uiCommonBean.dialogs[1].message}" buttonType="#{uiCommonBean.dialogs[1].buttonType}" />
     <h:outputScript library="js" name="materialize.min.js" />
     <h:outputScript library="js" name="component.js" />
     <h:outputScript>
