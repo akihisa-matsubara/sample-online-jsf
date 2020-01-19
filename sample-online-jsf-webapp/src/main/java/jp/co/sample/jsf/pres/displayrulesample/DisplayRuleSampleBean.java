@@ -1,9 +1,10 @@
 package jp.co.sample.jsf.pres.displayrulesample;
 
 import jp.co.sample.framework.jsf.rule.DisplayController;
-import jp.co.sample.jsf.common.code.ViewNameVo;
 import jp.co.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.AjaxBehaviorListener;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,23 +36,13 @@ public class DisplayRuleSampleBean extends BackingBeanBase implements Serializab
   }
 
   /**
-   * BACKボタンのアクションメソッド.
-   * 遷移元ページへ遷移します.
+   * 項目1～4 onChange Ajaxリスナー.
+   * 表示制御を実行します.
    *
-   * @return 遷移元ページのURL
+   * @param event {@link AjaxBehaviorListener}
    */
-  public String pushBack() {
-    return redirect(ViewNameVo.TOP_PAGE);
-  }
-
-  /**
-   * NEXTボタンのアクションメソッド.
-   * トップページへ遷移します.
-   *
-   * @return トップページのURL
-   */
-  public String pushNext() {
-    return redirect(ViewNameVo.TOP_PAGE);
+  public void onChangeValue(AjaxBehaviorEvent event) {
+    displayController.doControl("init");
   }
 
 }

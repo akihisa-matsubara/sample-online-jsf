@@ -7,7 +7,7 @@ var sampleRoot = sampleRoot || {};
  * 初期処理
  */
 $(function() {
-  // Materialize初期化
+  // Ajax制御設定
   sampleRoot.ajax.init();
 });
 
@@ -15,7 +15,7 @@ $(function() {
  * Ajax制御
  */
 sampleRoot.ajax = function() {
-  let init, eventHandler, errorHandler, initMaterialize;
+  let init, eventHandler, errorHandler;
 
   /**
    * 初期化
@@ -42,7 +42,7 @@ sampleRoot.ajax = function() {
       break;
     case 'success':
       console.log('ajax success. source id=' + e.source.id);
-      M.AutoInit();
+      M.updateTextFields();
       sampleRoot.message.showErrMsg(e.source.id);
       break;
     }
@@ -55,26 +55,15 @@ sampleRoot.ajax = function() {
    */
   errorHandler = function(e) {
     if (e.status === 'httpError' && e.responseCode === 0) {
+      console.error(e);
       $('#networkErrorModal').modal('open');
     } else {
-      $('#serverErrorModal').modal('open');
-    }
-  };
-
-  // TODO 削除
-  /**
-   * Materializeを初期化する
-   *
-   * @param {Object} e AjaxEvent
-   */
-  initMaterialize = function(e) {
-    if (e.status === 'success') {
-      sampleRoot.materialize.init();
+      console.error(e);
+      $('#internalErrorModal').modal('open');
     }
   };
 
   return {
-    init : init,
-    initMaterialize : initMaterialize
+    init : init
   };
 }();

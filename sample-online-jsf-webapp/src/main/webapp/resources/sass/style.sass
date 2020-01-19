@@ -16,6 +16,7 @@ $smartphone: 480px
 
 /* header */
 nav
+  background-color: $white
   ul
     a
       color: $grey-darken-3
@@ -34,16 +35,16 @@ nav
     position: relative
     .circle
       justify-content: center
-      background-color: $black !important
+      background-color: $black
       border-radius: 9999px
       height: 2rem
       width: 2rem
       margin-bottom: 0.5rem
       z-index: 10
       .fas
-        color: $white !important
+        color: $white 
     .line
-      background-color: $black !important
+      background-color: $black
       position: absolute
       height: 0.25rem
       margin-top: 1rem
@@ -51,7 +52,7 @@ nav
       left: 0
       transform: translate(-50%, -50%)
     label
-      color: $black !important
+      color: $black
       font-weight: 700
 
 /* footer */
@@ -87,6 +88,64 @@ footer
   color: rgba(255,255,255,.9)
   .section
     width: 100%
+
+/* text */
+.text-sm
+  font-size: 0.875rem
+.text-base
+  font-size: 1rem
+.text-lg
+  font-size: 1.125rem
+.text-xl
+  font-size: 1.25rem
+.text-2xl
+  font-size: 1.5rem
+.text-3xl
+  font-size: 1.875rem
+.text-4xl
+  font-size: 2.25rem
+
+.tracking-wide
+  letter-spacing: 0.025em
+.tracking-extrawide
+  letter-spacing: 1em
+
+input[type]:not(.browser-default) ~ .helper-text, textarea.materialize-textarea ~ .helper-text
+  display: none
+input[type]:not(.browser-default).invalid ~ .helper-text, textarea.materialize-textarea.invalid ~ .helper-text
+  display: block
+
+/* button */
+.btn-menu
+  background-color: $black
+  &:hover
+    background-color: $grey-darken-2
+  &:focus
+    background-color: $grey-darken-3
+.btn-sub
+  background-color: $orange-darken-3
+  &:hover
+    background-color: $orange-darken-1
+  &:focus
+    background-color: $orange-darken-4
+.btn-func
+  background-color: $grey-darken-2
+  &:hover
+    background-color: $grey
+  &:focus
+    background-color: $grey-darken-3
+
+/* table */
+table
+  color: $grey-darken-2
+  
+/* card */
+.login-card
+  min-height: 460px
+
+/* modal */
+.modal-content
+  min-height: 200px
 
 /* error page */
 .errorarea
@@ -127,54 +186,6 @@ footer
       bottom: 0px
       left: 0
       right: 0
-
-/* text */
-.text-sm
-  font-size: 0.875rem
-
-.text-base
-  font-size: 1rem
-
-.text-lg
-  font-size: 1.125rem
-
-.text-xl
-  font-size: 1.25rem
-
-.text-2xl
-  font-size: 1.5rem
-
-.text-3xl
-  font-size: 1.875rem
-
-.text-4xl
-  font-size: 2.25rem
-
-.tracking-wide
-  letter-spacing: 0.025em
-
-.tracking-extrawide
-  letter-spacing: 1em
-
-/* button */
-.btn-menu
-  background-color: $black !important
-  &:hover
-    background-color: $grey-darken-2 !important
-  &:focus
-    background-color: $grey-darken-3 !important
-.btn-sub
-  background-color: $orange-darken-3 !important
-  &:hover
-    background-color: $orange-darken-1 !important
-  &:focus
-    background-color: $orange-darken-4 !important
-.btn-func
-  background-color: $grey-darken-2 !important
-  &:hover
-    background-color: $grey !important
-  &:focus
-    background-color: $grey-darken-3 !important
 
 /* other */
 @for $i from 0 through 15

@@ -2,11 +2,13 @@ package jp.co.sample.jsf.pres.userdetailentry;
 
 import jp.co.sample.common.code.GenderVo;
 import jp.co.sample.common.util.CodeUtils;
+import jp.co.sample.framework.core.constant.Regexp;
 import jp.co.sample.jsf.common.constant.ValidationMessageId;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
@@ -23,10 +25,12 @@ public class UserDetailEntryDto implements Serializable {
 
   /** 名前（漢字）. */
   @Size(max = 20, message = ValidationMessageId.V0001E)
+  @Pattern(regexp = Regexp.FULL, message = ValidationMessageId.V0015E)
   private String nameKanji;
 
   /** 名前（カナ）. */
   @Size(max = 20, message = ValidationMessageId.V0001E)
+  @Pattern(regexp = Regexp.FULL_KANA, message = ValidationMessageId.V0016E)
   private String nameKana;
 
   /** 性別. */
@@ -36,11 +40,13 @@ public class UserDetailEntryDto implements Serializable {
   private LocalDate birthday;
 
   /** 郵便番号. */
-  @Size(max = 7, message = ValidationMessageId.V0001E)
+  @Size(min = 7, max = 7, message = ValidationMessageId.V0003E)
+  @Pattern(regexp = Regexp.HALF_NUM, message = ValidationMessageId.V0011E)
   private String addressZip;
 
   /** 住所. */
   @Size(max = 60, message = ValidationMessageId.V0001E)
+  @Pattern(regexp = Regexp.FULL, message = ValidationMessageId.V0015E)
   private String address;
 
   /**

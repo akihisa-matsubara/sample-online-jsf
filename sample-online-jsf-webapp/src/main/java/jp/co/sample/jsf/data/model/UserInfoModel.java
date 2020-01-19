@@ -15,6 +15,9 @@ public class UserInfoModel implements Serializable {
   /** Username. */
   private String username;
 
+  /** Email. */
+  private String email;
+
   /** Password. */
   private String password;
 

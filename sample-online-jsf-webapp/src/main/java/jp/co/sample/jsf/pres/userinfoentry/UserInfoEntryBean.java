@@ -4,7 +4,8 @@ import jp.co.sample.framework.core.interceptor.DebugLog;
 import jp.co.sample.framework.core.interceptor.InvokeConversation;
 import jp.co.sample.framework.core.interceptor.InvokeConversation.Type;
 import jp.co.sample.framework.core.interceptor.OutputTiming;
-import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.code.ViewName;
+import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
@@ -29,7 +30,7 @@ public class UserInfoEntryBean extends BackingBeanBase implements Serializable {
   /**
    * 初期化.
    */
-  @DebugLog(outputTiming = OutputTiming.COMPLETE, processName = ProcessName.INIT, viewName = ViewNameVo.USER_INFO_ENTRY_VIEW,
+  @DebugLog(outputTiming = OutputTiming.COMPLETE, processName = ProcessName.INIT, viewName = ViewName.USER_INFO_ENTRY_VIEW,
       dtoClass = UserInfoEntryDto.class)
   @InvokeConversation(type = Type.START)
   public void init() {
@@ -52,7 +53,7 @@ public class UserInfoEntryBean extends BackingBeanBase implements Serializable {
    *
    * @return ユーザー詳細情報登録ページのURL
    */
-  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewNameVo.USER_INFO_ENTRY_VIEW,
+  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewName.USER_INFO_ENTRY_VIEW,
       dtoClass = UserInfoEntryDto.class)
   public String pushNext() {
     edit.write();

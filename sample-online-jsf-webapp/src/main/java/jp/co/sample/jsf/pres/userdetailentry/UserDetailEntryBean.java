@@ -2,7 +2,8 @@ package jp.co.sample.jsf.pres.userdetailentry;
 
 import jp.co.sample.framework.core.interceptor.DebugLog;
 import jp.co.sample.framework.core.interceptor.OutputTiming;
-import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.code.ViewName;
+import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
@@ -47,7 +48,7 @@ public class UserDetailEntryBean extends BackingBeanBase implements Serializable
    *
    * @return ユーザー入力情報確認ページのURL
    */
-  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewNameVo.USER_DETAIL_ENTRY_VIEW,
+  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_NEXT, viewName = ViewName.USER_DETAIL_ENTRY_VIEW,
       dtoClass = UserDetailEntryDto.class)
   public String pushNext() {
     edit.write();

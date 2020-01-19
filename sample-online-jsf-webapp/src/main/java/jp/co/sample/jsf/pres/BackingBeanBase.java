@@ -1,6 +1,6 @@
 package jp.co.sample.jsf.pres;
 
-import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 
 /**
  * 基底 BackingBean.

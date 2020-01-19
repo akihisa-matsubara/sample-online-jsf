@@ -21,6 +21,9 @@ public class UserEntryInfoConfirmDto implements Serializable {
   /** Username. */
   private String username;
 
+  /** Email. */
+  private String email;
+
   /** 名前（漢字）. */
   private String nameKanji;
 

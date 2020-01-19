@@ -26,84 +26,105 @@
 
   <ui:define name="content">
     <div id="contentArea" class="container">
+      <h5>登録内容を確認してください</h5>
       <div class="row">
         <div class="col s12 m10 l9">
-          <h5>登録内容を確認してください</h5>
           <div id="userInfo" class="scrollspy section">
-            <h5>User Info</h5>
             <div class="row">
-              <div class="col s12">
-                <button jsf:id="editUserInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userInfoEntry')}">EDIT</button>
+              <div class="col s9">
+                <h6><i class="material-icons tiny">chevron_right</i>ユーザー情報</h6>
+              </div>
+              <div class="col s3">
+                <button jsf:id="editUserInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userInfoEntry')}">
+                  EDIT<i class="material-icons left">edit</i>
+                </button>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <h:inputText id="username" readonly="true" value="#{dto.username}" label="Username" />
-                <label for="username">Username</label>
+            <div class="card">
+              <div class="card-content">
+                <div class="row">
+                  <table class="striped">
+                    <tbody>
+                      <tr>
+                        <td>Username:</td>
+                        <td>#{dto.username}</td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td>#{dto.email}</td>
+                      </tr>
+                      <tr>
+                        <td>Password:</td>
+                        <td>-</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
           <div id="detailInfo" class="scrollspy section">
-            <h5>Detail Info</h5>
             <div class="row">
-              <div class="col s12">
-                <button jsf:id="editDetailInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userDetailEntry')}">EDIT</button>
+              <div class="col s9">
+                <h6><i class="material-icons tiny">chevron_right</i>ユーザー詳細情報</h6>
+              </div>
+              <div class="col s3">
+                <button jsf:id="editDetailInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userDetailEntry')}">
+                  EDIT<i class="material-icons left">edit</i>
+                </button>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">face</i>
-                <h:inputText id="nameKanji" readonly="true" value="#{dto.nameKanji}" label="名前（漢字）" />
-                <label for="nameKanji">名前（漢字）</label>
-                <span id="nameKanjiHelperText" class="helper-text" />
+            <div class="card">
+              <div class="card-content">
+                <div class="row">
+                  <table class="striped">
+                    <tbody>
+                      <tr>
+                        <td>名前（漢字）:</td>
+                        <td>#{dto.nameKanji}</td>
+                      </tr>
+                      <tr>
+                        <td>名前（カナ）:</td>
+                        <td>#{dto.nameKana}</td>
+                      </tr>
+                      <tr>
+                        <td>性別:</td>
+                        <td>#{dto.gender.decode}</td>
+                      </tr>
+                      <tr>
+                        <td>生年月日:</td>
+                        <td>#{dto.birthday}</td>
+                      </tr>
+                      <tr>
+                        <td>郵便番号:</td>
+                        <td>#{dto.addressZip}</td>
+                      </tr>
+                      <tr>
+                        <td>住所:</td>
+                        <td>#{dto.address}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="row pl-12">
-              <div class="input-field col s12">
-                <h:inputText id="nameKana" readonly="true" value="#{dto.nameKana}" label="名前（カナ）" />
-                <label for="nameKana">名前（カナ）</label>
-              </div>
-            </div>
-            <div class="row pl-12">
-              <div class="col s12">
-                <label for="gender">性別</label>
-                <p>#{dto.gender.decode}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">date_range</i>
-                <h:inputText id="birthday" readonly="true" value="#{dto.birthday}" label="生年月日" />
-                <label for="birthday">生年月日</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">home</i>
-                <h:inputText id="addressZip" readonly="true" value="#{dto.addressZip}" label="郵便番号" />
-                <label for="addressZip">郵便番号</label>
-              </div>
-            </div>
-            <div class="row pl-12">
-              <div class="input-field col s12">
-                <h:inputTextarea id="address" rows="4" class="materialize-textarea" readonly="true" value="#{dto.address}" label="住所" />
-                <label for="address">住所</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <button jsf:id="back" class="btn btn-func waves-effect waves-light mr-2" jsf:action="#{bb.pushBack}" jsf:immediate="true">BACK</button>
-                <button jsf:id="confirmed" class="btn right waves-effect waves-light" jsf:action="#{bb.pushConfirmed}">CONFIRMED</button>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button jsf:id="back" class="btn btn-func waves-effect waves-light mr-2" jsf:action="#{bb.pushBack}" jsf:immediate="true">
+                BACK<i class="material-icons left">navigate_before</i>
+              </button>
+              <button jsf:id="confirmed" class="btn right waves-effect waves-light" jsf:action="#{bb.pushConfirmed}">
+                CONFIRMED<i class="material-icons left">done</i>
+              </button>
             </div>
           </div>
         </div>
         <div class="col hide-on-small-only m2 l2 offset-l1">
           <div class="sideArea">
             <ul class="section table-of-contents">
-              <li><a href="#userInfo">User Info</a></li>
-              <li><a href="#detailInfo">Detail Info</a></li>
+              <li><a href="#userInfo">ユーザー情報</a></li>
+              <li><a href="#detailInfo">ユーザー詳細情報</a></li>
             </ul>
           </div>
         </div>

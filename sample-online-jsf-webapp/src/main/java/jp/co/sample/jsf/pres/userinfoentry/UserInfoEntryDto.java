@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * ユーザー情報登録 画面DTO.
@@ -15,6 +16,7 @@ import lombok.Data;
 @ViewScoped
 @Named
 @Data
+@ToString(exclude = {"password", "passwordConfirm"})
 public class UserInfoEntryDto implements Serializable {
 
   /** serialVersionUID. */
@@ -22,12 +24,22 @@ public class UserInfoEntryDto implements Serializable {
 
   /** Username. */
   @Size(max = 40, message = ValidationMessageId.V0001E)
-  @Pattern(regexp = Regexp.NUM_ALPHA, message = ValidationMessageId.V0002E)
+  @Pattern(regexp = Regexp.HALF_NUM_ALPHA, message = ValidationMessageId.V0012E)
   private String username;
+
+  /** Email. */
+  @Size(max = 40, message = ValidationMessageId.V0001E)
+  @Pattern(regexp = Regexp.EMAIL, message = ValidationMessageId.V0022E)
+  private String email;
 
   /** Password. */
   @Size(max = 15, message = ValidationMessageId.V0001E)
-  @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0003E)
+  @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0021E)
   private String password;
+
+  /** Password(confirm). */
+  @Size(max = 15, message = ValidationMessageId.V0001E)
+  @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0021E)
+  private String passwordConfirm;
 
 }

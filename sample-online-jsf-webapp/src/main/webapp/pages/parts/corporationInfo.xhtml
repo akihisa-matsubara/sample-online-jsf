@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="bb" value="#{switchItemBean}" />
+  <ui:param name="dto" value="#{switchItemDto.corporationDto}" />
+
+  <div id="corpInfoEntry" class="scrollspy section">
+    <h5>法人情報入力</h5>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">location_city</i>
+        <h:inputText id="corp-corporateNumber" value="#{dto.corporateNumber}" label="法人番号" pt:data-length="13" maxlength="13" autocomplete="off">
+          <f:ajax execute="@this" render="corp-corporateNumberErrMsg" />
+        </h:inputText>
+        <label for="corp-corporateNumber">法人番号</label>
+        <span id="corp-corporateNumberHelperText" class="helper-text" />
+        <h:message id="corp-corporateNumberErrMsg" styleClass="hidden" for="corp-corporateNumber" />
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="input-field col s12">
+        <h:inputText id="corp-corporateName" value="#{dto.corporateName}" label="法人名" pt:data-length="40" maxlength="40" autocomplete="off">
+          <f:ajax execute="@this" render="corp-corporateNameErrMsg" />
+        </h:inputText>
+        <label for="corp-corporateName">法人名</label>
+        <span id="corp-corporateNameHelperText" class="helper-text" />
+        <h:message id="corp-corporateNameErrMsg" styleClass="hidden" for="corp-corporateName" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">home</i>
+        <h:inputText id="corp-addressZip" value="#{dto.addressZip}" label="郵便番号" pt:data-length="7" maxlength="7" autocomplete="off">
+          <f:ajax execute="@this" render="corp-addressZipErrMsg" />
+        </h:inputText>
+        <label for="corp-addressZip">郵便番号</label>
+        <span id="corp-addressZipHelperText" class="helper-text" />
+        <h:message id="corp-addressZipErrMsg" styleClass="hidden" for="corp-addressZip" />
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="input-field col s12">
+        <h:inputTextarea id="corp-location" rows="4" class="materialize-textarea" value="#{dto.location}" label="所在地" pt:data-length="60">
+          <f:ajax execute="@this" render="corp-locationErrMsg" />
+        </h:inputTextarea>
+        <label for="corp-location">所在地</label>
+        <span id="corp-locationHelperText" class="helper-text" />
+        <h:message id="corp-locationErrMsg" styleClass="hidden" for="corp-location" />
+      </div>
+    </div>
+  </div>
+</ui:composition>

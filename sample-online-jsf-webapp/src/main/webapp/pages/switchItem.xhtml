@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/template.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="Switch Item Sample Page" />
+  <ui:param name="bb" value="#{switchItemBean}" />
+  <ui:param name="dto" value="#{switchItemDto}" />
+
+  <f:metadata>
+    <f:viewAction action="#{switchItemBean.init}" />
+    <f:viewParam id="individualCorporationCode" name="individualCorporation" value="#{switchItemDto.individualCorporationCode}" />
+    <f:viewParam id="indiv-genderCode" name="indiv-gender" value="#{switchItemDto.individualDto.genderCode}" />
+    <f:viewParam id="indiv-permanentResidencyCode" name="indiv-permanentResidency" value="#{switchItemDto.individualDto.permanentResidencyCode}" />
+    <f:viewParam id="indiv-nationalityCode" name="indiv-nationality" value="#{switchItemDto.individualDto.nationalityCode}" />
+  </f:metadata>
+
+  <ui:define name="top">
+    <ui:include src="./parts/header.xhtml" />
+  </ui:define>
+
+  <ui:define name="navigation" />
+
+  <ui:define name="content">
+    <div id="contentArea" class="container">
+      <div class="row">
+        <div class="col s12 m10 l9">
+          <div id="baseInfo" class="scrollspy section">
+            <h5>基本情報</h5>
+            <div class="row pl-12">
+              <div class="col s12">
+                <label for="applicationDate">お申込日</label>
+                <p>#{dto.applicationDate}</p>
+              </div>
+            </div>
+            <div class="row pl-12">
+              <div class="col s12">
+                <label for="individualCorporation">個人・法人</label>
+                <p>
+                  <ui:repeat id="individualCorporation" value="#{dto.individualCorporationItems}" var="item">
+                    <label>
+                      <input type="radio" jsf:id="radio" pt:name="individualCorporation" value="#{item.code}" />
+                      <span class="mr-5">#{item.decode}</span>
+                    </label>
+                  </ui:repeat>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="indivInfoEntryArea" class="#{individualCorporationCode != '1' ? 'hide' : ''}">
+            <ui:include src="./parts/individualInfo.xhtml" />
+          </div>
+          <div id="corpInfoEntryArea" class="#{individualCorporationCode != '2' ? 'hide' : ''}">
+            <ui:include src="./parts/corporationInfo.xhtml" />
+          </div>
+        </div>
+        <div class="col hide-on-small-only m2 l2 offset-l1">
+          <div class="sideArea">
+            <ul class="section table-of-contents">
+              <li><a href="#userInfo">基本情報</a></li>
+              <li><a href="#indivInfoEntry">個人情報入力</a></li>
+              <li><a href="#corpInfoEntry">法人情報入力</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="./parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="hiddenValues">
+    <h:outputText id="individualCorporationInitialValue" class="hide" value="#{dto.individualCorporationCode}" />
+    <h:outputText id="indiv-genderInitialValue" class="hide" value="#{dto.individualDto.genderCode}" />
+    <h:outputText id="indiv-permanentResidencyInitialValue" class="hide" value="#{dto.individualDto.permanentResidencyCode}" />
+  </ui:define>
+
+  <ui:define name="dialogs" />
+  <ui:define name="importScript">
+    <h:outputScript library="js" name="switchItem.js" />
+  </ui:define>
+</ui:composition>

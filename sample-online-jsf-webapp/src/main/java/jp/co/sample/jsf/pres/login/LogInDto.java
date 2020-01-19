@@ -22,12 +22,12 @@ public class LogInDto implements Serializable {
 
   /** Username. */
   @Size(max = 40, message = ValidationMessageId.V0001E)
-  @Pattern(regexp = Regexp.NUM_ALPHA, message = ValidationMessageId.V0002E)
+  @Pattern(regexp = Regexp.HALF_NUM_ALPHA, message = ValidationMessageId.V0012E)
   private String username;
 
   /** Password. */
   @Size(max = 15, message = ValidationMessageId.V0001E)
-  @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0003E)
+  @Pattern(regexp = Regexp.PW, message = ValidationMessageId.V0021E)
   private String password;
 
 }

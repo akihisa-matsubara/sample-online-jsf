@@ -12,7 +12,6 @@ $(function() {
 
   sampleRoot.message.initErrMsg();
   sampleRoot.radio.init();
-//  sampleRoot.select.init();
 });
 
 /**
@@ -54,10 +53,12 @@ sampleRoot.message = function() {
     } else if ($target.val()) {
       // value is not empty -> valid
       $target.removeClass(INVALID).addClass(VALID);
+      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).removeAttr(ATT_DATA_ERR);
 
     } else {
       // value is empty -> validation status reset
       $target.removeClass(INVALID + ' ' + VALID);
+      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).removeAttr(ATT_DATA_ERR);
 
     }
   };
@@ -131,30 +132,6 @@ sampleRoot.radio = function() {
     init : init
   };
 }();
-
-// TODO 削除
-///**
-// * プルダウン制御
-// */
-//sampleRoot.select = function() {
-//  let init;
-//
-//  /**
-//   * 初期化
-//   */
-//  init = function() {
-//    $('select').each(function(index, elem) {
-//      let target, selectedValue;
-//      target = $(elem).id + 'InitialValue';
-//      selectedValue = $('#' + target).text();
-//      $(elem).val(selectedValue);
-//    });
-//  };
-//
-//  return {
-//    init : init
-//  };
-//}();
 
 /**
  * Materialize制御

@@ -5,7 +5,8 @@ import jp.co.sample.framework.core.interceptor.InvokeConversation;
 import jp.co.sample.framework.core.interceptor.InvokeConversation.Type;
 import jp.co.sample.framework.core.interceptor.OutputTiming;
 import jp.co.sample.jsf.common.code.ButtonTypeVo;
-import jp.co.sample.jsf.common.code.ViewNameVo;
+import jp.co.sample.jsf.common.code.ViewName;
+import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.common.util.JavaScriptSupport;
 import jp.co.sample.jsf.data.dto.DialogDto;
@@ -42,7 +43,7 @@ public class LogInBean extends BackingBeanBase implements Serializable, DialogPa
    *
    * @return ●●ページのURL
    */
-  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_SIGN_IN, viewName = ViewNameVo.LOG_IN_VIEW,
+  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_SIGN_IN, viewName = ViewName.LOG_IN_VIEW,
       dtoClass = LogInDto.class)
   public String pushSignIn() {
     // TODO 一旦トップページへ

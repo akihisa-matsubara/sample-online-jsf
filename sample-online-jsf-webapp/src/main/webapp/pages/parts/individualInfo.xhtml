@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="bb" value="#{switchItemBean}" />
+  <ui:param name="dto" value="#{switchItemDto.individualDto}" />
+
+  <div id="indivInfoEntry" class="scrollspy section">
+    <h5>個人情報入力</h5>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">face</i>
+        <h:inputText id="indiv-nameKanji" value="#{dto.nameKanji}" label="名前（漢字）" pt:data-length="20" maxlength="20" autocomplete="off">
+          <f:ajax execute="@this" render="indiv-nameKanjiErrMsg" />
+        </h:inputText>
+        <label for="indiv-nameKanji">名前（漢字）</label>
+        <span id="indiv-nameKanjiHelperText" class="helper-text" />
+        <h:message id="indiv-nameKanjiErrMsg" styleClass="hidden" for="indiv-nameKanji" />
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="input-field col s12">
+        <h:inputText id="indiv-nameKana" value="#{dto.nameKana}" label="名前（カナ）" pt:data-length="20" maxlength="20" autocomplete="off">
+          <f:ajax execute="@this" render="indiv-nameKanaErrMsg" />
+        </h:inputText>
+        <label for="indiv-nameKana">名前（カナ）</label>
+        <span id="indiv-nameKanaHelperText" class="helper-text" />
+        <h:message id="indiv-nameKanaErrMsg" styleClass="hidden" for="indiv-nameKana" />
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="col s12">
+        <label for="indiv-gender">性別</label>
+        <p>
+          <ui:repeat id="indiv-gender" value="#{dto.genderItems}" var="item">
+            <label>
+              <input type="radio" jsf:id="radio" pt:name="indiv-gender" value="#{item.code}" />
+              <span class="mr-5">#{item.decode}</span>
+            </label>
+          </ui:repeat>
+        </p>
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="col s12">
+        <label for="indiv-nationality">国籍</label>
+        <h:selectOneMenu id="indiv-nationality" value="#{dto.nationalityCode}">
+          <f:selectItem itemLabel="選んでください" itemValue="" />
+          <f:selectItems value="#{dto.nationalityJapanGroupItems}" var="item" itemLabel="#{item.decode}" itemValue="#{item.code}" />
+          <f:selectItems value="#{dto.nationalityBesidesJapanGroupItems}" var="item" itemLabel="#{item.decode}" itemValue="#{item.code}" />
+        </h:selectOneMenu>
+      </div>
+    </div>
+    <div id="indiv-permanentResidencyArea" class="#{dto.nationalityCode != '0386' ? 'hide' : ''}">
+      <div class="row pl-12">
+        <div class="col s12">
+          <label for="indiv-permanentResidency">永住権有無</label>
+          <p>
+            <ui:repeat id="indiv-permanentResidency" value="#{dto.permanentResidencyItems}" var="item">
+              <label>
+                <input type="radio" jsf:id="radio" pt:name="indiv-permanentResidency" value="#{item.code}" />
+                <span class="mr-5">#{item.decode}</span>
+              </label>
+            </ui:repeat>
+          </p>
+        </div>
+      </div>
+      <div class="row pl-12">
+        <div class="input-field col s12">
+          <h:inputText id="indiv-residentCardNumber" value="#{dto.residentCardNumber}" label="在留カード番号" pt:data-length="12" maxlength="12" autocomplete="off">
+            <f:ajax execute="@this" render="indiv-residentCardNumberErrMsg" />
+          </h:inputText>
+          <label for="indiv-residentCardNumber">在留カード番号</label>
+          <span id="indiv-residentCardNumberHelperText" class="helper-text" />
+          <h:message id="indiv-residentCardNumberErrMsg" styleClass="hidden" for="indiv-residentCardNumber" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">home</i>
+        <h:inputText id="indiv-addressZip" value="#{dto.addressZip}" label="郵便番号" pt:data-length="7" maxlength="7" autocomplete="off">
+          <f:ajax execute="@this" render="indiv-addressZipErrMsg" />
+        </h:inputText>
+        <label for="indiv-addressZip">郵便番号</label>
+        <span id="indiv-addressZipHelperText" class="helper-text" />
+        <h:message id="indiv-addressZipErrMsg" styleClass="hidden" for="indiv-addressZip" />
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="input-field col s12">
+        <h:inputTextarea id="indiv-address" rows="4" class="materialize-textarea" value="#{dto.address}" label="住所" pt:data-length="60">
+          <f:ajax execute="@this" render="indiv-addressErrMsg" />
+        </h:inputTextarea>
+        <label for="indiv-address">住所</label>
+        <span id="indiv-addressHelperText" class="helper-text" />
+        <h:message id="indiv-addressErrMsg" styleClass="hidden" for="indiv-address" />
+      </div>
+    </div>
+  </div>
+</ui:composition>
