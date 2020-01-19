@@ -2,29 +2,30 @@ package it.jp.co.sample.jsf;
 
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 public abstract class AbstractTestBase {
 
   /** screenshot name format. */
-  private final String SS_FORMAT = "%03d-%s-%s";
-  /** screenshot name format. */
-  protected final String REPORT_PATH_FORMAT = "test-results/reports/%s/%s_%s";
+  private static final String SS_FORMAT = "%03d-%s-%s";
+  /** report path format. */
+  protected static final String REPORT_PATH_FORMAT = "test-results/reports/%s/%s_%s";
 
   /** validation successfull. */
-  protected final String VALID = "valid";
+  protected static final String VALID = "valid";
   /** validation failed. */
-  protected final String INVALID = "invalid";
+  protected static final String INVALID = "invalid";
 
-  private final String BOTTOM_CLASS = "footer-copyright";
+  protected static final String BLANK = "";
 
   /** action. */
-  protected final String INIT = "initial";
-  protected final String BACK = "back_button";
-  protected final String NEXT = "next_button";
+  protected static final String INIT = "initial";
+  protected static final String VALIDATION = "validation";
+  protected static final String BACK = "back_button";
+  protected static final String NEXT = "next_button";
 
+  /** screen shot counter. */
   private int ssCounter = 1;
 
   @BeforeAll
@@ -52,12 +53,17 @@ public abstract class AbstractTestBase {
     ssCounter = 1;
   }
 
+  // Screen Shot
   protected void doScreenshotInit() {
-    doScreenshot(INIT);
+    doScreenshotFull(INIT);
+  }
+
+  protected void doScreenshotInvalidAfter() {
+    doScreenshotFull(VALIDATION);
   }
 
   protected void doScreenshotActionBefore(String action) {
-    doScreenshot("before_" + action + "_action");
+    doScreenshotFull("before_" + action + "_action");
   }
 
   private void doScreenshot(String action) {
@@ -65,18 +71,24 @@ public abstract class AbstractTestBase {
     ssCounter++;
   }
 
-  private SelenideElement bottomSelector() {
-    return $("." + BOTTOM_CLASS);
+  private void doScreenshotFull(String action) {
+    executeJavaScript("$(window).scrollTop(0)");
+    doScreenshot(action);
+
+    int windowHeight = ((Long) executeJavaScript("return $(window).height()")).intValue();
+    int formHeight = ((Long) executeJavaScript("return $('#mainForm')[0].scrollHeight")).intValue();
+    for (int i = 0; i < formHeight / windowHeight; i++) {
+      executeJavaScript("$(window).scrollTop(" + (windowHeight * (i + 1)) + ")");
+      doScreenshot(action);
+    }
   }
 
-  protected void scrollToBottom() {
-    bottomSelector().scrollTo();
-  }
-
+  // fire event
   protected void blur() {
     executeJavaScript("document.activeElement.blur()");
   }
 
+  // othre
   protected String classname() {
     return this.getClass().getSimpleName();
   }
@@ -84,4 +96,5 @@ public abstract class AbstractTestBase {
   protected String methodname() {
     return Thread.currentThread().getStackTrace()[3].getMethodName();
   }
+
 }
