@@ -1,7 +1,7 @@
 package jp.co.sample.jsf.pres.userentryinfoconfirm;
 
 import jp.co.sample.common.util.CodeUtils;
-import jp.co.sample.framework.core.util.UsageStatisticsLogger;
+import jp.co.sample.framework.core.logger.UsageStatisticsLogger;
 import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 import jp.co.sample.jsf.common.constant.ProcessName;
 import jp.co.sample.jsf.pres.BackingBeanBase;

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public abstract class Parts {
 
-  /** header. */
+  // header
   @FindBy(id = "headerLogo")
   public SelenideElement HeaderLogo;
   @FindBy(id = "logIn")
@@ -13,11 +13,11 @@ public abstract class Parts {
   @FindBy(id = "signUp")
   public SelenideElement SignUp;
 
-  /** footer. */
+  // footer
   @FindBy(id = "footerLogo")
   public SelenideElement FooterLogo;
 
-  /** button. */
+  // button
   @FindBy(id = "back")
   public SelenideElement Back;
   @FindBy(id = "next")

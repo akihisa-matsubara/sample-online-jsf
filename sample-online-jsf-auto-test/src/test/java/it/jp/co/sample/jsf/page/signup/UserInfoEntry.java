@@ -7,12 +7,12 @@ import it.jp.co.sample.jsf.page.Parts;
 public class UserInfoEntry extends Parts {
 
   @FindBy(id = "username")
-  public SelenideElement Username;
+  public SelenideElement username;
   @FindBy(id = "email")
-  public SelenideElement Email;
+  public SelenideElement email;
   @FindBy(id = "password")
-  public SelenideElement Password;
+  public SelenideElement password;
   @FindBy(id = "passwordConfirm")
-  public SelenideElement PasswordConfirm;
+  public SelenideElement passwordConfirm;
 
 }

@@ -20,16 +20,16 @@ public class UserDetailEntry extends Parts {
   }
 
   @FindBy(id = "nameKanji")
-  public SelenideElement NameKanji;
+  public SelenideElement nameKanji;
   @FindBy(id = "nameKana")
-  public SelenideElement NameKana;
+  public SelenideElement nameKana;
   @FindBy(name = "gender")
-  public List<SelenideElement> Gender;
+  public List<SelenideElement> gender;
   @FindBy(id = "birthday")
-  public SelenideElement Birthday;
+  public SelenideElement birthday;
   @FindBy(id = "addressZip")
-  public SelenideElement AddressZip;
+  public SelenideElement addressZip;
   @FindBy(id = "address")
-  public SelenideElement Address;
+  public SelenideElement address;
 
 }

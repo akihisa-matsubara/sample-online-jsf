@@ -7,8 +7,8 @@ import it.jp.co.sample.jsf.page.Parts;
 public class UserEntryInfoConfirm extends Parts {
 
   @FindBy(id = "editUserInfo")
-  public SelenideElement EditUserInfo;
+  public SelenideElement editUserInfo;
   @FindBy(id = "editDetailInfo")
-  public SelenideElement EditDetailInfo;
+  public SelenideElement editDetailInfo;
 
 }

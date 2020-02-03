@@ -1,7 +1,7 @@
 package jp.co.sample.jsf.pres.userentryinfoconfirm;
 
 import jp.co.sample.framework.core.conversation.ConversationSharedDto;
-import jp.co.sample.jsf.common.util.SampleBeanUtils;
+import jp.co.sample.framework.core.util.BeanUtilsExt;
 import jp.co.sample.jsf.data.model.UserDetailModel;
 import jp.co.sample.jsf.data.model.UserInfoModel;
 import java.io.Serializable;
@@ -33,10 +33,10 @@ public class UserEntryInfoConfirmEdit implements Serializable {
    */
   public void read() {
     UserInfoModel userInfo = sharedDto.get(UserInfoModel.class);
-    SampleBeanUtils.copyProperties(dto, userInfo);
+    BeanUtilsExt.copyProperties(dto, userInfo);
 
     UserDetailModel userDetail = sharedDto.get(UserDetailModel.class);
-    SampleBeanUtils.copyProperties(dto, userDetail);
+    BeanUtilsExt.copyProperties(dto, userDetail);
   }
 
 }
