@@ -34,7 +34,7 @@ public class SignUpTest extends AbstractSelenideTest {
       // -- top page ---------------------------
       TopPage topPage = open("/", TopPage.class);
       takeScreenshotInit();
-      topPage.SignUp.click();
+      topPage.signUp.click();
 
       // -- user info entry --------------------
       UserInfoEntry userInfoEntry = page(UserInfoEntry.class);
@@ -47,7 +47,7 @@ public class SignUpTest extends AbstractSelenideTest {
       userInfoEntry.username.should(cssClass(VALID));
       userInfoEntry.password.should(cssClass(VALID));
       takeScreenshotActionBefore(NEXT);
-      userInfoEntry.Next.click();
+      userInfoEntry.next.click();
 
       // -- user detail entry ------------------
       UserDetailEntry userDetailEntry = page(UserDetailEntry.class);
@@ -65,12 +65,12 @@ public class SignUpTest extends AbstractSelenideTest {
       userDetailEntry.addressZip.should(cssClass(VALID));
       userDetailEntry.address.should(cssClass(VALID));
       takeScreenshotActionBefore(NEXT);
-      userDetailEntry.Next.click();
+      userDetailEntry.next.click();
 
       // -- user entry info confirm ------------
       UserEntryInfoConfirm userEntryInfoConfirm = page(UserEntryInfoConfirm.class);
       takeScreenshotInit();
-      userEntryInfoConfirm.Confirmed.click();
+      userEntryInfoConfirm.confirmed.click();
 
       // -- user entry complete ----------------
       takeScreenshotInit();
@@ -92,7 +92,7 @@ public class SignUpTest extends AbstractSelenideTest {
       // -- top page ---------------------------
       TopPage topPage = open("/", TopPage.class);
       takeScreenshotInit();
-      topPage.SignUp.click();
+      topPage.signUp.click();
 
       // -- user info entry --------------------
       UserInfoEntry userInfoEntry = page(UserInfoEntry.class);
@@ -114,7 +114,7 @@ public class SignUpTest extends AbstractSelenideTest {
       userInfoEntry.passwordConfirm.val(BLANK);
       blur();
       takeScreenshotActionBefore(NEXT);
-      userInfoEntry.Next.click();
+      userInfoEntry.next.click();
 
       // -- user detail entry ------------------
       UserDetailEntry userDetailEntry = page(UserDetailEntry.class);
@@ -136,12 +136,12 @@ public class SignUpTest extends AbstractSelenideTest {
       userDetailEntry.address.val(BLANK);
       blur();
       takeScreenshotActionBefore(NEXT);
-      userDetailEntry.Next.click();
+      userDetailEntry.next.click();
 
       // -- user entry info confirm ------------
       UserEntryInfoConfirm userEntryInfoConfirm = page(UserEntryInfoConfirm.class);
       takeScreenshotInit();
-      userEntryInfoConfirm.Confirmed.click();
+      userEntryInfoConfirm.confirmed.click();
 
       // -- user entry complete ----------------
       takeScreenshotInit();

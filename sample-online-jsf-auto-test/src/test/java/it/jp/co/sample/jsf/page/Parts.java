@@ -7,24 +7,24 @@ public abstract class Parts {
 
   // header
   @FindBy(id = "headerLogo")
-  public SelenideElement HeaderLogo;
+  public SelenideElement headerLogo;
   @FindBy(id = "logIn")
-  public SelenideElement LogIn;
+  public SelenideElement logIn;
   @FindBy(id = "signUp")
-  public SelenideElement SignUp;
+  public SelenideElement signUp;
 
   // footer
   @FindBy(id = "footerLogo")
-  public SelenideElement FooterLogo;
+  public SelenideElement footerLogo;
 
   // button
   @FindBy(id = "back")
-  public SelenideElement Back;
+  public SelenideElement back;
   @FindBy(id = "next")
-  public SelenideElement Next;
+  public SelenideElement next;
   @FindBy(id = "confirmed")
-  public SelenideElement Confirmed;
+  public SelenideElement confirmed;
   @FindBy(id = "goToTopPage")
-  public SelenideElement GoToTopPage;
+  public SelenideElement goToTopPage;
 
 }
