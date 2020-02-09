@@ -134,6 +134,36 @@ sampleRoot.radio = function() {
 }();
 
 /**
+ * Modal制御
+ */
+sampleRoot.modal = function() {
+  let openConditionally;
+
+  /**
+   * 条件付きでモーダルを開く
+   */
+  openConditionally = function(e) {
+    if (e.status === 'success') {
+      let targetModal = $('#' + e.source.id).attr('data-target');
+      let searchResultCount = $('#' + targetModal + '_searchResultCount').text();
+
+      if (searchResultCount === '0') {
+        // TODO 簡易実装 後でDialogに変更
+        alert('該当のコードが存在しません');
+
+      } else if (1 < searchResultCount) {
+        $('#' + targetModal).modal();
+        $('#' + targetModal).modal('open');
+      }
+    }
+  };
+
+  return {
+    openConditionally : openConditionally
+  };
+}();
+
+/**
  * Materialize制御
  */
 sampleRoot.materialize = function() {

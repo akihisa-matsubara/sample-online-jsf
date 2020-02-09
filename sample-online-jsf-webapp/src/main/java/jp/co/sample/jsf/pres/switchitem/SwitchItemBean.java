@@ -1,6 +1,8 @@
 package jp.co.sample.jsf.pres.switchitem;
 
 import jp.co.sample.jsf.pres.BackingBeanBase;
+import jp.co.sample.jsf.pres.ui.codesearch.CodeSearchSelectedCallback;
+import jp.co.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -11,7 +13,7 @@ import javax.inject.Named;
  */
 @ViewScoped
 @Named
-public class SwitchItemBean extends BackingBeanBase implements Serializable {
+public class SwitchItemBean extends BackingBeanBase implements CodeSearchSelectedCallback, Serializable {
 
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
@@ -25,6 +27,14 @@ public class SwitchItemBean extends BackingBeanBase implements Serializable {
    */
   public void init() {
     edit.read();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void selectedCodeValues(CodeSearchParameterDto parameterDto) {
+    edit.selectedCodeValues(parameterDto);
   }
 
 }

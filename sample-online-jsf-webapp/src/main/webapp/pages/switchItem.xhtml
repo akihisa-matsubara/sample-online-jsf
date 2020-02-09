@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/resources/template/template.xhtml"
+  xmlns:cc="http://java.sun.com/jsf/composite/composite"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
@@ -60,9 +61,9 @@
         <div class="col hide-on-small-only m2 l2 offset-l1">
           <div class="sideArea">
             <ul class="section table-of-contents">
-              <li><a href="#userInfo">基本情報</a></li>
-              <li><a href="#indivInfoEntry">個人情報入力</a></li>
-              <li><a href="#corpInfoEntry">法人情報入力</a></li>
+              <li><a href="#userInfo" id="userInfoSideNav">基本情報</a></li>
+              <li><a href="#indivInfoEntry" id="indivInfoEntrySideNav">個人情報入力</a></li>
+              <li><a href="#corpInfoEntry" id="corpInfoEntrySideNav">法人情報入力</a></li>
             </ul>
           </div>
         </div>
@@ -77,12 +78,17 @@
   </ui:define>
 
   <ui:define name="hiddenValues">
-    <h:outputText id="individualCorporationInitialValue" class="hide" value="#{dto.individualCorporationCode}" />
-    <h:outputText id="indiv-genderInitialValue" class="hide" value="#{dto.individualDto.genderCode}" />
-    <h:outputText id="indiv-permanentResidencyInitialValue" class="hide" value="#{dto.individualDto.permanentResidencyCode}" />
+    <h:outputText id="individualCorporationInitialValue" value="#{dto.individualCorporationCode}" />
+    <h:outputText id="indiv-genderInitialValue" value="#{dto.individualDto.genderCode}" />
+    <h:outputText id="indiv-permanentResidencyInitialValue" value="#{dto.individualDto.permanentResidencyCode}" />
   </ui:define>
 
-  <ui:define name="dialogs" />
+  <ui:define name="dialogs">
+    <h:form id="modalForm-codeSearchModal" prependId="false">
+      <cc:codeSearchModal id="codeSearchModal" value="#{dto.individualDto.nationalityBesidesJapanGroupItems}"
+        selectedCallback="#{bb}" render="mainForm_indiv-codeValue mainForm_indiv-codeName mainForm_indiv-codeUsage" />
+    </h:form>
+  </ui:define>
   <ui:define name="importScript">
     <h:outputScript library="js" name="switchItem.js" />
   </ui:define>

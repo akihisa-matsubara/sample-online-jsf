@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition
   xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <header>
     <nav role="navigation">
       <div class="nav-wrapper container">
-        <a jsf:id="headerLogo" class="brand-logo" jsf:value="#{request.contextPath}"><h:graphicImage library="images" name="logo.png" alt="logo" /></a>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <h:outputLink id="headerLogo" class="brand-logo mt-3" value="#{request.contextPath}"><h:graphicImage library="images" name="logo.png" alt="logo" /></h:outputLink>
+        <a href="#" id="sideNavMenu" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a jsf:id="logIn" jsf:value="#{request.contextPath}/pages/logIn.xhtml">Log In</a></li>
-          <li><a jsf:id="signUp" class="btn btn-menu waves-effect waves-light" jsf:value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</a></li>
+          <li><a href="#" id="products">Products</a></li>
+          <li><a href="#" id="pricing">Pricing</a></li>
+          <li><a href="#" id="faqs">FAQs</a></li>
+          <li><h:outputLink id="logIn" value="#{request.contextPath}/pages/logIn.xhtml">Log In</h:outputLink></li>
+          <li><h:outputLink id="signUp" class="btn btn-menu waves-effect waves-light" value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</h:outputLink></li>
         </ul>
         <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a jsf:id="logInSideNav" jsf:value="#{request.contextPath}/pages/logIn.xhtml">Log In</a></li>
-          <li><a jsf:id="signUpSideNav" jsf:value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</a></li>
+          <li><a href="#" id="productsSideNav">Products</a></li>
+          <li><a href="#" id="pricingSideNav">Pricing</a></li>
+          <li><a href="#" id="faqsSideNav">FAQs</a></li>
+          <li><h:outputLink id="logInSideNav" value="#{request.contextPath}/pages/logIn.xhtml">Log In</h:outputLink></li>
+          <li><h:outputLink id="signUpSideNav" value="#{request.contextPath}/pages/userInfoEntry.xhtml">Sign Up</h:outputLink></li>
         </ul>
       </div>
     </nav>

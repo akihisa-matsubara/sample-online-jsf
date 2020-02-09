@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:composite="http://java.sun.com/jsf/composite"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <composite:interface>
+    <composite:attribute name="id" required="true" />
+    <composite:attribute name="value" />
+    <composite:attribute name="selectedCallback" />
+    <composite:attribute name="render" />
+  </composite:interface>
+
+  <composite:implementation>
+    <div id="#{cc.attrs.id}" class="modal">
+      <div class="modal-content">
+        <h4>コード検索</h4>
+        <table>
+          <tr>
+            <th>（コード）コード値</th>
+            <th>（コード）コード値</th>
+          </tr>
+          <ui:repeat id="code" value="#{codeSearchDto.codeVos}" var="data" varStatus="stat">
+            <h:outputText value="&lt;tr&gt;" rendered="#{stat.index % 2 == 0}" escape="false" />
+              <td>
+                <h:commandLink id="link" class="modal-close" value="（#{data.code}）#{data.decode}"
+                  actionListener="#{codeSearchBean.pushCodeValue(cc.attrs.selectedCallback, data)}">
+                  <f:ajax render="#{cc.attrs.render}" />
+                </h:commandLink>
+              </td>
+            <h:outputText value="&lt;/tr&gt;" rendered="#{stat.index % 2 == 1}" escape="false" />
+          </ui:repeat>
+        </table>
+        <h:outputText id="searchResultCount" class="hide" value="#{codeSearchParameterDto.searchResultCount}" />
+      </div>
+      <div class="modal-footer container" />
+    </div>
+  </composite:implementation>
+</html>

@@ -7,7 +7,7 @@ public class ScreenshotSupport {
   /** screenshot name format. */
   private static final String SS_FORMAT = "%03d-%s-%s";
 
-  /** screen shot counter. */
+  /** screenshot counter. */
   private static int ssCounter = 1;
 
   public static void takeScreenshot(String action) {

@@ -47,6 +47,17 @@ public class IndividualDto implements Serializable {
   @Size(max = 60, message = ValidationMessageId.V0001E)
   private String address;
 
+  /** コード利用. */
+  private boolean codeUsage;
+
+  /** コード値. */
+  @Size(max = 4, message = ValidationMessageId.V0001E)
+  private String codeValue;
+
+  /** コード名. */
+  @Size(max = 10, message = ValidationMessageId.V0001E)
+  private String codeName;
+
   /**
    * 性別コードを取得します.
    *
@@ -61,7 +72,6 @@ public class IndividualDto implements Serializable {
    *
    * @param genderCode 性別コード
    */
-
   public void setGenderCode(String genderCode) {
     this.gender = CodeUtils.decode(genderCode, GenderVo.class);
   }
@@ -75,18 +85,38 @@ public class IndividualDto implements Serializable {
     return GenderVo.values();
   }
 
+  /**
+   * 国籍コードを取得します.
+   *
+   * @return 国籍コード
+   */
   public String getNationalityCode() {
     return nationality == null ? null : nationality.getCode();
   }
 
+  /**
+   * 国籍コードを設定します.
+   *
+   * @param nationalityCode 国籍コード
+   */
   public void setNationalityCode(String nationalityCode) {
     this.nationality = CodeUtils.decode(nationalityCode, NationalityVo.class);
   }
 
+  /**
+   * 国籍Item（日本グループ）を取得します.
+   *
+   * @return 国籍Item（日本グループ）
+   */
   public NationalityVo[] getNationalityJapanGroupItems() {
     return NationalityVo.getNationalityJapanGroup();
   }
 
+  /**
+   * 国籍Item（日本以外グループ）を取得します.
+   *
+   * @return 国籍Item（日本以外グループ）
+   */
   public NationalityVo[] getNationalityBesidesJapanGroupItems() {
     return NationalityVo.getNationalityBesidesJapanGroup();
   }

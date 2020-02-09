@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition
   xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:jsf="http://xmlns.jcp.org/jsf"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
   <footer class="page-footer">
@@ -10,42 +9,42 @@
         <div class="row">
           <div class="col s12 m4" >
             <ul>
-              <li><a jsf:id="footerLogo" class="brand-logo" jsf:value="#{request.contextPath}"><h:graphicImage library="images" name="logo-black.png" alt="logo" /></a></li>
+              <li><h:outputLink id="footerLogo" class="brand-logo" value="#{request.contextPath}"><h:graphicImage library="images" name="logo-black.png" alt="logo" /></h:outputLink></li>
             </ul>
           </div>
           <div class="col s3 m2">
             <ul>
               <li>PRODUCT</li>
-              <li><a href="#">Popular</a></li>
-              <li><a href="#">Trending</a></li>
-              <li><a href="#">Catalog</a></li>
-              <li><a href="#">Features</a></li>
+              <li><a href="#" id="popular">Popular</a></li>
+              <li><a href="#" id="trending">Trending</a></li>
+              <li><a href="#" id="catalog">Catalog</a></li>
+              <li><a href="#" id="features">Features</a></li>
             </ul>
           </div>
           <div class="col s3 m2">
             <ul>
               <li>COMPANY</li>
-              <li><a href="#">Press Release</a></li>
-              <li><a href="#">Mission</a></li>
-              <li><a href="#">Strategy</a></li>
-              <li><a href="#">Works</a></li>
+              <li><a href="#" id="pressRelease">Press Release</a></li>
+              <li><a href="#" id="mission">Mission</a></li>
+              <li><a href="#" id="strategy">Strategy</a></li>
+              <li><a href="#" id="works">Works</a></li>
             </ul>
           </div>
           <div class="col s3 m2">
             <ul>
               <li>INFO</li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Developers</a></li>
-              <li><a href="#">Customer Services</a></li>
-              <li><a href="#">Started Guide</a></li>
+              <li><a href="#" id="support">Support</a></li>
+              <li><a href="#" id="developers">Developers</a></li>
+              <li><a href="#" id="customerServices">Customer Services</a></li>
+              <li><a href="#" id="startedGuide">Started Guide</a></li>
             </ul>
           </div>
           <div class="col s3 m2">
             <ul>
               <li>FOLLOW US</li>
-              <a href="#" class="mr-2"><i class="fab fa-github-alt"></i></a>
-              <a href="#" class="mr-2"><i class="fab fa-slack"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#" id="github" class="mr-2"><i class="fab fa-github-alt" /></a>
+              <a href="#" id="slack" class="mr-2"><i class="fab fa-slack" /></a>
+              <a href="#" id="twitter"><i class="fab fa-twitter" /></a>
             </ul>
           </div>
         </div>

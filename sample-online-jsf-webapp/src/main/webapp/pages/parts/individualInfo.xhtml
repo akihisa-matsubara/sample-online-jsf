@@ -101,5 +101,39 @@
         <h:message id="indiv-addressErrMsg" styleClass="hidden" for="indiv-address" />
       </div>
     </div>
+    <div class="row pl-12">
+      <div class="col s12">
+        <div class="row">
+          <div class="col mt-6">
+            <button jsf:id="search" class="btn btn-sub waves-effect waves-light" data-target="codeSearchModal"
+              jsf:action="#{codeSearchBean.init(bb)}">
+              SEARCH
+              <f:ajax execute="indiv-codeValue" render="modalForm-codeSearchModal_codeSearchModal indiv-codeValue indiv-codeName indiv-codeUsage" onevent="sampleRoot.modal.openConditionally"/>
+              <f:setPropertyActionListener value="#{dto.codeValue}" target="#{codeSearchParameterDto.codeVo.code}" />
+            </button>
+          </div>
+          <div class="input-field col s3">
+            <h:inputText id="indiv-codeValue" value="#{dto.codeValue}" label="コード値" pt:data-length="4" maxlength="4" autocomplete="off" />
+            <label for="indiv-codeValue">コード値</label> <span id="indiv-codeValueHelperText" class="helper-text" />
+            <h:message id="indiv-codeValueErrMsg" styleClass="hidden" for="indiv-codeValue" />
+          </div>
+          <div class="input-field col s6">
+            <h:inputText id="indiv-codeName" value="#{dto.codeName}" label="コード名" pt:data-length="10" maxlength="10" autocomplete="off" />
+            <label for="indiv-codeName">コード名</label> <span id="indiv-codeNameHelperText" class="helper-text" />
+            <h:message id="indiv-codeNameErrMsg" styleClass="hidden" for="indiv-codeName" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-12">
+      <div class="col s12">
+        <p>
+          <label>
+            <h:selectBooleanCheckbox id="indiv-codeUsage" value="#{dto.codeUsage}" />
+            <span>コード利用</span>
+          </label>
+        </p>
+      </div>
+    </div>
   </div>
 </ui:composition>

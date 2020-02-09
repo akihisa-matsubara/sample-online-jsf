@@ -63,13 +63,13 @@
               </div>
             </div>
           </div>
-          <div id="detailInfo" class="scrollspy section">
+          <div id="userDetail" class="scrollspy section">
             <div class="row">
               <div class="col s9">
                 <h6><i class="material-icons tiny">chevron_right</i>ユーザー詳細情報</h6>
               </div>
               <div class="col s3">
-                <button jsf:id="editDetailInfo" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userDetailEntry')}">
+                <button jsf:id="editUserDetail" class="btn btn-sub right waves-effect waves-light" jsf:action="#{bb.pushEdit('userDetailEntry')}">
                   EDIT<i class="material-icons left">edit</i>
                 </button>
               </div>
@@ -123,8 +123,8 @@
         <div class="col hide-on-small-only m2 l2 offset-l1">
           <div class="sideArea">
             <ul class="section table-of-contents">
-              <li><a href="#userInfo">ユーザー情報</a></li>
-              <li><a href="#detailInfo">ユーザー詳細情報</a></li>
+              <li><a href="#userInfo" id="userInfoSideNav">ユーザー情報</a></li>
+              <li><a href="#userDetail" id="userDetailSideNav">ユーザー詳細情報</a></li>
             </ul>
           </div>
         </div>

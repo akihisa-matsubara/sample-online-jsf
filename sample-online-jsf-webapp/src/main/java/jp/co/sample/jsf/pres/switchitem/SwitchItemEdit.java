@@ -1,5 +1,6 @@
 package jp.co.sample.jsf.pres.switchitem;
 
+import jp.co.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.enterprise.context.RequestScoped;
@@ -25,6 +26,17 @@ public class SwitchItemEdit implements Serializable {
    */
   public void read() {
     dto.setApplicationDate(LocalDate.now());
+  }
+
+  /**
+   * コード検索選択時処理.
+   *
+   * @param parameterDto コード検索パラメーターDTO
+   */
+  public void selectedCodeValues(CodeSearchParameterDto parameterDto) {
+    dto.getIndividualDto().setCodeValue(parameterDto.getCodeVo().getCode());
+    dto.getIndividualDto().setCodeName(parameterDto.getCodeVo().getDecode());
+    dto.getIndividualDto().setCodeUsage(true);
   }
 
 }

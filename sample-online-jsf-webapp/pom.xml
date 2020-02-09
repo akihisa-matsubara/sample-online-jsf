@@ -16,23 +16,8 @@
         <!-- override -->
         <project.lib.path>${project.basedir}/../lib</project.lib.path>
         <project.tools.path>${project.basedir}/../tools</project.tools.path>
+        <project.report.config.path>${project.basedir}/../../eclipse-settings</project.report.config.path>
     </properties>
-
-    <dependencies>
-        <!-- for Development -->
-        <!-- <dependency> -->
-        <!-- <groupId>com.sun.faces</groupId> -->
-        <!-- <artifactId>jsf-impl</artifactId> -->
-        <!-- <version>2.2.20</version> -->
-        <!-- <scope>provided</scope> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>javax.faces</groupId> -->
-        <!-- <artifactId>javax.faces-api</artifactId> -->
-        <!-- <version>2.2</version> -->
-        <!-- <scope>provided</scope> -->
-        <!-- </dependency> -->
-    </dependencies>
 
     <!-- Build Settings -->
     <build>
@@ -48,10 +33,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.phasebash.jsdoc</groupId>
-                <artifactId>jsdoc3-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
             </plugin>
             <plugin>
@@ -60,10 +41,6 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>yuicompressor-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

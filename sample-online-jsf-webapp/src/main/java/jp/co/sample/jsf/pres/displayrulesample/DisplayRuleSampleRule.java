@@ -19,7 +19,7 @@ import javax.inject.Inject;
  * -：制御無し
  * X：適用優先度
  * </PRE>
- * <table border="1">
+ * <table border="1" summary="">
  * <tr><th rowspan="3">画面項目</th><th colspan="12">制御仕様</th></tr>
  * <tr><th colspan="3">001</th><th colspan="3">002</th><th colspan="3">003</th><th colspan="3">004</th></tr>
  * <tr><th>01</th><th>02</th><th>03</th><th>01</th><th>02</th><th>03</th><th>01</th><th>02</th><th>03</th><th>01</th><th>02</th><th>03</th></tr>
