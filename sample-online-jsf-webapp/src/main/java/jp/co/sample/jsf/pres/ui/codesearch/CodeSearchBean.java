@@ -40,7 +40,7 @@ public class CodeSearchBean extends BackingBeanBase implements Serializable {
    * @param callback コード検索 選択Callback
    */
   public void init(CodeSearchSelectedCallback callback) {
-    // TODO 検索処理代わり（全件取得後に必要に応じて抽出することを前提とした実装）
+    // TODO 検索処理代わり（全件取得後に抽出することを前提とした実装）
     List<GenericCodeVo> codeVos = Arrays.stream(NationalityVo.values())
         .map(codeVo -> new GenericCodeVo(codeVo.getCode(), codeVo.getDecode()))
         .collect(Collectors.toList());
@@ -55,6 +55,7 @@ public class CodeSearchBean extends BackingBeanBase implements Serializable {
       if (findByCode.isPresent()) {
         parameterDto.setSearchResultCount(1);
         parameterDto.setCodeVo(findByCode.get());
+        // 主画面Callback呼び出し
         callback.selectedCodeValues(parameterDto);
 
       // 指定コードと不一致
@@ -82,6 +83,7 @@ public class CodeSearchBean extends BackingBeanBase implements Serializable {
   public void pushCodeValue(CodeSearchSelectedCallback callback, GenericCodeVo codeVo) {
     parameterDto.setCodeVo(codeVo);
     parameterDto.setSearchResultCount(1);
+    // 主画面Callback呼び出し
     callback.selectedCodeValues(parameterDto);
   }
 

@@ -108,7 +108,7 @@
             <button jsf:id="search" class="btn btn-sub waves-effect waves-light" data-target="codeSearchModal"
               jsf:action="#{codeSearchBean.init(bb)}">
               SEARCH
-              <f:ajax execute="indiv-codeValue" render="modalForm-codeSearchModal_codeSearchModal indiv-codeValue indiv-codeName indiv-codeUsage" onevent="sampleRoot.modal.openConditionally"/>
+              <f:ajax execute="indiv-codeValue indiv-codeUsage" render="modalForm-codeSearchModal_codeSearchModal indiv-codeValue indiv-codeName indiv-codeUsage" onevent="sampleRoot.dialog.modal.openConditionally"/>
               <f:setPropertyActionListener value="#{dto.codeValue}" target="#{codeSearchParameterDto.codeVo.code}" />
             </button>
           </div>

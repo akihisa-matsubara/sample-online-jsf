@@ -29,22 +29,16 @@ sampleRoot.ajax = function() {
 
   /**
    * Ajax通信（正常）時にログを出力する
+   * レンダリング後にコンポーネントの設定を更新する
    *
    * @param {Object} e AjaxEvent
    */
   eventHandler = function(e) {
-    switch (e.status) {
-    case 'begin':
-      console.log('ajax begin. source id=' + e.source.id);
-      break;
-    case 'complete':
-      console.log('ajax complete. source id=' + e.source.id);
-      break;
-    case 'success':
-      console.log('ajax success. source id=' + e.source.id);
+    console.log('ajax ' + e.status + '. source id=' + e.source.id);
+    if (e.status === 'success') {
+      // ラベル、エラーメッセージ設定
       M.updateTextFields();
       sampleRoot.message.showErrMsg(e.source.id);
-      break;
     }
   };
 
@@ -56,10 +50,10 @@ sampleRoot.ajax = function() {
   errorHandler = function(e) {
     if (e.status === 'httpError' && e.responseCode === 0) {
       console.error(e);
-      $('#networkErrorModal').modal('open');
+      sampleRoot.dialog.modal.open('networkErrorDialog');
     } else {
       console.error(e);
-      $('#internalErrorModal').modal('open');
+      sampleRoot.dialog.modal.open('internalErrorDialog');
     }
   };
 

@@ -18,16 +18,16 @@
     <div id="#{cc.attrs.id}" class="modal">
       <div class="modal-content">
         <ui:fragment rendered="#{! empty cc.attrs.headerMessage}">
-          <h4>#{cc.attrs.headerMessage}</h4>
+          <h4 id="#{cc.attrs.id}_headerMessage">#{cc.attrs.headerMessage}</h4>
         </ui:fragment>
-        <h:outputText id="errMsg" value="#{cc.attrs.message}" escape="false" />
+        <h:outputText id="message" value="#{cc.attrs.message}" escape="false" />
       </div>
       <div class="modal-footer container">
         <div class="row">
           <div class="col s12 center">
-            <a href="#!" id="#{cc.attrs.id}Ok" class="modal-close btn waves-effect waves-light" onclick="#{cc.attrs.okCallback}"><i class="material-icons left">done</i>OK</a>
+            <a href="#!" id="#{cc.attrs.id}_ok" class="modal-close btn waves-effect waves-light" onclick="#{cc.attrs.okCallback}"><i class="material-icons left">done</i>OK</a>
             <ui:fragment rendered="#{cc.attrs.buttonType == 2}">
-              <a href="#!" id="#{cc.attrs.id}Cancel" class="modal-close btn btn-func waves-effect waves-light" onclick="#{cc.attrs.cancelCallback}"><i class="material-icons left">close</i>CANCEL</a>
+              <a href="#!" id="#{cc.attrs.id}_cancel" class="modal-close btn btn-func waves-effect waves-light" onclick="#{cc.attrs.cancelCallback}"><i class="material-icons left">close</i>CANCEL</a>
             </ui:fragment>
           </div>
         </div>

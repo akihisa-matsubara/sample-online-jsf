@@ -8,8 +8,7 @@
 
   <composite:interface>
     <composite:attribute name="id" required="true" />
-    <composite:attribute name="value" />
-    <composite:attribute name="selectedCallback" />
+    <composite:attribute name="selectedCallback" required="true" />
     <composite:attribute name="render" />
   </composite:interface>
 
@@ -19,8 +18,8 @@
         <h4>コード検索</h4>
         <table>
           <tr>
-            <th>（コード）コード値</th>
-            <th>（コード）コード値</th>
+            <th>（コード）コード名称</th>
+            <th>（コード）コード名称</th>
           </tr>
           <ui:repeat id="code" value="#{codeSearchDto.codeVos}" var="data" varStatus="stat">
             <h:outputText value="&lt;tr&gt;" rendered="#{stat.index % 2 == 0}" escape="false" />
@@ -33,9 +32,9 @@
             <h:outputText value="&lt;/tr&gt;" rendered="#{stat.index % 2 == 1}" escape="false" />
           </ui:repeat>
         </table>
-        <h:outputText id="searchResultCount" class="hide" value="#{codeSearchParameterDto.searchResultCount}" />
       </div>
       <div class="modal-footer container" />
+      <h:outputText id="searchResultCount" class="hide" value="#{codeSearchParameterDto.searchResultCount}" />
     </div>
   </composite:implementation>
 </html>

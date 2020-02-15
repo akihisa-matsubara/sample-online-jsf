@@ -85,8 +85,7 @@
 
   <ui:define name="dialogs">
     <h:form id="modalForm-codeSearchModal" prependId="false">
-      <cc:codeSearchModal id="codeSearchModal" value="#{dto.individualDto.nationalityBesidesJapanGroupItems}"
-        selectedCallback="#{bb}" render="mainForm_indiv-codeValue mainForm_indiv-codeName mainForm_indiv-codeUsage" />
+      <cc:codeSearchModal id="codeSearchModal" selectedCallback="#{bb}" render="mainForm_indiv-codeValue mainForm_indiv-codeName mainForm_indiv-codeUsage" />
     </h:form>
   </ui:define>
   <ui:define name="importScript">

@@ -1,11 +1,9 @@
 package jp.co.sample.jsf.pres.ui.codesearch;
 
-import java.io.Serializable;
-
 /**
  * コード検索 選択Callback.
  */
-public interface CodeSearchSelectedCallback extends Serializable {
+public interface CodeSearchSelectedCallback {
 
   /**
    * コード検索 コード選択.

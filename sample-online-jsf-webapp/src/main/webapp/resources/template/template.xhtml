@@ -30,8 +30,9 @@
       </ul>
     </div>
     <ui:insert name="dialogs" />
-    <cc:modal id="networkErrorModal" message="#{uiCommonBean.dialogs[0].message}" buttonType="#{uiCommonBean.dialogs[0].buttonType}" />
-    <cc:modal id="internalErrorModal" message="#{uiCommonBean.dialogs[1].message}" buttonType="#{uiCommonBean.dialogs[1].buttonType}" />
+    <cc:modal id="genericDialog" headerMessage="dummy" buttonType="1" />
+    <cc:modal id="networkErrorDialog" message="#{uiCommonBean.dialogs[0].message}" buttonType="#{uiCommonBean.dialogs[0].buttonType}" />
+    <cc:modal id="internalErrorDialog" message="#{uiCommonBean.dialogs[1].message}" buttonType="#{uiCommonBean.dialogs[1].buttonType}" />
     <h:outputScript library="js" name="materialize.min.js" />
     <h:outputScript library="js" name="component.js" />
     <h:outputScript>
