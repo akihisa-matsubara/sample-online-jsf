@@ -1,4 +1,4 @@
-package it.jp.co.sample.jsf.signup;
+package it.jp.co.sample.jsf.scenario.signup;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -9,12 +9,12 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import it.jp.co.sample.jsf.AbstractSelenideTest;
 import it.jp.co.sample.jsf.extention.SelenideExtension;
 import it.jp.co.sample.jsf.page.signup.UserDetailEntry;
 import it.jp.co.sample.jsf.page.signup.UserEntryInfoConfirm;
 import it.jp.co.sample.jsf.page.signup.UserInfoEntry;
 import it.jp.co.sample.jsf.page.top.TopPage;
+import it.jp.co.sample.jsf.scenario.AbstractSelenideTest;
 
 @ExtendWith({ScreenShooterExtension.class, SelenideExtension.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

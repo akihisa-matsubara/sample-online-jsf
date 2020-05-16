@@ -1,4 +1,4 @@
-package it.jp.co.sample.jsf;
+package it.jp.co.sample.jsf.scenario;
 
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;

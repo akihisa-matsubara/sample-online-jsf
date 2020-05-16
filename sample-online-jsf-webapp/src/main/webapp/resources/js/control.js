@@ -1,12 +1,16 @@
-;
-var sampleRoot = sampleRoot || {};
+// Note: selector is not escape.
+/* global jsf, M */
 
-//Note: selector is not escqpe.
+/**
+ * Sampleアプリが使用するオブジェクトのルート
+ * @namespace sampleRoot
+ */
+const sampleRoot = {};
 
 /**
  * 初期処理
  */
-$(function() {
+$(() => {
   // Ajax制御設定
   sampleRoot.ajax.init();
 });
@@ -14,17 +18,24 @@ $(function() {
 /**
  * Ajax制御
  */
-sampleRoot.ajax = function() {
-  let init, eventHandler, errorHandler;
+sampleRoot.ajax = (function () {
+  let eventHandler;
+  let errorHandler;
+  let proxyRequest;
+  let preProcess;
 
   /**
    * 初期化
    */
-  init = function() {
+  const init = () => {
     if (typeof jsf !== 'undefined') {
       jsf.ajax.addOnEvent(eventHandler);
       jsf.ajax.addOnError(errorHandler);
+      proxyRequest();
     }
+
+    $(document).off('ajaxPreProcess');
+    $(document).on('ajaxPreProcess', (e, param) => preProcess(e, param));
   };
 
   /**
@@ -33,8 +44,8 @@ sampleRoot.ajax = function() {
    *
    * @param {Object} e AjaxEvent
    */
-  eventHandler = function(e) {
-    console.log('ajax ' + e.status + '. source id=' + e.source.id);
+  eventHandler = (e) => {
+    console.log(`ajax ${e.status}. source id=${e.source.id}`);
     if (e.status === 'success') {
       // ラベル、エラーメッセージ設定
       M.updateTextFields();
@@ -47,7 +58,7 @@ sampleRoot.ajax = function() {
    *
    * @param {Object} e AjaxEvent
    */
-  errorHandler = function(e) {
+  errorHandler = (e) => {
     if (e.status === 'httpError' && e.responseCode === 0) {
       console.error(e);
       sampleRoot.dialog.modal.open('networkErrorDialog');
@@ -57,7 +68,46 @@ sampleRoot.ajax = function() {
     }
   };
 
-  return {
-    init : init
+  /**
+   * Ajax 前処理を実施する
+   */
+  proxyRequest = () => {
+    const originalRequest = jsf.ajax.request;
+    jsf.ajax.request = (source, oevent, options) => {
+      const event = $.Event('ajaxPreProcess');
+      const formId = $(`#${source}`).closest('form').attr('id');
+
+      // Ajax 前処理を実行
+      $(`#${source}`).trigger(event, {
+        formId,
+        firedId: source,
+      });
+
+      if (event.isDefaultPrevented()) {
+        // Ajax キャンセル
+        console.warn(`Ajax Request has been aborted. {form id: ${formId}, source id: ${source}}`, oevent, options);
+      } else {
+        // Ajax 送信
+        originalRequest(source, oevent, options);
+      }
+    };
   };
-}();
+
+  /**
+   * Ajax 前処理
+   *
+   * @param {Object} e ajaxPreProcessイベント
+   * @param {Object} param パラメータ
+   * @property {String} formId フォームID
+   * @property {String} firedId イベント発火元エレメントのID
+   */
+  preProcess = (e, { formId, firedId }) => {
+    // Ajax キャンセル処理を実装可
+    // 例：クライアント側のバリデーション機能 検証NGでAjax通信を取り消す場合
+    // e.preventDefault();
+  };
+
+  return {
+    init,
+  };
+}());

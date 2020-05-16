@@ -1,16 +1,13 @@
-;
-'use strict';
-
-// Note: selector is not escqpe.
+// Note: selector is not escape.
+/* global M, sampleRoot */
 
 /**
  * 初期処理
  */
-$(function() {
+$(() => {
   // Materialize初期化
   sampleRoot.materialize.init();
-
-  sampleRoot.message.initErrMsg();
+  sampleRoot.message.init();
   sampleRoot.radio.init();
   sampleRoot.dialog.modal.init();
 });
@@ -18,112 +15,99 @@ $(function() {
 /**
  * メッセージ制御
  */
-sampleRoot.message = function() {
-  const VALID = 'valid', INVALID = 'invalid', JSF_ERR_MSG_ID_SUFFIX = 'ErrMsg', HELPER_TEXT_ID_SUFFIX = 'HelperText', ATT_DATA_ERR = 'data-error';
-  let initErrMsg, showErrMsg;
-
-  /**
-   * Validationの結果メッセージを画面に一括表示する
-   */
-  initErrMsg = function() {
-    $('span[id$=' + JSF_ERR_MSG_ID_SUFFIX + ']').each(function(index, elem) {
-      showErrMsg(elem.id.replace(JSF_ERR_MSG_ID_SUFFIX, ''));
-    });
-  };
+sampleRoot.message = (function () {
+  const VALID = 'valid';
+  const INVALID = 'invalid';
+  const JSF_ERR_MSG_ID_SUFFIX = 'ErrMsg';
+  const HELPER_TEXT_ID_SUFFIX = 'HelperText';
+  const ATT_DATA_ERR = 'data-error';
 
   /**
    * Validationの結果メッセージを画面に表示する
    *
    * @param {String} targetId id
    */
-  showErrMsg = function(targetId) {
-    let msg, $target;
-
-    if (!targetId || !$('#' + targetId)[0] || !$('#' + targetId + JSF_ERR_MSG_ID_SUFFIX)[0]) {
+  const showErrMsg = (targetId) => {
+    if (!targetId || !$(`#${targetId}`)[0] || !$(`#${targetId}${JSF_ERR_MSG_ID_SUFFIX}`)[0]) {
       return;
     }
 
-    msg = $('#' + targetId + JSF_ERR_MSG_ID_SUFFIX).text();
-    $target = $('#' + targetId);
+    const msg = $(`#${targetId}${JSF_ERR_MSG_ID_SUFFIX}`).text();
+    const $target = $(`#${targetId}`);
 
     if (msg) {
       // jsf error message is not empty -> invalid
       $target.removeClass(VALID).addClass(INVALID);
-      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).attr(ATT_DATA_ERR, msg);
-
+      $(`#${targetId}${HELPER_TEXT_ID_SUFFIX}`).attr(ATT_DATA_ERR, msg);
     } else if ($target.val()) {
       // value is not empty -> valid
       $target.removeClass(INVALID).addClass(VALID);
-      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).removeAttr(ATT_DATA_ERR);
-
+      $(`#${targetId}${HELPER_TEXT_ID_SUFFIX}`).removeAttr(ATT_DATA_ERR);
     } else {
       // value is empty -> validation status reset
-      $target.removeClass(INVALID + ' ' + VALID);
-      $('#' + targetId + HELPER_TEXT_ID_SUFFIX).removeAttr(ATT_DATA_ERR);
-
+      $target.removeClass(`${INVALID} ${VALID}`);
+      $(`#${targetId}${HELPER_TEXT_ID_SUFFIX}`).removeAttr(ATT_DATA_ERR);
     }
   };
 
-  return {
-    initErrMsg : initErrMsg,
-    showErrMsg : showErrMsg
+  /**
+   * Validationの結果メッセージを画面に一括表示する
+   */
+  const init = () => {
+    $(`span[id$=${JSF_ERR_MSG_ID_SUFFIX}]`).each((index, elem) => showErrMsg(elem.id.replace(JSF_ERR_MSG_ID_SUFFIX, '')));
   };
-}();
+
+  return {
+    init,
+    showErrMsg,
+  };
+}());
 
 /**
  * スクロール制御
  */
-sampleRoot.scroll = function() {
-  let top, bottom, scroll;
-
-  /**
-   * 先頭にスクロールする
-   */
-  top = function() {
-    scroll(0);
-  };
-
-  /**
-   * 末尾にスクロールする
-   */
-  bottom = function() {
-    scroll($(document).height() - $(window).height());
-  };
-
+sampleRoot.scroll = (function () {
   /**
    * 指定位置にスクロールする
    *
    * @param {number} verticalPosition 縦位置
    */
-  scroll = function(verticalPosition) {
+  const scroll = (verticalPosition) => {
     $('html,body').animate({
-      scrollTop : verticalPosition
+      scrollTop: verticalPosition,
     });
-
   };
+
+  /**
+   * 先頭にスクロールする
+   */
+  const top = () => scroll(0);
+
+  /**
+   * 末尾にスクロールする
+   */
+  const bottom = () => scroll($(document).height() - $(window).height());
 
   return {
-    top : top,
-    bottom : bottom
+    top,
+    bottom,
   };
-}();
+}());
 
 /**
  * ラジオボタン制御
  */
-sampleRoot.radio = function() {
-  let init;
+sampleRoot.radio = (function () {
   const INITIAL_VALUE_ID_SUFFIX = 'InitialValue';
 
   /**
    * 初期化
    */
-  init = function() {
-    $('input[type="radio"][id$="radio"]').each(function(index, elem) {
-      let target, value, selectedValue;
-      target = $(elem).prop('name') + INITIAL_VALUE_ID_SUFFIX;
-      value = $(elem).val();
-      selectedValue = $('#' + target).text();
+  const init = () => {
+    $('input[type="radio"][id$="radio"]').each((index, elem) => {
+      const target = $(elem).prop('name') + INITIAL_VALUE_ID_SUFFIX;
+      const value = $(elem).val();
+      const selectedValue = $(`#${target}`).text();
       if (value === selectedValue) {
         $(elem).prop('checked', true);
       }
@@ -131,40 +115,38 @@ sampleRoot.radio = function() {
   };
 
   return {
-    init : init
+    init,
   };
-}();
+}());
 
 /**
  * ダイアログ制御
  */
-sampleRoot.dialog = function() {
-  let focusOnDialog, showErrDialog;
-
+sampleRoot.dialog = (function () {
   /**
    * フォーカス移動をダイアログ内に設定する
    *
    * @param {String} dialogId dialog id
    */
-  focusOnDialog = function(dialogId) {
+  const focusOnDialog = (dialogId) => {
     const TAB_KEY = 9;
-    let $focusableEls, targetIndex, $nextFocusEl;
+    let $focusableEls;
+    let targetIndex;
+    let $nextFocusEl;
 
-    $('#' + dialogId).focus();
+    $(`#${dialogId}`).focus();
 
     $(document).off('keydown.focusOnDialog');
-    $(document).on('keydown.focusOnDialog', {dialogId : dialogId}, function(e) {
+    $(document).on('keydown.focusOnDialog', { dialogId }, (e) => {
       if (e.keyCode === TAB_KEY) {
-        $focusableEls = $('#' + dialogId)
-            .find('a[href], area[href], input, select, textarea, button, iframe, object, embed, *[tabindex], *[contenteditable]')
-            .not('[tabindex=-1], [disabled], :hidden');
+        $focusableEls = $(`#${dialogId}`)
+          .find('a[href], area[href], input, select, textarea, button, iframe, object, embed, *[tabindex], *[contenteditable]')
+          .not('[tabindex=-1], [disabled], :hidden');
         targetIndex = $focusableEls.index(e.target);
 
         if (targetIndex < 0) {
           $nextFocusEl = e.shiftKey ? $focusableEls.last() : $focusableEls.first();
-          setTimeout(function() {
-            $nextFocusEl.focus();
-          }, 0);
+          setTimeout(() => $nextFocusEl.focus(), 0);
         } else if (targetIndex === 0 && e.shiftKey) {
           $focusableEls.last().focus();
           e.preventDefault();
@@ -181,7 +163,7 @@ sampleRoot.dialog = function() {
    *
    * @param {String} message error message
    */
-  showErrDialog = function(message) {
+  const showErrDialog = (message) => {
     $('#genericDialog_headerMessage').text('エラー');
     $('#genericDialog_message').text(message);
 
@@ -189,56 +171,52 @@ sampleRoot.dialog = function() {
   };
 
   return {
-    focusOnDialog : focusOnDialog,
-    showErrDialog : showErrDialog
+    focusOnDialog,
+    showErrDialog,
   };
-}();
+}());
 
 /**
  * Modal制御
  */
-sampleRoot.dialog.modal = function() {
-  let init, initBy, open, openConditionally;
-  const ATT_DATA_TARGET = 'data-target', SEARCH_RESULT_COUNT_ID_SUFFIX = '_searchResultCount';
-
-  /**
-   * 初期化
-   */
-  init = function() {
-    let elems = document.querySelectorAll('.modal');
-    elems.forEach(function(elem) {
-      initBy(elem);
-    });
-
-    $(document).off('click.modalTrigger');
-    $(document).on('click.modalTrigger', '.modal-trigger', function (e) {
-      let modalId;
-      if (this.tagName === 'A') {
-        modalId = $(this).attr('href').replace('#', '');
-        sampleRoot.dialog.focusOnDialog(modalId);
-      } else if (this.tagName === 'BUTTON') {
-        modalId = $(this).attr(ATT_DATA_TARGET);
-        sampleRoot.dialog.focusOnDialog(modalId);
-      }
-
-    });
-
-    $(document).off('click.modalClose');
-    $(document).on('click.modalClose', '.modal-close', function (e) {
-      $(document).off('keydown.focusOnDialog');
-    });
-  };
+sampleRoot.dialog.modal = (function () {
+  const ATT_DATA_TARGET = 'data-target';
+  const SEARCH_RESULT_COUNT_ID_SUFFIX = '_searchResultCount';
 
   /**
    * 初期化
    *
    * @param {Object} elem modal element
    */
-  initBy = function(elem) {
+  const initBy = (elem) => {
     // ModalのOverlayクリック時にModalを閉じないように設定
     M.Modal.init(elem, {
-      'dismissible' : false
+      dismissible: false,
     });
+  };
+
+  /**
+   * 初期化
+   */
+  const init = () => {
+    const elems = document.querySelectorAll('.modal');
+    elems.forEach((elem) => initBy(elem));
+
+    $(document).off('click.modalTrigger');
+    $(document).on('click.modalTrigger', '.modal-trigger', (e) => {
+      const { currentTarget } = e;
+      let modalId;
+      if (currentTarget.tagName === 'A') {
+        modalId = $(currentTarget).attr('href').replace('#', '');
+        sampleRoot.dialog.focusOnDialog(modalId);
+      } else if (currentTarget.tagName === 'BUTTON') {
+        modalId = $(currentTarget).attr(ATT_DATA_TARGET);
+        sampleRoot.dialog.focusOnDialog(modalId);
+      }
+    });
+
+    $(document).off('click.modalClose');
+    $(document).on('click.modalClose', '.modal-close', (e) => $(document).off('keydown.focusOnDialog'));
   };
 
   /**
@@ -247,30 +225,29 @@ sampleRoot.dialog.modal = function() {
    *
    * @param {String} modalId modal id
    */
-  open = function(modalId) {
-    $('#' + modalId).modal('open');
+  const open = (modalId) => {
+    $(`#${modalId}`).modal('open');
     sampleRoot.dialog.focusOnDialog(modalId);
   };
 
   /**
-   * 条件付きでモーダルを開く
+   * 検索結果モーダルを開く
    * 0件:     エラーメッセージ表示
    * 1件:     何もしない
    * 2件以上: モーダルを開く
    *
    * @param {Object} e AjaxEvent
    */
-  openConditionally = function(e) {
+  const openSearchResult = (e) => {
     if (e.status === 'success') {
-      let modalId, searchResultCount, $targetModal;
-      modalId = $('#' + e.source.id).attr(ATT_DATA_TARGET);
-      searchResultCount = $('#' + modalId + SEARCH_RESULT_COUNT_ID_SUFFIX).text();
+      let $targetModal;
+      const modalId = $(`#${e.source.id}`).attr(ATT_DATA_TARGET);
+      const searchResultCount = $(`#${modalId}${SEARCH_RESULT_COUNT_ID_SUFFIX}`).text();
 
       if (searchResultCount === '0') {
         sampleRoot.dialog.showErrDialog('該当のコードは存在しません');
-
-      } else if (1 < searchResultCount) {
-        $targetModal = $('#' + modalId);
+      } else if (searchResultCount > 1) {
+        $targetModal = $(`#${modalId}`);
         initBy($targetModal);
         open(modalId);
       }
@@ -278,24 +255,24 @@ sampleRoot.dialog.modal = function() {
   };
 
   return {
-    init : init,
-    initBy : initBy,
-    open : open,
-    openConditionally : openConditionally
+    init,
+    initBy,
+    open,
+    openSearchResult,
   };
-}();
+}());
 
 /**
  * Materialize制御
  */
-sampleRoot.materialize = function() {
-  let init;
-
+sampleRoot.materialize = (function () {
   /**
    * 初期化
    */
-  init = function() {
-    let footerOffset, tocHeight, bottomOffset, elems;
+  const init = () => {
+    let footerOffset;
+    let tocHeight;
+    let bottomOffset;
 
     // initialize all of the Materialize Components
     M.AutoInit();
@@ -310,15 +287,14 @@ sampleRoot.materialize = function() {
       bottomOffset = footerOffset - tocHeight;
 
       if ($('nav').length) {
-        console.log('Nav pushpin', $('nav').height());
         $('.sideArea').pushpin({
-          top : $('.sideArea').offset().top,
-          bottom : bottomOffset
+          top: $('.sideArea').offset().top,
+          bottom: bottomOffset,
         });
       } else {
         $('.sideArea').pushpin({
-          top : 0,
-          bottom : bottomOffset
+          top: 0,
+          bottom: bottomOffset,
         });
       }
     }
@@ -327,16 +303,16 @@ sampleRoot.materialize = function() {
     sampleRoot.dialog.modal.init();
 
     // Pickers 設定変更
-    elems = document.querySelectorAll('.datepicker');
-    elems.forEach(function(elem) {
+    const elems = document.querySelectorAll('.datepicker');
+    elems.forEach((elem) => {
       M.Datepicker.init(elem, {
-        'autoClose' : true,
-        'format' : 'yyyy-mm-dd'
+        autoClose: true,
+        format: 'yyyy-mm-dd',
       });
     });
   };
 
   return {
-    init : init
+    init,
   };
-}();
+}());
