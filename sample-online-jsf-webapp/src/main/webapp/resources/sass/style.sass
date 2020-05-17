@@ -1,18 +1,6 @@
+// Note: technical candidate PostCSS
 @import './color'
-
-$pc: 1024px
-$tablet: 767px
-$smartphone: 480px
-
-@mixin pc
-  @media (max-width: ($pc))
-    @content
-@mixin tablet
-  @media (max-width: ($tablet))
-    @content
-@mixin smartphone
-  @media (max-width: ($smartphone))
-    @content
+@import './variables'
 
 /* header */
 nav
@@ -138,54 +126,10 @@ input[type]:not(.browser-default).invalid ~ .helper-text, textarea.materialize-t
 /* table */
 table
   color: $grey-darken-2
-  
-/* card */
-.login-card
-  min-height: 460px
 
 /* modal */
 .modal-content
   min-height: 200px
-
-/* error page */
-.errorarea
-  width: 100%
-  line-height: 1.4
-  text-align: center
-  .errormessage
-    position: relative
-    height: 200px
-    margin: 0px auto 20px
-    z-index: -1
-    h1
-      @include tablet
-        font-size: 148px
-      @include smartphone
-        font-size: 86px
-      font-size: 236px
-      font-weight: 200
-      margin: 0px
-      text-transform: uppercase
-      position: absolute
-      left: 50%
-      top: 50%
-      -webkit-transform: translate(-50%, -50%)
-      transform: translate(-50%, -50%)
-    h2
-      @include smartphone
-        font-size: 16px
-      font-size: 28px
-      font-weight: 400
-      max-width: max-content
-      text-transform: uppercase
-      background: $white
-      padding: 10px 5px
-      margin: auto
-      display: inline-block
-      position: absolute
-      bottom: 0px
-      left: 0
-      right: 0
 
 /* other */
 @for $i from 0 through 15

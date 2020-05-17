@@ -1,0 +1,13 @@
+$pc: 1024px
+$tablet: 767px
+$smartphone: 480px
+
+@mixin pc
+  @media (max-width: ($pc))
+    @content
+@mixin tablet
+  @media (max-width: ($tablet))
+    @content
+@mixin smartphone
+  @media (max-width: ($smartphone))
+    @content
