@@ -1,5 +1,6 @@
 package jp.co.sample.jsf.pres;
 
+import jp.co.sample.framework.jsf.constant.FacesConstant;
 import jp.co.sample.jsf.common.code.ViewName.ViewNameVo;
 
 /**
@@ -14,7 +15,7 @@ public abstract class BackingBeanBase {
    * @return リダイレクトURL
    */
   protected String redirect(ViewNameVo vo) {
-    return String.format("/pages/%s?faces-redirect=true", vo.getDecode());
+    return String.format("/pages/%s%s", vo.getDecode(), FacesConstant.REDIRECT);
   }
 
   /**
