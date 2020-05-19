@@ -69,10 +69,11 @@
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
-                <h:inputText id="birthday" class="datepicker" value="#{dto.birthday}" label="生年月日" maxlength="14" autocomplete="off">
+                <h:inputText id="birthday" class="datepicker" value="#{dto.birthday}" label="生年月日" maxlength="10" autocomplete="off">
                   <f:ajax execute="@this" render="birthdayErrMsg" />
                 </h:inputText>
                 <label for="birthday">生年月日</label>
+                <span id="birthdayHelperText" class="helper-text" />
                 <h:message id="birthdayErrMsg" styleClass="hidden" for="birthday" />
               </div>
             </div>
