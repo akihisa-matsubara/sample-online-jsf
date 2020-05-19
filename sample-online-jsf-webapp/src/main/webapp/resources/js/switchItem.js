@@ -10,8 +10,8 @@ $(() => {
 
   // 個人・法人
   $('input[name="individualCorporation"]').off();
-  $('input[name="individualCorporation"]').on('change.individualCorporation', () => {
-    if ($(this).val() === INDIVIDUAL) {
+  $('input[name="individualCorporation"]').on('change.individualCorporation', (e) => {
+    if ($(e.currentTarget).val() === INDIVIDUAL) {
       $('#corpInfoEntryArea').addClass(HIDE);
       $('#indivInfoEntryArea').removeClass(HIDE);
     } else {
@@ -22,8 +22,8 @@ $(() => {
 
   // 国籍
   $('#indiv-nationality').off('change.indiv-nationality');
-  $('#indiv-nationality').on('change.indiv-nationality', () => {
-    if ($(this).val() === JAPAN) {
+  $('#indiv-nationality').on('change.indiv-nationality', (e) => {
+    if ($(e.currentTarget).val() === JAPAN) {
       $('#indiv-permanentResidencyArea').addClass(HIDE);
     } else {
       $('#indiv-permanentResidencyArea').removeClass(HIDE);

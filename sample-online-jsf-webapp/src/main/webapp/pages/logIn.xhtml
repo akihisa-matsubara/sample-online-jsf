@@ -26,10 +26,10 @@
             <div class="row login-page">
               <div class="col s12 m7 xl5 card login-card">
                   <div class="card-content">
-                    <h5>Sign in to ...</h5>
+                    <h5>Log in</h5>
                     <div class="row mt-8">
                       <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
+                        <i class="material-icons prefix">account_box</i>
                         <h:inputText id="username" value="#{dto.username}" label="Username" pt:data-length="40" maxlength="40" autocomplete="off">
                           <f:ajax execute="@this" render="usernameErrMsg" />
                         </h:inputText>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="row">
                       <div class="col s12">
-                        <button jsf:id="signIn" class="btn waves-effect waves-light col s12" jsf:action="#{bb.pushSignIn}">Sign In</button>
+                        <button jsf:id="logIn" class="btn waves-effect waves-light col s12" jsf:action="#{bb.pushLogIn}">Log In</button>
                       </div>
                     </div>
                     <div class="row">

@@ -63,7 +63,7 @@ public class UserEntryInfoConfirmBean extends BackingBeanBase implements Seriali
    * @return ユーザー登録完了ページのURL
    */
   public String pushConfirmed() {
-    // XXX 永続化処理
+    // TODO 永続化処理
 
     // 利用統計ログ出力
     UsageStatisticsLogger.complete(ProcessName.STATISTICS_USER_ENTRY, dto.getUsername());

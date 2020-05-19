@@ -38,14 +38,14 @@ public class LogInBean extends BackingBeanBase implements Serializable, DialogPa
   }
 
   /**
-   * SIGN INボタンのアクションメソッド.
+   * LOG INボタンのアクションメソッド.
    * ●●ページへ遷移します.
    *
    * @return ●●ページのURL
    */
-  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_SIGN_IN, viewName = ViewName.LOG_IN_VIEW,
+  @DebugLog(outputTiming = OutputTiming.BEGIN, processName = ProcessName.ACTION_LOG_IN, viewName = ViewName.LOG_IN_VIEW,
       dtoClass = LogInDto.class)
-  public String pushSignIn() {
+  public String pushLogIn() {
     // TODO 一旦トップページへ
     return redirect(ViewNameVo.TOP_PAGE);
   }

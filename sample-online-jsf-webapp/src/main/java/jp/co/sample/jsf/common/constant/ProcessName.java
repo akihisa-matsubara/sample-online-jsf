@@ -9,8 +9,8 @@ public final class ProcessName {
   public static final String INIT = "init";
   /** 選択処理. */
   public static final String SELECTED = "selected";
-  /** Sign Inアクション. */
-  public static final String ACTION_SIGN_IN = "pushSignIn";
+  /** Log Inアクション. */
+  public static final String ACTION_LOG_IN = "pushLogIn";
   /** Nextアクション. */
   public static final String ACTION_NEXT = "pushNext";
 

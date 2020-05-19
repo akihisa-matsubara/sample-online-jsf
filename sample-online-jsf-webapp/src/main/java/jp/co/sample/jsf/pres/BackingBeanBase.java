@@ -15,7 +15,7 @@ public abstract class BackingBeanBase {
    * @return リダイレクトURL
    */
   protected String redirect(ViewNameVo vo) {
-    return String.format("/pages/%s%s", vo.getDecode(), FacesConstant.REDIRECT);
+    return "/pages/" + vo.getDecode() + FacesConstant.REDIRECT;
   }
 
   /**
