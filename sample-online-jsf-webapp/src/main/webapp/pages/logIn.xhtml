@@ -15,7 +15,12 @@
     <f:viewAction action="#{logInBean.init}" />
   </f:metadata>
 
+  <ui:define name="head">
+    <h:outputStylesheet library="css" name="login.min.css" />
+  </ui:define>
+
   <ui:define name="top" />
+
   <ui:define name="navigation" />
 
   <ui:define name="content">
@@ -79,7 +84,5 @@
   <ui:define name="dialogs">
     <cc:modal id="noticeModal" headerMessage="#{bb.dialogs[0].headerMessage}" message="#{bb.dialogs[0].message}" buttonType="#{bb.dialogs[0].buttonType}" okCallback="#{bb.dialogs[0].okCallback}" />
   </ui:define>
-  <ui:define name="importScript">
-    <h:outputStylesheet library="css" name="login.min.css" />
-  </ui:define>
+  <ui:define name="importScript" />
 </ui:composition>

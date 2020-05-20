@@ -1,5 +1,6 @@
 target
 src/test/assertions
+docs
 node_modules
 *.css.map
 *.code-workspace

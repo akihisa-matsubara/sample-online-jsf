@@ -216,7 +216,7 @@ sampleRoot.dialog.modal = (function () {
     });
 
     $(document).off('click.modalClose');
-    $(document).on('click.modalClose', '.modal-close', (e) => $(document).off('keydown.focusOnDialog'));
+    $(document).on('click.modalClose', '.modal-close', () => $(document).off('keydown.focusOnDialog'));
   };
 
   /**

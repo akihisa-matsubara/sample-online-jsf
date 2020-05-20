@@ -1,7 +1,6 @@
 /*
   Note: selector is not escape.
         If ProductionStage is Production, the alert and console logging will be removed.
-        // TODO gulpで対処
  */
 /* global jsf, M */
 

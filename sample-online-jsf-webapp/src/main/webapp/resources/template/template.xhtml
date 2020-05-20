@@ -8,6 +8,7 @@
   <ui:include src="./includeHeader.xhtml">
     <ui:param name="pageTitle" value="#{pageTitle}" />
   </ui:include>
+  <ui:insert name="head" />
 </h:head>
 
 <h:body>
@@ -34,7 +35,7 @@
     <cc:modal id="networkErrorDialog" message="#{uiCommonBean.dialogs[0].message}" buttonType="#{uiCommonBean.dialogs[0].buttonType}" />
     <cc:modal id="internalErrorDialog" message="#{uiCommonBean.dialogs[1].message}" buttonType="#{uiCommonBean.dialogs[1].buttonType}" />
     <h:outputScript library="js" name="materialize.min.js" />
-    <h:outputScript library="js" name="component.js" />
+    <h:outputScript library="js" name="component.min.js" />
     <h:outputScript>
       sampleRoot.env = {
         projectStage : "#{initParam['javax.faces.PROJECT_STAGE']}"

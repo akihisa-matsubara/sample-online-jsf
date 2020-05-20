@@ -8,6 +8,7 @@
     <ui:param name="pageTitle" value="#{pageTitle}" />
   </ui:include>
   <h:outputStylesheet library="css" name="errorpage.min.css" />
+  <ui:insert name="head" />
 </h:head>
 
 <h:body>
@@ -21,7 +22,7 @@
     </h:form>
     <ui:insert name="dialogs" />
     <h:outputScript library="js" name="materialize.min.js" />
-    <h:outputScript library="js" name="component.js" />
+    <h:outputScript library="js" name="component.min.js'" />
     <h:outputScript>
       sampleRoot.env = {
         projectStage : "#{initParam['javax.faces.PROJECT_STAGE']}"
