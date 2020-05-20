@@ -1,4 +1,4 @@
-// how to use:
+// Usage:
 //   npx gulp
 //   npx gulp watch
 //   npx gulp dev
