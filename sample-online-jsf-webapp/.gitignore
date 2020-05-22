@@ -1,6 +1,11 @@
-target
-src/test/assertions
-docs
-node_modules
-*.css.map
+**/META-INF/MANIFEST.MF
 *.code-workspace
+*.css.map
+.classpath
+.factorypath
+.project
+.settings
+/docs/
+/node_modules/
+/src/test/assertions/
+/target/
