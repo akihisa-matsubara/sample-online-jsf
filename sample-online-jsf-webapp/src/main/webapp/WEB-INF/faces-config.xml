@@ -6,7 +6,7 @@
     version="2.2">
 
 	<lifecycle>
-		<phase-listener>jp.co.sample.framework.jsf.listener.LoggingPhaseListener</phase-listener>
+		<phase-listener>dev.sample.framework.jsf.listener.LoggingPhaseListener</phase-listener>
 	</lifecycle>
 
     <protected-views>
@@ -17,6 +17,6 @@
     </protected-views>
 
     <factory>
-        <exception-handler-factory>jp.co.sample.framework.jsf.handler.ExceptionHandlerFactoryImpl</exception-handler-factory>
+        <exception-handler-factory>dev.sample.framework.jsf.handler.ExceptionHandlerFactoryImpl</exception-handler-factory>
     </factory>
 </faces-config>
