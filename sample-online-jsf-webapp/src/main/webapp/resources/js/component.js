@@ -25,7 +25,7 @@ sampleRoot.message = (function () {
   /**
    * Validationの結果メッセージを画面に表示する
    *
-   * @param {String} targetId id
+   * @param {string} targetId id
    */
   const showErrMsg = (targetId) => {
     if (!targetId || !$(`#${targetId}`)[0] || !$(`#${targetId}${JSF_ERR_MSG_ID_SUFFIX}`)[0]) {
@@ -126,7 +126,7 @@ sampleRoot.dialog = (function () {
   /**
    * フォーカス移動をダイアログ内に設定する
    *
-   * @param {String} dialogId dialog id
+   * @param {string} dialogId dialog id
    */
   const focusOnDialog = (dialogId) => {
     const TAB_KEY = 9;
@@ -161,7 +161,7 @@ sampleRoot.dialog = (function () {
   /**
    * エラーダイアログを表示する
    *
-   * @param {String} message error message
+   * @param {string} message error message
    */
   const showErrDialog = (message) => {
     $('#genericDialog_headerMessage').text('エラー');
@@ -223,7 +223,7 @@ sampleRoot.dialog.modal = (function () {
    * モーダルを開く
    * ※Materializeをラップ
    *
-   * @param {String} modalId modal id
+   * @param {string} modalId modal id
    */
   const open = (modalId) => {
     $(`#${modalId}`).modal('open');

@@ -101,8 +101,8 @@ sampleRoot.ajax = (function () {
    *
    * @param {Object} e ajaxPreProcessイベント
    * @param {Object} param パラメータ
-   * @property {String} formId フォームID
-   * @property {String} firedId イベント発火元エレメントのID
+   * @property {string} formId フォームID
+   * @property {string} firedId イベント発火元エレメントのID
    */
   preProcess = (e, { formId, firedId }) => {
     // Ajax キャンセル処理を実装可
