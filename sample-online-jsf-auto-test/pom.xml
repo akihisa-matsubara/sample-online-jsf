@@ -12,6 +12,13 @@
         <version>1.0.0</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>github-maven</id>
+            <url>https://raw.githubusercontent.com/akihisa-matsubara/maven/mvn-repo/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- test scope -->
         <dependency>
