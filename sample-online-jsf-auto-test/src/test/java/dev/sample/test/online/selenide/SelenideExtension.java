@@ -1,4 +1,4 @@
-package dev.sample.test.online.extention;
+package dev.sample.test.online.selenide;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.extension.BeforeAllCallback;

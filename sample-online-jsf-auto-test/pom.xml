@@ -20,6 +20,13 @@
     </repositories>
 
     <dependencies>
+        <!-- provided scope -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- test scope -->
         <dependency>
             <groupId>dev.sample</groupId>

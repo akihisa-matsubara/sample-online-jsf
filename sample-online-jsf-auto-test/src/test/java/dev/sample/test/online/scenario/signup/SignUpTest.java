@@ -1,7 +1,5 @@
 package dev.sample.test.online.scenario.signup;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,12 +7,14 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import dev.sample.test.online.extention.SelenideExtension;
 import dev.sample.test.online.page.signup.UserDetailEntry;
+import dev.sample.test.online.page.signup.UserEntryComplete;
 import dev.sample.test.online.page.signup.UserEntryInfoConfirm;
 import dev.sample.test.online.page.signup.UserInfoEntry;
 import dev.sample.test.online.page.top.TopPage;
 import dev.sample.test.online.scenario.AbstractSelenideTest;
+import dev.sample.test.online.selenide.Pages;
+import dev.sample.test.online.selenide.SelenideExtension;
 
 @ExtendWith({ScreenShooterExtension.class, SelenideExtension.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -32,49 +32,25 @@ public class SignUpTest extends AbstractSelenideTest {
       setReportsFolder(testNo, desc);
 
       // -- top page ---------------------------
-      TopPage topPage = open("/", TopPage.class);
-      takeScreenshotInit();
-      topPage.signUp.click();
+      TopPage topPage = Pages.open(TopPage.class);
+      topPage.signUp();
 
       // -- user info entry --------------------
-      UserInfoEntry userInfoEntry = page(UserInfoEntry.class);
-      takeScreenshotInit();
-      userInfoEntry.username.val(username);
-      userInfoEntry.email.val(email);
-      userInfoEntry.password.val(password);
-      userInfoEntry.passwordConfirm.val(password);
-      blur();
-      userInfoEntry.username.should(cssClass(VALID));
-      userInfoEntry.password.should(cssClass(VALID));
-      takeScreenshotActionBefore(NEXT);
-      userInfoEntry.next.click();
+      UserInfoEntry userInfoEntry = Pages.page(UserInfoEntry.class);
+      userInfoEntry.next(username, email, password, password);
 
       // -- user detail entry ------------------
-      UserDetailEntry userDetailEntry = page(UserDetailEntry.class);
-      takeScreenshotInit();
-      userDetailEntry.nameKanji.val(nameKanji);
-      userDetailEntry.nameKana.val(nameKana);
-      userDetailEntry.gender.get(UserDetailEntry.genderOrderMap.get(gender)).parent().click();
-      userDetailEntry.birthday.val(birthday);
-      userDetailEntry.addressZip.val(addressZip);
-      userDetailEntry.address.val(address);
-      blur();
-      userDetailEntry.nameKanji.should(cssClass(VALID));
-      userDetailEntry.nameKana.should(cssClass(VALID));
-      userDetailEntry.birthday.should(cssClass(VALID));
-      userDetailEntry.addressZip.should(cssClass(VALID));
-      userDetailEntry.address.should(cssClass(VALID));
-      takeScreenshotActionBefore(NEXT);
-      userDetailEntry.next.click();
+      UserDetailEntry userDetailEntry = Pages.page(UserDetailEntry.class);
+      userDetailEntry.next(nameKanji, nameKana, gender, birthday, addressZip, address);
 
       // -- user entry info confirm ------------
-      UserEntryInfoConfirm userEntryInfoConfirm = page(UserEntryInfoConfirm.class);
-      takeScreenshotInit();
-      userEntryInfoConfirm.confirmed.click();
+      UserEntryInfoConfirm userEntryInfoConfirm = Pages.page(UserEntryInfoConfirm.class);
+      userEntryInfoConfirm.confirmed();
 
       // -- user entry complete ----------------
-      takeScreenshotInit();
-      $("h5").shouldHave(text("Created your account!!"));
+      UserEntryComplete userEntryComplete = Pages.page(UserEntryComplete.class);
+      userEntryComplete.isDisplayed();
+
     }
   }
 
@@ -90,62 +66,24 @@ public class SignUpTest extends AbstractSelenideTest {
       setReportsFolder(testNo, desc);
 
       // -- top page ---------------------------
-      TopPage topPage = open("/", TopPage.class);
-      takeScreenshotInit();
-      topPage.signUp.click();
+      TopPage topPage = Pages.open(TopPage.class);
+      topPage.signUp();
 
       // -- user info entry --------------------
-      UserInfoEntry userInfoEntry = page(UserInfoEntry.class);
-      takeScreenshotInit();
-      userInfoEntry.username.val(username);
-      userInfoEntry.email.val(email);
-      userInfoEntry.password.val(password);
-      userInfoEntry.passwordConfirm.val(password);
-      blur();
-      userInfoEntry.username.should(cssClass(INVALID));
-      userInfoEntry.email.should(cssClass(INVALID));
-      userInfoEntry.password.should(cssClass(INVALID));
-      userInfoEntry.passwordConfirm.should(cssClass(INVALID));
-      takeScreenshotInvalidAfter();
-
-      userInfoEntry.username.val(BLANK);
-      userInfoEntry.email.val(BLANK);
-      userInfoEntry.password.val(BLANK);
-      userInfoEntry.passwordConfirm.val(BLANK);
-      blur();
-      takeScreenshotActionBefore(NEXT);
-      userInfoEntry.next.click();
+      UserInfoEntry userInfoEntry = Pages.page(UserInfoEntry.class);
+      userInfoEntry.verifyValidationError(username, email, password, password);
+      userInfoEntry.clear();
+      userInfoEntry.next();
 
       // -- user detail entry ------------------
-      UserDetailEntry userDetailEntry = page(UserDetailEntry.class);
-      takeScreenshotInit();
-      userDetailEntry.nameKanji.val(nameKanji);
-      userDetailEntry.nameKana.val(nameKana);
-      userDetailEntry.addressZip.val(addressZip);
-      userDetailEntry.address.val(address);
-      blur();
-      userDetailEntry.nameKanji.should(cssClass(INVALID));
-      userDetailEntry.nameKana.should(cssClass(INVALID));
-      userDetailEntry.addressZip.should(cssClass(INVALID));
-      userDetailEntry.address.should(cssClass(INVALID));
-      takeScreenshotInvalidAfter();
-
-      userDetailEntry.nameKanji.val(BLANK);
-      userDetailEntry.nameKana.val(BLANK);
-      userDetailEntry.addressZip.val(BLANK);
-      userDetailEntry.address.val(BLANK);
-      blur();
-      takeScreenshotActionBefore(NEXT);
-      userDetailEntry.next.click();
+      UserDetailEntry userDetailEntry = Pages.page(UserDetailEntry.class);
+      userDetailEntry.verifyValidationError(nameKanji, nameKana, addressZip, address);
+      userDetailEntry.clear();
+      userDetailEntry.next();
 
       // -- user entry info confirm ------------
-      UserEntryInfoConfirm userEntryInfoConfirm = page(UserEntryInfoConfirm.class);
-      takeScreenshotInit();
-      userEntryInfoConfirm.confirmed.click();
-
       // -- user entry complete ----------------
-      takeScreenshotInit();
-      $("h5").shouldHave(text("Created your account!!"));
+
     }
   }
 }

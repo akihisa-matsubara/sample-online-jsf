@@ -15,6 +15,7 @@ public class ScreenshotSupport {
     ssCounter++;
   }
 
+  //NOTE: 縦スクロールのみ対応、画像結合未対応
   public static void takeScreenshotFull(String action) {
     executeJavaScript("$(window).scrollTop(0)");
     takeScreenshot(action);
