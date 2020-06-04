@@ -1,5 +1,3 @@
-// Note: selector is not escape.
-
 /**
  * 初期処理
  */

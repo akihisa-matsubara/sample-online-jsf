@@ -1,4 +1,3 @@
-/* text */
 .text-sm
   font-size: 0.875rem
 .text-base
@@ -19,7 +18,9 @@
 .tracking-extrawide
   letter-spacing: 1em
 
-input[type]:not(.browser-default) ~ .helper-text, textarea.materialize-textarea ~ .helper-text
+textarea.materialize-textarea ~ .helper-text,
+input[type]:not(.browser-default) ~ .helper-text
   display: none
-input[type]:not(.browser-default).invalid ~ .helper-text, textarea.materialize-textarea.invalid ~ .helper-text
+textarea.materialize-textarea.invalid ~ .helper-text,
+input[type]:not(.browser-default).invalid ~ .helper-text
   display: block
