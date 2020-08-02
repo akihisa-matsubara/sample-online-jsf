@@ -1,9 +1,9 @@
 package dev.sample.jsf.pres.errorpage;
 
+import dev.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import dev.sample.jsf.pres.BackingBeanBase;
 
 /**
  * エラーページ BackingBean.

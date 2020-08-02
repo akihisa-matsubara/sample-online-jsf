@@ -1,14 +1,14 @@
 package dev.sample.jsf.pres.userentrycomplete;
 
-import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import dev.sample.framework.core.interceptor.InvokeConversation;
 import dev.sample.framework.core.interceptor.InvokeConversation.Type;
 import dev.sample.jsf.pres.BackingBeanBase;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
- * ユーザー情報登録 BackingBean.
+ * ユーザー登録完了 BackingBean.
  */
 @ViewScoped
 @Named

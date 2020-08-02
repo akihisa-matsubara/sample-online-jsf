@@ -2,7 +2,7 @@
   Note: selector is not escape.
         If ProductionStage is Production, the alert and console logging will be removed.
  */
-/* global jsf, M */
+/* global jsf */
 
 /**
  * Sampleアプリが使用するオブジェクトのルート
@@ -50,8 +50,8 @@ sampleRoot.ajax = (function () {
   eventHandler = (e) => {
     console.log(`ajax ${e.status}. source id=${e.source.id}`);
     if (e.status === 'success') {
-      // ラベル、エラーメッセージ設定
-      M.updateTextFields();
+      // Materialize初期化、エラーメッセージ設定
+      sampleRoot.materialize.dynamicInit();
       sampleRoot.message.showErrMsg(e.source.id);
     }
   };

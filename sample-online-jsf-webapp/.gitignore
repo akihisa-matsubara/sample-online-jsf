@@ -3,6 +3,7 @@
 *.css.map
 .classpath
 .factorypath
+.metadata
 .project
 .settings
 /docs/

@@ -13,7 +13,7 @@
 
 <h:body>
   <div id="screenArea">
-    <h:form id="mainForm" prependId="false">
+    <h:form id="mainForm" prependId="false" enctype="#{hasUpload ? 'multipart/form-data' : 'application/x-www-form-urlencoded'}">
       <ui:insert name="top" />
       <ui:insert name="navigation" />
       <ui:insert name="content" />

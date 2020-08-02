@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/resources/template/errorTemplate.xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:param name="pageTitle" value="500 - Internal Server Error" />
+  <ui:param name="bb" value="#{errorPageBean}" />
+
+  <f:metadata>
+    <f:viewAction action="#{errorPageBean.init}" />
+  </f:metadata>
+
+  <ui:define name="head" />
+
+  <ui:define name="top">
+    <ui:include src="../parts/header.xhtml" />
+  </ui:define>
+
+  <ui:define name="navigation" />
+
+  <ui:define name="content">
+    <div id="contentArea" class="container my-8 px-8 pt-6 pb-8">
+      <div id="errorArea" class="errorarea">
+        <div class="errormessage">
+          <h1>Oops!</h1>
+          <h2>500 - It's broken, but it's not your fault.</h2>
+        </div>
+        <button jsf:id="goToTopPage" class="btn waves-effect waves-light" jsf:action="#{bb.pushGoToTopPage}">Go To Top page</button>
+      </div>
+    </div>
+  </ui:define>
+
+  <ui:define name="bottom">
+    <ui:include src="../parts/footer.xhtml">
+      <ui:param name="footerMenu" value="false" />
+    </ui:include>
+  </ui:define>
+
+  <ui:define name="hiddenValues" />
+  <ui:define name="dialogs" />
+  <ui:define name="importScript" />
+</ui:composition>

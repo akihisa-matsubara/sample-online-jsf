@@ -1,11 +1,11 @@
 package dev.sample.jsf.pres.switchitem;
 
+import dev.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import dev.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
 
 /**
  * 画面項目切替 編集.

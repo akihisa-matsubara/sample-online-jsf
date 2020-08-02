@@ -1,9 +1,9 @@
 package dev.sample.jsf.pres.switchitem;
 
+import dev.sample.jsf.common.constant.ValidationMessageId;
 import java.io.Serializable;
 import javax.validation.constraints.Size;
 import lombok.Data;
-import dev.sample.jsf.common.constant.ValidationMessageId;
 
 /**
  * 法人DTO.

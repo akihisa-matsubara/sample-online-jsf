@@ -1,14 +1,14 @@
 package dev.sample.jsf.pres.userentryinfoconfirm;
 
-import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import dev.sample.common.util.CodeUtils;
 import dev.sample.framework.core.logger.UsageStatisticsLogger;
 import dev.sample.jsf.common.code.ViewName.ViewNameVo;
 import dev.sample.jsf.common.constant.ProcessName;
 import dev.sample.jsf.pres.BackingBeanBase;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * ユーザー入力情報確認 BackingBean.

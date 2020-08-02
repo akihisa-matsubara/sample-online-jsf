@@ -1,12 +1,12 @@
 package dev.sample.jsf.pres.switchitem;
 
+import dev.sample.jsf.pres.BackingBeanBase;
+import dev.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
+import dev.sample.jsf.pres.ui.codesearch.CodeSearchSelectedCallback;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import dev.sample.jsf.pres.BackingBeanBase;
-import dev.sample.jsf.pres.ui.codesearch.CodeSearchParameterDto;
-import dev.sample.jsf.pres.ui.codesearch.CodeSearchSelectedCallback;
 
 /**
  * 画面項目切替 BackingBean.

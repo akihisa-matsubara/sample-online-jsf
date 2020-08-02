@@ -1,12 +1,12 @@
 package dev.sample.jsf.common.code;
 
+import dev.sample.common.code.CodeVo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import dev.sample.common.code.CodeVo;
 
 /**
  * 国籍Vo.

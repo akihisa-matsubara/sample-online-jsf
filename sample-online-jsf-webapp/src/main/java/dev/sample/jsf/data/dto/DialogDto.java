@@ -1,11 +1,11 @@
 package dev.sample.jsf.data.dto;
 
-import java.io.Serializable;
-import lombok.Builder;
-import lombok.Data;
 import dev.sample.framework.core.message.MessageId;
 import dev.sample.framework.core.util.MessageUtils;
 import dev.sample.jsf.common.code.ButtonTypeVo;
+import java.io.Serializable;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * ダイアログDto.

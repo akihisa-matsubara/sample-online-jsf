@@ -1,8 +1,8 @@
 package dev.sample.jsf.common.code;
 
+import dev.sample.common.code.CodeVo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import dev.sample.common.code.CodeVo;
 
 /**
  * 画面VIew名定数.

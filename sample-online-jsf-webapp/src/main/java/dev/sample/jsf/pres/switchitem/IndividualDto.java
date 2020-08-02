@@ -1,13 +1,13 @@
 package dev.sample.jsf.pres.switchitem;
 
-import java.io.Serializable;
-import javax.validation.constraints.Size;
-import lombok.Data;
 import dev.sample.common.code.GenderVo;
 import dev.sample.common.util.CodeUtils;
 import dev.sample.jsf.common.code.NationalityVo;
 import dev.sample.jsf.common.code.YesNoVo;
 import dev.sample.jsf.common.constant.ValidationMessageId;
+import java.io.Serializable;
+import javax.validation.constraints.Size;
+import lombok.Data;
 
 /**
  * 個人DTO.

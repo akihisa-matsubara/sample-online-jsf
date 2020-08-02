@@ -1,10 +1,10 @@
 package dev.sample.jsf.pres.ui.codesearch;
 
+import dev.sample.common.code.GenericCodeVo;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import lombok.Data;
-import dev.sample.common.code.GenericCodeVo;
 
 /**
  * コード検索パラメーターDTO（外部公開DTO）.

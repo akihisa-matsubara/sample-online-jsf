@@ -1,14 +1,9 @@
 package dev.sample.jsf.pres.login;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import dev.sample.framework.core.interceptor.DebugLog;
 import dev.sample.framework.core.interceptor.InvokeConversation;
-import dev.sample.framework.core.interceptor.OutputTiming;
 import dev.sample.framework.core.interceptor.InvokeConversation.Type;
+import dev.sample.framework.core.interceptor.OutputTiming;
 import dev.sample.jsf.common.code.ButtonTypeVo;
 import dev.sample.jsf.common.code.ViewName;
 import dev.sample.jsf.common.code.ViewName.ViewNameVo;
@@ -18,6 +13,11 @@ import dev.sample.jsf.data.dto.DialogDto;
 import dev.sample.jsf.message.AplMessageId;
 import dev.sample.jsf.pres.BackingBeanBase;
 import dev.sample.jsf.pres.DialogPage;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
  * ログイン BackingBean.

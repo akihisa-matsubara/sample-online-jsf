@@ -1,13 +1,13 @@
 package dev.sample.jsf.pres.displayrulesample;
 
+import dev.sample.framework.jsf.rule.DisplayController;
+import dev.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.AjaxBehaviorListener;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import dev.sample.framework.jsf.rule.DisplayController;
-import dev.sample.jsf.pres.BackingBeanBase;
 
 /**
  * 表示ルールサンプル BackingBean.

@@ -1,11 +1,11 @@
 package dev.sample.jsf.pres.displayrulesample;
 
+import dev.sample.jsf.common.constant.ValidationMessageId;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Size;
 import lombok.Data;
-import dev.sample.jsf.common.constant.ValidationMessageId;
 
 /**
  * 表示ルールサンプル 画面DTO.

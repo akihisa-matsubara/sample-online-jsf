@@ -1,5 +1,7 @@
 package dev.sample.jsf.pres.userinfoentry;
 
+import dev.sample.framework.core.constant.Regexp;
+import dev.sample.jsf.common.constant.ValidationMessageId;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -7,8 +9,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.ToString;
-import dev.sample.framework.core.constant.Regexp;
-import dev.sample.jsf.common.constant.ValidationMessageId;
 
 /**
  * ユーザー情報登録 画面DTO.

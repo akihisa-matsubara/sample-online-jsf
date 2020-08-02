@@ -1,12 +1,12 @@
 package dev.sample.jsf.pres.userdetailentry;
 
+import dev.sample.framework.core.conversation.ConversationSharedDto;
+import dev.sample.framework.core.util.BeanUtilsExt;
+import dev.sample.jsf.data.model.UserDetailModel;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import dev.sample.framework.core.conversation.ConversationSharedDto;
-import dev.sample.framework.core.util.BeanUtilsExt;
-import dev.sample.jsf.data.model.UserDetailModel;
 
 /**
  * ユーザー詳細情報登録 編集.

@@ -1,9 +1,9 @@
 package dev.sample.jsf.data.model;
 
+import dev.sample.common.code.GenderVo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import lombok.Data;
-import dev.sample.common.code.GenderVo;
 
 /**
  * ユーザー詳細情報Model.

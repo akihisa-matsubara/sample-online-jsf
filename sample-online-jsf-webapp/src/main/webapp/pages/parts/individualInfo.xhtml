@@ -46,13 +46,13 @@
       </div>
     </div>
     <div class="row pl-12">
-      <div class="col s12">
-        <label for="indiv-nationality">国籍</label>
+      <div class="input-field col s12">
         <h:selectOneMenu id="indiv-nationality" value="#{dto.nationalityCode}">
           <f:selectItem itemLabel="選んでください" itemValue="" />
           <f:selectItems value="#{dto.nationalityJapanGroupItems}" var="item" itemLabel="#{item.decode}" itemValue="#{item.code}" />
           <f:selectItems value="#{dto.nationalityBesidesJapanGroupItems}" var="item" itemLabel="#{item.decode}" itemValue="#{item.code}" />
         </h:selectOneMenu>
+        <label for="indiv-nationality">国籍</label>
       </div>
     </div>
     <div id="indiv-permanentResidencyArea" class="#{dto.nationalityCode != '0386' ? 'hide' : ''}">

@@ -1,11 +1,11 @@
 package dev.sample.jsf.pres.ui.codesearch;
 
+import dev.sample.common.code.GenericCodeVo;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import lombok.Data;
-import dev.sample.common.code.GenericCodeVo;
 
 /**
  * コード検索 画面DTO.

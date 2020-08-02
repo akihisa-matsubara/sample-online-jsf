@@ -1,13 +1,13 @@
 package dev.sample.jsf.pres.switchitem;
 
+import dev.sample.common.util.CodeUtils;
+import dev.sample.jsf.common.code.IndividualCorporationVo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.Valid;
 import lombok.Data;
-import dev.sample.common.util.CodeUtils;
-import dev.sample.jsf.common.code.IndividualCorporationVo;
 
 /**
  * 画面項目切替 画面DTO.

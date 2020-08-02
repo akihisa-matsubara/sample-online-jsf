@@ -1,17 +1,17 @@
 package dev.sample.jsf.pres.userinfoentry;
 
-import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import dev.sample.framework.core.interceptor.DebugLog;
 import dev.sample.framework.core.interceptor.InvokeConversation;
-import dev.sample.framework.core.interceptor.OutputTiming;
 import dev.sample.framework.core.interceptor.InvokeConversation.Type;
+import dev.sample.framework.core.interceptor.OutputTiming;
 import dev.sample.jsf.common.code.ViewName;
 import dev.sample.jsf.common.code.ViewName.ViewNameVo;
 import dev.sample.jsf.common.constant.ProcessName;
 import dev.sample.jsf.pres.BackingBeanBase;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * ユーザー情報登録 BackingBean.

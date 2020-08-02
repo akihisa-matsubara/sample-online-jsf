@@ -1,5 +1,11 @@
 package dev.sample.jsf.pres.ui.codesearch;
 
+import dev.sample.common.code.GenericCodeVo;
+import dev.sample.framework.core.interceptor.DebugLog;
+import dev.sample.framework.core.interceptor.OutputTiming;
+import dev.sample.jsf.common.code.NationalityVo;
+import dev.sample.jsf.common.constant.ProcessName;
+import dev.sample.jsf.pres.BackingBeanBase;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -9,12 +15,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.commons.lang3.StringUtils;
-import dev.sample.common.code.GenericCodeVo;
-import dev.sample.framework.core.interceptor.DebugLog;
-import dev.sample.framework.core.interceptor.OutputTiming;
-import dev.sample.jsf.common.code.NationalityVo;
-import dev.sample.jsf.common.constant.ProcessName;
-import dev.sample.jsf.pres.BackingBeanBase;
 
 /**
  * コード検索 BackingBean.
@@ -58,13 +58,13 @@ public class CodeSearchBean extends BackingBeanBase implements Serializable {
         // 主画面Callback呼び出し
         callback.selectedCodeValues(parameterDto);
 
-      // 指定コードと不一致
+        // 指定コードと不一致
       } else {
         parameterDto.setSearchResultCount(0);
 
       }
 
-    // 指定コードなし
+      // 指定コードなし
     } else {
       dto.setCodeVos(codeVos);
       parameterDto.setSearchResultCount(codeVos.size());

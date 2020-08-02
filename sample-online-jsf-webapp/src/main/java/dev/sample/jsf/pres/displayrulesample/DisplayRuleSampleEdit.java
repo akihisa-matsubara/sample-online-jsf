@@ -15,7 +15,7 @@ public class DisplayRuleSampleEdit implements Serializable {
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
-  /** 表示ルールサンプル  画面DTO. */
+  /** 表示ルールサンプル 画面DTO. */
   @Inject
   private DisplayRuleSampleDto dto;
 

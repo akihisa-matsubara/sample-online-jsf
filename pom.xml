@@ -12,6 +12,7 @@
 
     <modules>
         <module>sample-online-jsf-webapp</module>
+        <module>sample-online-jsf-test-driver</module>
     </modules>
 
     <repositories>

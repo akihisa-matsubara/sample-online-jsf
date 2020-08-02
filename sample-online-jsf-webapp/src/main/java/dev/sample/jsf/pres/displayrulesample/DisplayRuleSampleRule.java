@@ -1,12 +1,13 @@
 package dev.sample.jsf.pres.displayrulesample;
 
-import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import dev.sample.framework.jsf.rule.ControlContent;
 import dev.sample.framework.jsf.rule.RuleConditions;
 import dev.sample.framework.jsf.rule.SpecNo;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 
+// @formatter:off
 /**
  * <PRE>
  * 表示ルールサンプル ルール・条件.
@@ -30,6 +31,7 @@ import dev.sample.framework.jsf.rule.SpecNo;
  * <tr><td>item5</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
  * </table>
  */
+// @formatter:on
 @ViewScoped
 public class DisplayRuleSampleRule implements RuleConditions, Serializable {
 

@@ -25,7 +25,7 @@ sampleRoot.message = (function () {
   /**
    * Validationの結果メッセージを画面に表示する
    *
-   * @param {string} targetId id
+   * @param {string} targetId input tag id
    */
   const showErrMsg = (targetId) => {
     if (!targetId || !$(`#${targetId}`)[0] || !$(`#${targetId}${JSF_ERR_MSG_ID_SUFFIX}`)[0]) {
@@ -123,6 +123,9 @@ sampleRoot.radio = (function () {
  * ダイアログ制御
  */
 sampleRoot.dialog = (function () {
+  const VALID = 'valid';
+  const INVALID = 'invalid';
+
   /**
    * フォーカス移動をダイアログ内に設定する
    *
@@ -138,22 +141,23 @@ sampleRoot.dialog = (function () {
 
     $(document).off('keydown.focusOnDialog');
     $(document).on('keydown.focusOnDialog', { dialogId }, (e) => {
-      if (e.keyCode === TAB_KEY) {
-        $focusableEls = $(`#${dialogId}`)
-          .find('a[href], area[href], input, select, textarea, button, iframe, object, embed, *[tabindex], *[contenteditable]')
-          .not('[tabindex=-1], [disabled], :hidden');
-        targetIndex = $focusableEls.index(e.target);
+      if (e.keyCode !== TAB_KEY) {
+        return;
+      }
+      $focusableEls = $(`#${dialogId}`)
+        .find('a[href], area[href], input, select, textarea, button, iframe, object, embed, *[tabindex], *[contenteditable]')
+        .not('[tabindex=-1], [disabled], :hidden');
+      targetIndex = $focusableEls.index(e.target);
 
-        if (targetIndex < 0) {
-          $nextFocusEl = e.shiftKey ? $focusableEls.last() : $focusableEls.first();
-          setTimeout(() => $nextFocusEl.focus(), 0);
-        } else if (targetIndex === 0 && e.shiftKey) {
-          $focusableEls.last().focus();
-          e.preventDefault();
-        } else if (targetIndex === ($focusableEls.length - 1) && !e.shiftKey) {
-          $focusableEls.first().focus();
-          e.preventDefault();
-        }
+      if (targetIndex < 0) {
+        $nextFocusEl = e.shiftKey ? $focusableEls.last() : $focusableEls.first();
+        setTimeout(() => $nextFocusEl.focus(), 0);
+      } else if (targetIndex === 0 && e.shiftKey) {
+        $focusableEls.last().focus();
+        e.preventDefault();
+      } else if (targetIndex === ($focusableEls.length - 1) && !e.shiftKey) {
+        $focusableEls.first().focus();
+        e.preventDefault();
       }
     });
   };
@@ -170,9 +174,43 @@ sampleRoot.dialog = (function () {
     sampleRoot.dialog.modal.open('genericDialog');
   };
 
+  /**
+   * メッセージが存在する場合、エラーダイアログを表示する
+   *
+   * @param {Object} e AjaxEvent
+   * @param {string} errMsgId error message id(span tag)
+   * @param {string} targetId input tag id
+   */
+  const isExistShowErrDialog = (e, errMsgId, targetId) => {
+    if (e.status !== 'success' || !errMsgId || !$(`#${errMsgId}`) || !$(`#${errMsgId}`).text()) {
+      return;
+    }
+
+    const msg = $(`#${errMsgId}`).text();
+    if (targetId) {
+      const $target = $(`#${targetId}`);
+      if (msg) {
+        // jsf error message is not empty -> invalid
+        $target.removeClass(VALID).addClass(INVALID);
+      } else if ($target.val()) {
+        // value is not empty -> valid
+        $target.removeClass(INVALID).addClass(VALID);
+      } else {
+        // value is empty -> validation status reset
+        $target.removeClass(`${INVALID} ${VALID}`);
+      }
+    }
+
+    $('#genericDialog_headerMessage').text('エラー');
+    $('#genericDialog_message').text(msg);
+
+    sampleRoot.dialog.modal.open('genericDialog');
+  };
+
   return {
     focusOnDialog,
     showErrDialog,
+    isExistShowErrDialog,
   };
 }());
 
@@ -239,18 +277,20 @@ sampleRoot.dialog.modal = (function () {
    * @param {Object} e AjaxEvent
    */
   const openSearchResult = (e) => {
-    if (e.status === 'success') {
-      let $targetModal;
-      const modalId = $(`#${e.source.id}`).attr(ATT_DATA_TARGET);
-      const searchResultCount = $(`#${modalId}${SEARCH_RESULT_COUNT_ID_SUFFIX}`).text();
+    if (e.status !== 'success') {
+      return;
+    }
 
-      if (searchResultCount === '0') {
-        sampleRoot.dialog.showErrDialog('該当のコードは存在しません');
-      } else if (searchResultCount > 1) {
-        $targetModal = $(`#${modalId}`);
-        initBy($targetModal);
-        open(modalId);
-      }
+    let $targetModal;
+    const modalId = $(`#${e.source.id}`).attr(ATT_DATA_TARGET);
+    const searchResultCount = $(`#${modalId}${SEARCH_RESULT_COUNT_ID_SUFFIX}`).text();
+
+    if (searchResultCount === '0') {
+      sampleRoot.dialog.showErrDialog('該当のコードは存在しません');
+    } else if (Number(searchResultCount) > 1) {
+      $targetModal = $(`#${modalId}`);
+      initBy($targetModal);
+      open(modalId);
     }
   };
 
@@ -312,7 +352,21 @@ sampleRoot.materialize = (function () {
     });
   };
 
+  /**
+   * Ajaxなど動的にDOM更新後に初期化する
+   */
+  const dynamicInit = () => {
+    // textarea, select初期化
+    $('textarea').each((index, elem) => {
+      M.textareaAutoResize($(elem));
+    });
+    $('select').formSelect();
+    // ラベル初期化
+    M.updateTextFields();
+  };
+
   return {
     init,
+    dynamicInit,
   };
 }());

@@ -1,11 +1,11 @@
 package dev.sample.jsf.pres.userentryinfoconfirm;
 
+import dev.sample.common.code.GenderVo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import lombok.Data;
-import dev.sample.common.code.GenderVo;
 
 /**
  * ユーザー入力情報確認 画面DTO.

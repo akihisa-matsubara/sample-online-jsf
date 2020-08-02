@@ -1,8 +1,8 @@
 package dev.sample.jsf.common.util;
 
-import lombok.experimental.UtilityClass;
 import dev.sample.framework.core.message.MessageId;
 import dev.sample.framework.core.util.MessageUtils;
+import lombok.experimental.UtilityClass;
 
 /**
  * JavaScriptサポート.

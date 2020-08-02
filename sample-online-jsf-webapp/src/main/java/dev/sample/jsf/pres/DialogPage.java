@@ -1,7 +1,7 @@
 package dev.sample.jsf.pres;
 
-import java.util.List;
 import dev.sample.jsf.data.dto.DialogDto;
+import java.util.List;
 
 /**
  * ダイアログページ・インターフェース.
