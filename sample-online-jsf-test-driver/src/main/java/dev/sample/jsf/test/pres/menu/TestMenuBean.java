@@ -8,6 +8,7 @@ import dev.sample.framework.jsf.constant.FacesConstant;
 import dev.sample.framework.jsf.ui.upload.FileUploadCallback;
 import dev.sample.framework.jsf.ui.upload.FileUploadParameterDto;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.AjaxBehaviorListener;
 import javax.faces.view.ViewScoped;
@@ -24,8 +25,8 @@ public class TestMenuBean implements Serializable, FileUploadCallback {
   /** serialVersionUID. */
   private static final long serialVersionUID = 1L;
 
-  /** キー情報：conf path. */
-  private static final String KEY_CONF_PATH = "sample.testDriver.confPath";
+  /** キー情報：JSON path. */
+  private static final String KEY_JSON_PATH = "sample.testDriver.jsonPath";
 
   /** テスト・メニュー 画面DTO. */
   @Inject
@@ -60,30 +61,43 @@ public class TestMenuBean implements Serializable, FileUploadCallback {
    * @param event {@link AjaxBehaviorListener}
    */
   public void onChangeViewName(AjaxBehaviorEvent event) {
-    dto.getConfFiles().clear();
+    dto.getJsonFiles().clear();
+    dto.setJsonFileName(null);
+    dto.setJsonValue(null);
+
     dto.getViewItems().stream()
         .filter(viewItem -> viewItem.getUrl().equals(dto.getUrl()))
         .findFirst()
-        .ifPresent(viewItem -> dto.setConfFiles(viewItem.getConfFiles()));
+        .ifPresent(viewItem -> dto.setJsonFiles(new ArrayList<>(viewItem.getJsonFiles())));
   }
 
   /**
-   * confファイル名変更時のAjaxリスナー.
+   * JSONファイル名変更時のAjaxリスナー.
    *
    * @param event {@link AjaxBehaviorListener}
    */
-  public void onChangeConfFileName(AjaxBehaviorEvent event) {
-    dto.setConfValue(FileUtils.readResourceToString(ConfigUtils.getAsString(KEY_CONF_PATH) + dto.getConfFileName()));
+  public void onChangeJsonFileName(AjaxBehaviorEvent event) {
+    dto.setJsonValue(FileUtils.readResourceToString(ConfigUtils.getAsString(KEY_JSON_PATH) + dto.getJsonFileName()));
   }
 
   /**
-   * confファイル アップロード後処理.
+   * JSONファイル アップロード後処理.
    *
    * @param parameterDto ファイルアップロードパラメーターDTO
    */
   @Override
   public void uploadedFile(FileUploadParameterDto parameterDto) {
-    dto.setConfValue(parameterDto.getFileContents());
+    dto.setJsonValue(parameterDto.getFileContents());
+  }
+
+  /**
+   * JSONファイル アップロードキャンセル処理.
+   *
+   * @param clientId ID
+   */
+  @Override
+  public void cancelUploadFile(String clientId) {
+    dto.setJsonValue(null);
   }
 
 }

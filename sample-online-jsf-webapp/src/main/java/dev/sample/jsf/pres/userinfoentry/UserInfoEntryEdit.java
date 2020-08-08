@@ -2,7 +2,7 @@ package dev.sample.jsf.pres.userinfoentry;
 
 import dev.sample.framework.core.conversation.ConversationSharedDto;
 import dev.sample.framework.core.util.BeanUtilsExt;
-import dev.sample.jsf.data.model.UserInfoModel;
+import dev.sample.jsf.common.model.UserInfoModel;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

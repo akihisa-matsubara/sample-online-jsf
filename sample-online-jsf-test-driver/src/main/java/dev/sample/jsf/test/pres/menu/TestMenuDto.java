@@ -1,5 +1,6 @@
 package dev.sample.jsf.test.pres.menu;
 
+import dev.sample.jsf.test.pres.config.ViewItem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,16 @@ public class TestMenuDto implements Serializable {
   /** url. */
   private String url;
 
-  /** conf file name. */
-  private String confFileName;
+  /** json file name. */
+  private String jsonFileName;
 
-  /** conf value. */
-  private String confValue;
+  /** json value. */
+  private String jsonValue;
 
   /** view items. */
   private List<ViewItem> viewItems;
 
-  /** conf files. */
-  private List<String> confFiles = new ArrayList<>();
+  /** json files. */
+  private List<String> jsonFiles = new ArrayList<>();
 
 }

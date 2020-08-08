@@ -34,32 +34,32 @@
           <div class="col s12 l6 mt-12">
             <h5>Test Menu</h5>
             <div class="row">
-              <div class="input-field col s12">
+              <div jsf:id="viewName-field" class="input-field col s12">
                 <h:selectOneMenu id="viewName" value="#{dto.url}">
                   <f:selectItem itemLabel="選んでください" itemValue="" />
                   <f:selectItems value="#{dto.viewItems}" var="item" itemLabel="#{item.viewName}" itemValue="#{item.url}" />
-                  <f:ajax execute="@this" render="confFileName-field" listener="#{bb.onChangeViewName}" />
+                  <f:ajax execute="@this" render="jsonFileName-field jsonValue-field" listener="#{bb.onChangeViewName}" />
                 </h:selectOneMenu>
                 <label for="viewName">ビュー名</label>
               </div>
             </div>
             <div class="row">
-              <div jsf:id="confFileName-field" class="input-field col s12">
-                <h:selectOneMenu id="confFileName" value="#{dto.confFileName}">
+              <div jsf:id="jsonFileName-field" class="input-field col s12">
+                <h:selectOneMenu id="jsonFileName" value="#{dto.jsonFileName}">
                   <f:selectItem itemLabel="選んでください" itemValue="" />
-                  <f:selectItems value="#{dto.confFiles}" var="item" itemLabel="#{item}" itemValue="#{item}" />
-                  <f:ajax execute="@this" render="confValue-field" listener="#{bb.onChangeConfFileName}" />
+                  <f:selectItems value="#{dto.jsonFiles}" var="item" itemLabel="#{item}" itemValue="#{item}" />
+                  <f:ajax execute="@this" render="jsonValue-field" listener="#{bb.onChangeJsonFileName}" />
                 </h:selectOneMenu>
-                <label for="confFileName">CONFファイル</label>
+                <label for="jsonFileName">JSONファイル</label>
               </div>
             </div>
             <div class="row">
-              <cc:inputFile id="confFile" grid="s12" uploadedCallback="#{bb}" accept=".conf" render="mainForm_confValue-field" />
+              <cc:inputFile id="jsonFile" grid="s12" uploadedCallback="#{bb}" accept=".json" render="mainForm_jsonValue-field" />
             </div>
             <div class="row">
-              <div jsf:id="confValue-field" class="input-field col s12">
-                <h:inputTextarea id="confValue" rows="4" disabled="true" class="materialize-textarea" value="#{dto.confValue}" label="CONF値" />
-                <label for="confValue">CONF値</label>
+              <div jsf:id="jsonValue-field" class="input-field col s12">
+                <h:inputTextarea id="jsonValue" rows="4" disabled="true" class="materialize-textarea" value="#{dto.jsonValue}" label="JSON値" />
+                <label for="jsonValue">JSON値</label>
               </div>
               <button jsf:id="submit" class="btn right waves-effect waves-light" jsf:action="#{bb.pushSubmit}">
                 SUBMIT<i class="material-icons right">navigate_next</i>
@@ -75,5 +75,7 @@
 
   <ui:define name="hiddenValues" />
   <ui:define name="dialogs" />
-  <ui:define name="importScript" />
+  <ui:define name="importScript">
+    <h:outputScript library="js" name="testMenu.js" />
+  </ui:define>
 </ui:composition>

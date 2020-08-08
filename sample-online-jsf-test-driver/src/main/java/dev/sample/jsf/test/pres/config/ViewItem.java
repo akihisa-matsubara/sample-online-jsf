@@ -1,4 +1,4 @@
-package dev.sample.jsf.test.pres.menu;
+package dev.sample.jsf.test.pres.config;
 
 import dev.sample.framework.core.config.Configurable;
 import java.util.List;
@@ -19,7 +19,7 @@ public class ViewItem implements Configurable {
   /** url. */
   private String url;
 
-  /** conf files. */
-  private List<String> confFiles;
+  /** json files. */
+  private List<String> jsonFiles;
 
 }

@@ -1,4 +1,4 @@
-package dev.sample.jsf.data.model;
+package dev.sample.jsf.common.model;
 
 import java.io.Serializable;
 import lombok.Data;

@@ -1,0 +1,15 @@
+{
+	"userInfoModel": {
+		"username": "testuser",
+		"email": "sample@sample.com",
+		"password": "none"
+	},
+	"userDetailModel": {
+		"nameKanji": "さんぷる",
+		"nameKana": "サンプル",
+		"gender": "FEMALE",
+		"birthday": "1990-04-17",
+		"addressZip": "1000001",
+		"address": "東京都"
+	}
+}
